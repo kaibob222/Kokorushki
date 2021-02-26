@@ -1,0 +1,875 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{13CDD64C-944C-3F64-A3F5-1601BE39E126}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>TheWay</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\repository\TheWay\proj.win32\bin\TheWay\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TheWay.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TheWay</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\repository\TheWay\proj.win32\bin\TheWay\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TheWay.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TheWay</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\repository\TheWay\proj.win32\bin\TheWay\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">TheWay.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">TheWay</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\repository\TheWay\proj.win32\bin\TheWay\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">TheWay.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">TheWay</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;COCOS2D_DEBUG=1;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;COCOS2D_DEBUG=1;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/uv/prebuilt/win32/uv.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/repository/TheWay/proj.win32/bin/TheWay/Debug/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Debug\cocos2d.lib;lib\Debug\external.lib;..\cocos2d\external\Box2D\prebuilt\win32\debug\libbox2d.lib;..\cocos2d\external\chipmunk\prebuilt\win32\debug-lib\libchipmunk.lib;..\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\Debug\ext_recast.lib;..\cocos2d\external\bullet\prebuilt\win32\debug\libbullet.lib;..\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;..\cocos2d\external\webp\prebuilt\win32\libwebp.lib;..\cocos2d\external\websockets\prebuilt\win32\websockets.lib;..\cocos2d\external\openssl\prebuilt\win32\libssl.lib;..\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;..\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\Debug\ext_tinyxml2.lib;lib\Debug\ext_xxhash.lib;lib\Debug\ext_xxtea.lib;lib\Debug\ext_clipper.lib;lib\Debug\ext_edtaa3func.lib;lib\Debug\ext_convertUTF.lib;lib\Debug\ext_poly2tri.lib;lib\Debug\ext_md5.lib;..\cocos2d\external\curl\prebuilt\win32\libcurl.lib;..\cocos2d\external\png\prebuilt\win32\libpng.lib;..\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;..\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;..\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;..\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;..\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;..\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\Debug\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/repository/TheWay/proj.win32/Debug/TheWay.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/repository/TheWay/proj.win32/bin/TheWay/Debug/TheWay.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/uv/prebuilt/win32/uv.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/repository/TheWay/proj.win32/bin/TheWay/Release/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Release\cocos2d.lib;lib\Release\external.lib;..\cocos2d\external\Box2D\prebuilt\win32\release\libbox2d.lib;..\cocos2d\external\chipmunk\prebuilt\win32\release-lib\libchipmunk.lib;..\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\Release\ext_recast.lib;..\cocos2d\external\bullet\prebuilt\win32\release\libbullet.lib;..\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;..\cocos2d\external\webp\prebuilt\win32\libwebp.lib;..\cocos2d\external\websockets\prebuilt\win32\websockets.lib;..\cocos2d\external\openssl\prebuilt\win32\libssl.lib;..\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;..\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\Release\ext_tinyxml2.lib;lib\Release\ext_xxhash.lib;lib\Release\ext_xxtea.lib;lib\Release\ext_clipper.lib;lib\Release\ext_edtaa3func.lib;lib\Release\ext_convertUTF.lib;lib\Release\ext_poly2tri.lib;lib\Release\ext_md5.lib;..\cocos2d\external\curl\prebuilt\win32\libcurl.lib;..\cocos2d\external\png\prebuilt\win32\libpng.lib;..\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;..\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;..\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;..\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;..\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;..\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\Release\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/repository/TheWay/proj.win32/Release/TheWay.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/repository/TheWay/proj.win32/bin/TheWay/Release/TheWay.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/uv/prebuilt/win32/uv.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\MinSizeRel\cocos2d.lib;lib\MinSizeRel\external.lib;..\cocos2d\external\Box2D\prebuilt\win32\release\libbox2d.lib;..\cocos2d\external\chipmunk\prebuilt\win32\release-lib\libchipmunk.lib;..\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\MinSizeRel\ext_recast.lib;..\cocos2d\external\bullet\prebuilt\win32\release\libbullet.lib;..\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;..\cocos2d\external\webp\prebuilt\win32\libwebp.lib;..\cocos2d\external\websockets\prebuilt\win32\websockets.lib;..\cocos2d\external\openssl\prebuilt\win32\libssl.lib;..\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;..\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\MinSizeRel\ext_tinyxml2.lib;lib\MinSizeRel\ext_xxhash.lib;lib\MinSizeRel\ext_xxtea.lib;lib\MinSizeRel\ext_clipper.lib;lib\MinSizeRel\ext_edtaa3func.lib;lib\MinSizeRel\ext_convertUTF.lib;lib\MinSizeRel\ext_poly2tri.lib;lib\MinSizeRel\ext_md5.lib;..\cocos2d\external\curl\prebuilt\win32\libcurl.lib;..\cocos2d\external\png\prebuilt\win32\libpng.lib;..\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;..\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;..\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;..\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;..\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;..\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\MinSizeRel\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/repository/TheWay/proj.win32/MinSizeRel/TheWay.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/repository/TheWay/proj.win32/bin/TheWay/MinSizeRel/TheWay.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\repository\TheWay\Classes;D:\repository\TheWay\cocos2d\cocos\audio\include;D:\repository\TheWay\cocos2d;D:\repository\TheWay\cocos2d\cocos;D:\repository\TheWay\cocos2d\extensions;D:\repository\TheWay\cocos2d\cocos\platform;D:\repository\TheWay\cocos2d\cocos\editor-support;D:\repository\TheWay\cocos2d\cocos\base;D:\repository\TheWay\cocos2d\cocos\platform\win32;D:\repository\TheWay\cocos2d\external\recast\..;D:\repository\TheWay\cocos2d\external\tinyxml2\.;D:\repository\TheWay\cocos2d\external\xxhash\.;D:\repository\TheWay\cocos2d\external\xxtea\.;D:\repository\TheWay\cocos2d\external\clipper\.;D:\repository\TheWay\cocos2d\external\edtaa3func\.;D:\repository\TheWay\cocos2d\external\ConvertUTF\.;D:\repository\TheWay\cocos2d\external\poly2tri\..;D:\repository\TheWay\cocos2d\external\md5\..;D:\repository\TheWay\cocos2d\external\unzip\.;D:\repository\TheWay\cocos2d\external\Box2D\include;D:\repository\TheWay\cocos2d\external\chipmunk\include;D:\repository\TheWay\cocos2d\external\freetype2\include\win32\freetype2;D:\repository\TheWay\cocos2d\external\bullet\include;D:\repository\TheWay\cocos2d\external\bullet\include\bullet;D:\repository\TheWay\cocos2d\external\jpeg\include\win32;D:\repository\TheWay\cocos2d\external\openssl\include\win32;D:\repository\TheWay\cocos2d\external\uv\include;D:\repository\TheWay\cocos2d\external\webp\include\win32;D:\repository\TheWay\cocos2d\external\websockets\include\win32;D:\repository\TheWay\cocos2d\external\curl\include\win32;D:\repository\TheWay\cocos2d\external\png\include\win32;D:\repository\TheWay\cocos2d\external\win32-specific\gles\include\OGLES;D:\repository\TheWay\cocos2d\external\win32-specific\icon\include;D:\repository\TheWay\cocos2d\external\win32-specific\MP3Decoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OggDecoder\include;D:\repository\TheWay\cocos2d\external\win32-specific\OpenalSoft\include;D:\repository\TheWay\cocos2d\external\glfw3\include\win32;D:\repository\TheWay\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/uv/prebuilt/win32/uv.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\programm\CMake\bin\cmake.exe -E copy_if_different D:/repository/TheWay/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\RelWithDebInfo\cocos2d.lib;lib\RelWithDebInfo\external.lib;..\cocos2d\external\Box2D\prebuilt\win32\release\libbox2d.lib;..\cocos2d\external\chipmunk\prebuilt\win32\release-lib\libchipmunk.lib;..\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\RelWithDebInfo\ext_recast.lib;..\cocos2d\external\bullet\prebuilt\win32\release\libbullet.lib;..\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;..\cocos2d\external\webp\prebuilt\win32\libwebp.lib;..\cocos2d\external\websockets\prebuilt\win32\websockets.lib;..\cocos2d\external\openssl\prebuilt\win32\libssl.lib;..\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;..\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\RelWithDebInfo\ext_tinyxml2.lib;lib\RelWithDebInfo\ext_xxhash.lib;lib\RelWithDebInfo\ext_xxtea.lib;lib\RelWithDebInfo\ext_clipper.lib;lib\RelWithDebInfo\ext_edtaa3func.lib;lib\RelWithDebInfo\ext_convertUTF.lib;lib\RelWithDebInfo\ext_poly2tri.lib;lib\RelWithDebInfo\ext_md5.lib;..\cocos2d\external\curl\prebuilt\win32\libcurl.lib;..\cocos2d\external\png\prebuilt\win32\libpng.lib;..\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;..\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;..\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;..\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;..\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;..\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\RelWithDebInfo\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/repository/TheWay/proj.win32/RelWithDebInfo/TheWay.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/repository/TheWay/proj.win32/bin/TheWay/RelWithDebInfo/TheWay.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\repository\TheWay\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/repository/TheWay/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/proj.win32 --check-stamp-file D:/repository/TheWay/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\programm\CMake\share\cmake-3.20\Modules\CMakeCCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCCompilerABI.c;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCXXCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompileFeatures.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerABI.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineRCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineSystem.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeFindBinUtils.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseArguments.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseLibraryArchitecture.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeRCCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystem.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCXXCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestRCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\TI-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CompilerId\VS-10.vcxproj.in;D:\programm\CMake\share\cmake-3.20\Modules\Internal\FeatureTesting.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-Determine-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeCCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeCXXCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeRCCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\repository\TheWay\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/repository/TheWay/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/proj.win32 --check-stamp-file D:/repository/TheWay/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\programm\CMake\share\cmake-3.20\Modules\CMakeCCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCCompilerABI.c;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCXXCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompileFeatures.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerABI.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineRCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineSystem.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeFindBinUtils.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseArguments.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseLibraryArchitecture.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeRCCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystem.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCXXCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestRCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\TI-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CompilerId\VS-10.vcxproj.in;D:\programm\CMake\share\cmake-3.20\Modules\Internal\FeatureTesting.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-Determine-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeCCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeCXXCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeRCCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\repository\TheWay\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/repository/TheWay/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/proj.win32 --check-stamp-file D:/repository/TheWay/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\programm\CMake\share\cmake-3.20\Modules\CMakeCCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCCompilerABI.c;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCXXCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompileFeatures.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerABI.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineRCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineSystem.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeFindBinUtils.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseArguments.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseLibraryArchitecture.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeRCCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystem.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCXXCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestRCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\TI-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CompilerId\VS-10.vcxproj.in;D:\programm\CMake\share\cmake-3.20\Modules\Internal\FeatureTesting.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-Determine-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeCCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeCXXCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeRCCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\repository\TheWay\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/repository/TheWay/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/proj.win32 --check-stamp-file D:/repository/TheWay/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\programm\CMake\share\cmake-3.20\Modules\CMakeCCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCCompilerABI.c;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCXXCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompileFeatures.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerABI.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineRCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeDetermineSystem.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeFindBinUtils.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseArguments.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeParseLibraryArchitecture.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeRCCompiler.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystem.cmake.in;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCXXCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CMakeTestRCCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\TI-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\programm\CMake\share\cmake-3.20\Modules\CompilerId\VS-10.vcxproj.in;D:\programm\CMake\share\cmake-3.20\Modules\Internal\FeatureTesting.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-Determine-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake;D:\programm\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\repository\TheWay\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeCCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeCXXCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeRCCompiler.cmake;D:\repository\TheWay\proj.win32\CMakeFiles\3.20.0-rc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\repository\TheWay\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\repository\TheWay\Classes\AppDelegate.h" />
+    <ClInclude Include="D:\repository\TheWay\Classes\HelloWorldScene.h" />
+    <ClInclude Include="D:\repository\TheWay\proj.win32\main.h" />
+    <ClInclude Include="D:\repository\TheWay\proj.win32\resource.h" />
+    <ClCompile Include="D:\repository\TheWay\Classes\AppDelegate.cpp" />
+    <ClCompile Include="D:\repository\TheWay\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="D:\repository\TheWay\proj.win32\main.cpp" />
+    <ResourceCompile Include="D:\repository\TheWay\proj.win32\game.rc" />
+    <ClInclude Include="D:\repository\TheWay\Resources\CloseNormal.png" />
+    <ClInclude Include="D:\repository\TheWay\Resources\CloseSelected.png" />
+    <ClInclude Include="D:\repository\TheWay\Resources\HelloWorld.png" />
+    <ClInclude Include="D:\repository\TheWay\Resources\fonts\Marker Felt.ttf" />
+    <ClInclude Include="D:\repository\TheWay\Resources\fonts\arial.ttf" />
+    <ClInclude Include="D:\repository\TheWay\Resources\res\.gitkeep" />
+    <ClCompile Include="D:\repository\TheWay\cocos2d\cocos\precheader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\ZERO_CHECK.vcxproj">
+      <Project>{62BEE817-6F34-366D-AD30-CE4C11EB9884}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\cocos\core\cocos2d.vcxproj">
+      <Project>{A6399F1D-81A3-39BD-81EF-79F47B7297A5}</Project>
+      <Name>cocos2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\clipper\ext_clipper.vcxproj">
+      <Project>{C2FD1E34-D37D-368C-B869-79E71E1BB8EA}</Project>
+      <Name>ext_clipper</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\ConvertUTF\ext_convertUTF.vcxproj">
+      <Project>{29E5E054-D076-3F61-9043-C7800F38B7C3}</Project>
+      <Name>ext_convertUTF</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\edtaa3func\ext_edtaa3func.vcxproj">
+      <Project>{A756185A-BDF0-30D2-AA78-2B841634726B}</Project>
+      <Name>ext_edtaa3func</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\md5\ext_md5.vcxproj">
+      <Project>{C69791E2-705B-36B2-9F58-E58D35929F9B}</Project>
+      <Name>ext_md5</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\poly2tri\ext_poly2tri.vcxproj">
+      <Project>{133A3B13-DAA6-30B9-AA0D-21F29F607223}</Project>
+      <Name>ext_poly2tri</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\recast\ext_recast.vcxproj">
+      <Project>{B550C176-DA68-3762-AB2A-7F48982D4977}</Project>
+      <Name>ext_recast</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\tinyxml2\ext_tinyxml2.vcxproj">
+      <Project>{22DA78D2-8386-31D9-B761-6A240F3AF095}</Project>
+      <Name>ext_tinyxml2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\unzip\ext_unzip.vcxproj">
+      <Project>{35AB9626-B4CB-370C-A88E-6373F2BB8E40}</Project>
+      <Name>ext_unzip</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\xxhash\ext_xxhash.vcxproj">
+      <Project>{848A7C9F-5FBC-3500-BE33-0E51388E2367}</Project>
+      <Name>ext_xxhash</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\xxtea\ext_xxtea.vcxproj">
+      <Project>{4B444A4D-506A-3243-868F-1458687F134D}</Project>
+      <Name>ext_xxtea</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\repository\TheWay\proj.win32\engine\external\external.vcxproj">
+      <Project>{A2135226-BE79-3AD1-83C3-1C1A9C7CF1E1}</Project>
+      <Name>external</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
