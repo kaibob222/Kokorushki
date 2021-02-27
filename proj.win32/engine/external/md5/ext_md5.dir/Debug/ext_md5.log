@@ -1,5 +1,0 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets(1879,5): warning : The referenced project 'D:\repository\TheWay\proj.win32\ZERO_CHECK.vcxproj' does not exist.
-  Building Custom Rule D:/repository/TheWay/cocos2d/external/md5/CMakeLists.txt
-  CMake is re-running because D:/repository/TheWay/proj.win32/engine/external/md5/CMakeFiles/generate.stamp dependency file is missing.
-CUSTOMBUILD : CMake error : The source directory "D:/repository/TheWay" does not appear to contain CMakeLists.txt.
-  Specify --help for usage, or press the help button on the CMake GUI.

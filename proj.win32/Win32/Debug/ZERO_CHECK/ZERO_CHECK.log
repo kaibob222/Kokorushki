@@ -1,4 +1,0 @@
-﻿  Checking Build System
-  CMake is re-running because D:/repository/TheWay/proj.win32/CMakeFiles/generate.stamp dependency file is missing.
-CUSTOMBUILD : CMake error : The source directory "D:/repository/TheWay" does not appear to contain CMakeLists.txt.
-  Specify --help for usage, or press the help button on the CMake GUI.
