@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F95E9104-8FEE-3C1B-A7F9-AFA9C610F893}</ProjectGuid>
+    <ProjectGuid>{3242662F-C976-3FDE-8A5B-3EDDCDC53B16}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
@@ -102,10 +102,10 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\repository\TheWay\cocos2d\external\recast\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/repository/TheWay/cocos2d/external/recast/CMakeLists.txt</Message>
+    <CustomBuild Include="C:\Users\ainomon\win32\MyGame\cocos2d\external\recast\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/ainomon/win32/MyGame/cocos2d/external/recast/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/win32-build --check-stamp-file D:/repository/TheWay/win32-build/engine/external/recast/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/ainomon/win32/MyGame -BC:/Users/ainomon/win32/MyGame/win32-build --check-stamp-file C:/Users/ainomon/win32/MyGame/win32-build/engine/external/recast/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -114,11 +114,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\repository\TheWay\win32-build\engine\external\recast\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\ainomon\win32\MyGame\win32-build\engine\external\recast\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/repository/TheWay/cocos2d/external/recast/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/ainomon/win32/MyGame/cocos2d/external/recast/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/win32-build --check-stamp-file D:/repository/TheWay/win32-build/engine/external/recast/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/ainomon/win32/MyGame -BC:/Users/ainomon/win32/MyGame/win32-build --check-stamp-file C:/Users/ainomon/win32/MyGame/win32-build/engine/external/recast/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -127,11 +127,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\repository\TheWay\win32-build\engine\external\recast\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\ainomon\win32\MyGame\win32-build\engine\external\recast\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/repository/TheWay/cocos2d/external/recast/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/ainomon/win32/MyGame/cocos2d/external/recast/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/win32-build --check-stamp-file D:/repository/TheWay/win32-build/engine/external/recast/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/ainomon/win32/MyGame -BC:/Users/ainomon/win32/MyGame/win32-build --check-stamp-file C:/Users/ainomon/win32/MyGame/win32-build/engine/external/recast/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -140,11 +140,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\repository\TheWay\win32-build\engine\external\recast\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\ainomon\win32\MyGame\win32-build\engine\external\recast\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/repository/TheWay/cocos2d/external/recast/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/ainomon/win32/MyGame/cocos2d/external/recast/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/win32-build --check-stamp-file D:/repository/TheWay/win32-build/engine/external/recast/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/ainomon/win32/MyGame -BC:/Users/ainomon/win32/MyGame/win32-build --check-stamp-file C:/Users/ainomon/win32/MyGame/win32-build/engine/external/recast/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -153,21 +153,21 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\repository\TheWay\win32-build\engine\external\recast\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\ainomon\win32\MyGame\win32-build\engine\external\recast\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\ZERO_CHECK.vcxproj">
-      <Project>{7BD5B0B5-B7CE-39F4-94C5-1141B879837A}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\ZERO_CHECK.vcxproj">
+      <Project>{1D32EA5D-60FA-3511-A5BE-1D6D12765AD4}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\recast\ext_recast.vcxproj">
-      <Project>{BD99AF07-3E4A-3648-ACFF-A69E4B0EFEE1}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\recast\ext_recast.vcxproj">
+      <Project>{E072D2BD-BDA4-3CD4-823C-D2F5721D5DE5}</Project>
       <Name>ext_recast</Name>
     </ProjectReference>
   </ItemGroup>

@@ -68,6 +68,21 @@ bool HelloWorld::init()
 		this->addChild(sprite, 0);
 	}
 
+	auto label = Label::createWithTTF("HALO MA MUCHACHOES)))", "fonts/Marker Felt.ttf", 24);
+	if (label == nullptr)
+	{
+		problemLoading("'fonts/Marker Felt.ttf'");
+	}
+	else
+	{
+		// position the label on the center of the screen
+		label->setPosition(Vec2(origin.x + visibleSize.width / 2,
+			origin.y + visibleSize.height - label->getContentSize().height));
+
+		// add the label as a child to this layer
+		this->addChild(label, 1);
+	}
+
 	sprite1 = Sprite::create("player/Programmer_7.png");
 	sprite1->setPosition(pos);
 

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F95E9104-8FEE-3C1B-A7F9-AFA9C610F893}</ProjectGuid>
+    <ProjectGuid>{3242662F-C976-3FDE-8A5B-3EDDCDC53B16}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
@@ -102,10 +102,10 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\repository\TheWay\cocos2d\cocos\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/repository/TheWay/cocos2d/cocos/CMakeLists.txt</Message>
+    <CustomBuild Include="C:\Users\ainomon\win32\MyGame\cocos2d\cocos\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/ainomon/win32/MyGame/cocos2d/cocos/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/win32-build --check-stamp-file D:/repository/TheWay/win32-build/engine/cocos/core/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/ainomon/win32/MyGame -BC:/Users/ainomon/win32/MyGame/win32-build --check-stamp-file C:/Users/ainomon/win32/MyGame/win32-build/engine/cocos/core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -113,12 +113,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\repository\TheWay\cocos2d\cocos\2d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\3d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\audio\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\base\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\math\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\navmesh\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\network\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\physics\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\physics3d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\platform\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\renderer\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\ui\CMakeLists.txt;D:\repository\TheWay\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\repository\TheWay\win32-build\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\ainomon\win32\MyGame\cocos2d\cocos\2d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\3d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\audio\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\base\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\math\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\navmesh\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\network\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\physics\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\physics3d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\platform\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\renderer\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\ui\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\ainomon\win32\MyGame\win32-build\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/repository/TheWay/cocos2d/cocos/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/ainomon/win32/MyGame/cocos2d/cocos/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/win32-build --check-stamp-file D:/repository/TheWay/win32-build/engine/cocos/core/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/ainomon/win32/MyGame -BC:/Users/ainomon/win32/MyGame/win32-build --check-stamp-file C:/Users/ainomon/win32/MyGame/win32-build/engine/cocos/core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -126,12 +126,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\repository\TheWay\cocos2d\cocos\2d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\3d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\audio\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\base\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\math\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\navmesh\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\network\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\physics\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\physics3d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\platform\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\renderer\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\ui\CMakeLists.txt;D:\repository\TheWay\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\repository\TheWay\win32-build\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\ainomon\win32\MyGame\cocos2d\cocos\2d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\3d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\audio\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\base\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\math\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\navmesh\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\network\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\physics\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\physics3d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\platform\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\renderer\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\ui\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\ainomon\win32\MyGame\win32-build\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/repository/TheWay/cocos2d/cocos/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/ainomon/win32/MyGame/cocos2d/cocos/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/win32-build --check-stamp-file D:/repository/TheWay/win32-build/engine/cocos/core/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/ainomon/win32/MyGame -BC:/Users/ainomon/win32/MyGame/win32-build --check-stamp-file C:/Users/ainomon/win32/MyGame/win32-build/engine/cocos/core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -139,12 +139,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\repository\TheWay\cocos2d\cocos\2d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\3d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\audio\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\base\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\math\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\navmesh\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\network\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\physics\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\physics3d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\platform\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\renderer\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\ui\CMakeLists.txt;D:\repository\TheWay\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\repository\TheWay\win32-build\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\ainomon\win32\MyGame\cocos2d\cocos\2d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\3d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\audio\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\base\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\math\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\navmesh\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\network\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\physics\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\physics3d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\platform\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\renderer\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\ui\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\ainomon\win32\MyGame\win32-build\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/repository/TheWay/cocos2d/cocos/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/ainomon/win32/MyGame/cocos2d/cocos/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-D:\programm\CMake\bin\cmake.exe -SD:/repository/TheWay -BD:/repository/TheWay/win32-build --check-stamp-file D:/repository/TheWay/win32-build/engine/cocos/core/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/ainomon/win32/MyGame -BC:/Users/ainomon/win32/MyGame/win32-build --check-stamp-file C:/Users/ainomon/win32/MyGame/win32-build/engine/cocos/core/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -152,66 +152,66 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\repository\TheWay\cocos2d\cocos\2d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\3d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\audio\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\base\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\math\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\navmesh\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\network\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\physics\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\physics3d\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\platform\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\renderer\CMakeLists.txt;D:\repository\TheWay\cocos2d\cocos\ui\CMakeLists.txt;D:\repository\TheWay\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\repository\TheWay\win32-build\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\ainomon\win32\MyGame\cocos2d\cocos\2d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\3d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\audio\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\base\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\math\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\navmesh\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\network\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\physics\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\physics3d\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\platform\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\renderer\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\cocos\ui\CMakeLists.txt;C:\Users\ainomon\win32\MyGame\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\ainomon\win32\MyGame\win32-build\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\ZERO_CHECK.vcxproj">
-      <Project>{7BD5B0B5-B7CE-39F4-94C5-1141B879837A}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\ZERO_CHECK.vcxproj">
+      <Project>{1D32EA5D-60FA-3511-A5BE-1D6D12765AD4}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\cocos\core\cocos2d.vcxproj">
-      <Project>{E00CA823-5D17-3D8D-9C64-E8742BB882B8}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\cocos\core\cocos2d.vcxproj">
+      <Project>{70708EC0-77F6-3B4C-99BD-F871636FFA3C}</Project>
       <Name>cocos2d</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\clipper\ext_clipper.vcxproj">
-      <Project>{6F7BAC63-3F83-32DD-80B4-337CAF4AAAA3}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\clipper\ext_clipper.vcxproj">
+      <Project>{0E875BDB-5305-3A77-A4A9-D52B934D3168}</Project>
       <Name>ext_clipper</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\ConvertUTF\ext_convertUTF.vcxproj">
-      <Project>{B464DEBF-8DB0-3075-A7B2-052306FBB0BE}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\ConvertUTF\ext_convertUTF.vcxproj">
+      <Project>{EF330504-2675-361E-9744-E1FBDE13D751}</Project>
       <Name>ext_convertUTF</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\edtaa3func\ext_edtaa3func.vcxproj">
-      <Project>{4A72B2F9-5535-3E01-845B-F6AB5C6C02AA}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\edtaa3func\ext_edtaa3func.vcxproj">
+      <Project>{2A830A0B-CF3A-3632-96AD-6DE70B4EA2EC}</Project>
       <Name>ext_edtaa3func</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\md5\ext_md5.vcxproj">
-      <Project>{C9BBBB33-5676-3705-918B-8FA8E48098A8}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\md5\ext_md5.vcxproj">
+      <Project>{2D01391E-99A0-3704-839F-B8AD71215224}</Project>
       <Name>ext_md5</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\poly2tri\ext_poly2tri.vcxproj">
-      <Project>{9890EBC4-8977-36BF-89AC-48FEF4B000F1}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\poly2tri\ext_poly2tri.vcxproj">
+      <Project>{41F5B3EA-C8B9-317F-B1AB-16E4FC5DBC37}</Project>
       <Name>ext_poly2tri</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\recast\ext_recast.vcxproj">
-      <Project>{BD99AF07-3E4A-3648-ACFF-A69E4B0EFEE1}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\recast\ext_recast.vcxproj">
+      <Project>{E072D2BD-BDA4-3CD4-823C-D2F5721D5DE5}</Project>
       <Name>ext_recast</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\tinyxml2\ext_tinyxml2.vcxproj">
-      <Project>{D9CDB95C-FEB2-35C5-8908-EE47079E05BD}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\tinyxml2\ext_tinyxml2.vcxproj">
+      <Project>{17A32448-DA59-3650-95C7-BF40CA161667}</Project>
       <Name>ext_tinyxml2</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\unzip\ext_unzip.vcxproj">
-      <Project>{3E0BE8AB-3EDA-3E3F-A47C-9C6394381B36}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\unzip\ext_unzip.vcxproj">
+      <Project>{97E62FF2-C0F4-317F-AFA3-81D7F8B6922A}</Project>
       <Name>ext_unzip</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\xxhash\ext_xxhash.vcxproj">
-      <Project>{CCD15377-E2A1-3736-9748-7BEA18687B8C}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\xxhash\ext_xxhash.vcxproj">
+      <Project>{7607E9C9-B7F5-396E-BFE7-DFFF6E011845}</Project>
       <Name>ext_xxhash</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\xxtea\ext_xxtea.vcxproj">
-      <Project>{9B38E366-0EC1-31E9-8065-40D83C483DF6}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\xxtea\ext_xxtea.vcxproj">
+      <Project>{CE119438-AB77-3248-A6D7-2E31EE6AF355}</Project>
       <Name>ext_xxtea</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\repository\TheWay\win32-build\engine\external\external.vcxproj">
-      <Project>{4D8041A9-F0ED-3844-B2D6-44599B3A2D52}</Project>
+    <ProjectReference Include="C:\Users\ainomon\win32\MyGame\win32-build\engine\external\external.vcxproj">
+      <Project>{9ECC155C-0240-3C17-84AB-CB351A501C45}</Project>
       <Name>external</Name>
     </ProjectReference>
   </ItemGroup>

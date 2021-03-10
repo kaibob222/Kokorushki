@@ -1,8 +1,8 @@
-# Install script for directory: D:/repository/TheWay/cocos2d/external/openssl
+# Install script for directory: C:/Users/ainomon/win32/MyGame/cocos2d/external/openssl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/TheWay")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/MyGame")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
