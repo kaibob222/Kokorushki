@@ -84,7 +84,7 @@ bool HelloWorld::init()
 	return true;
 }
 
-void GameScene::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
+void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	CCLOG("Key with keycode %d pressed", keyCode);
 	Vector<SpriteFrame*> animRightWalk;
@@ -125,7 +125,7 @@ void GameScene::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Eve
 	}
 }
 
-void GameScene::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
+void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	sprite1->stopAllActions();
 }
