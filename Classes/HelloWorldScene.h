@@ -45,6 +45,16 @@ public:
 	void keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
 	void keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
 	bool isKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
+
+
+	///////рср ъ охьссссссс
+	void Play(Ref *pSender);
+	void Highscores(Ref *pSender);
+	void Settings(Ref *pSender);
+
+	void ImageButton(Ref *pSender);
+
+
 };
 
 #endif // __HELLOWORLD_SCENE_H__

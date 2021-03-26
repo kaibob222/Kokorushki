@@ -83,7 +83,7 @@ bool HelloWorld::init()
 		this->addChild(label, 1);
 	}
 
-	sprite1 = Sprite::create("player/Programmer_7.png");
+	sprite1 = Sprite::create("player/Programmer7.png");
 	sprite1->setPosition(pos);
 
 	this->addChild(sprite1);
@@ -96,9 +96,53 @@ bool HelloWorld::init()
 
 	//auto StartButton=Button
 
+
+	/////////////////////////////////////////////////////////////////////////////////рср ъ охььсссссс
+	/*
+	auto menu_Item_1 = MenuItemFont::create("Play", CC_CALLBACK_1(HelloWorld::Play, this));
+	auto menu_Item_2 = MenuItemFont::create("Highscores", CC_CALLBACK_1(HelloWorld::Highscores, this));
+	auto menu_Item_3 = MenuItemFont::create("Settings", CC_CALLBACK_1(HelloWorld::Settings, this));
+	auto menu_Item_4 = MenuItemImage::create("CloseNormal.png", "CloseSelected.png", CC_CALLBACK_1(HelloWorld::ImageButton, this));
+	
+	//menu_Item_1->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 4));
+	//menu_Item_2->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 3));
+	//menu_Item_3->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 2));
+	//menu_Item_4->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 1));
+	
+	auto *menu = Menu::create(menu_Item_1, menu_Item_2, menu_Item_3, menu_Item_4, NULL);
+	//menu->setPosition(Point(0, 0));
+	menu->alignItemsVertically();
+	this->addChild(menu);
+	*/
 	return true;
 }
 
+/////////////рср ъ охьсссс
+/*
+void HelloWorld::Play(cocos2d::Ref *pSpender)
+{
+	CCLOG("Play");
+	auto scene = NewScene::createScene();
+	Director::getInstance()->pushScene(scene);
+	//auto scene = HelloWorld::createScene();
+	//Director::getInstance()->replaceScene(scene);
+}
+
+void HelloWorld::Highscores(cocos2d::Ref *pSpender)
+{
+	CCLOG("Highscores");
+}
+
+void HelloWorld::Settings(cocos2d::Ref *pSpender)
+{
+	CCLOG("Settings");
+}
+
+void HelloWorld::ImageButton(cocos2d::Ref *pSpender)
+{
+	CCLOG("Image Button");
+}
+*/
 void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	CCLOG("Key with keycode %d pressed", keyCode);
@@ -111,7 +155,7 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	animRightWalk.pushBack(SpriteFrame::create("player/Programmer74.png", Rect(0, 1, 64, 128)));
 	animRightWalk.pushBack(SpriteFrame::create("player/Programmer75.png", Rect(1, 0, 64, 128)));
 	animRightWalk.pushBack(SpriteFrame::create("player/Programmer76.png", Rect(0, 1, 64, 128)));
-	Animation* animation = Animation::createWithSpriteFrames(animRightWalk, 0.2f);
+	Animation* animation = Animation::createWithSpriteFrames(animRightWalk, 0.1f);
 	Animate* animate = Animate::create(animation);
 	Vector<SpriteFrame*> animLeftWalk;
 	animLeftWalk.reserve(7);
@@ -122,7 +166,7 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer34.png", Rect(0, 1, 64, 128)));
 	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer35.png", Rect(1, 0, 64, 128)));
 	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer36.png", Rect(0, 1, 64, 128)));
-	Animation* animation1 = Animation::createWithSpriteFrames(animLeftWalk, 0.2f);
+	Animation* animation1 = Animation::createWithSpriteFrames(animLeftWalk, 0.1f);
 	Animate* animate1 = Animate::create(animation1);
 	if ((int)keyCode == 127)//key D was pressed
 	{
@@ -158,3 +202,4 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 
 }
+
