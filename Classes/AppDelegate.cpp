@@ -24,7 +24,7 @@
 
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include "Proverka.h"
+#include "MenuMain.h"
 
 // #define USE_AUDIO_ENGINE 1
 
@@ -111,7 +111,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 	//
     //auto scene = HelloWorld::createScene();
-	auto scene = Proverka::createScene();
+	auto scene = MenuMain::createScene();
     // run
     director->runWithScene(scene);
 

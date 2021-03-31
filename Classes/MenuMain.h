@@ -22,12 +22,12 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __PROVERKA_SCENE_H__
-#define __PROVERKA_SCENE_H__
+#ifndef __MENUMAIN_SCENE_H__
+#define __MENUMAIN_SCENE_H__
 
 #include "cocos2d.h"
 
-class Proverka : public cocos2d::Scene
+class MenuMain : public cocos2d::Scene
 {
 public:
     static cocos2d::Scene* createScene();
@@ -38,7 +38,7 @@ public:
     void menuCloseCallback(cocos2d::Ref* pSender);
     
     // implement the "static create()" method manually
-    CREATE_FUNC(Proverka);
+    CREATE_FUNC(MenuMain);
 
 	cocos2d::Sprite *sprite1;
 

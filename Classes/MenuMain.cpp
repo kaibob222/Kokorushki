@@ -22,18 +22,18 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#include "Proverka.h"
+#include "MenuMain.h"
 #include "ui/CocosGUI.h"
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
 
-Scene* Proverka::createScene()
+Scene* MenuMain::createScene()
 {
-    return Proverka::create();
+	return MenuMain::create();
 }
 // on "init" you need to initialize your instance
-bool Proverka::init()
+bool MenuMain::init()
 {
     if ( !Scene::init() )
     {
@@ -55,16 +55,17 @@ bool Proverka::init()
 
 	/////////////////////////////////////////////////////////////////////////////////ÒÓÒ ß ÏÈØØÓÓÓÓÓÓ
 
-	auto menu_Item_1 = MenuItemFont::create("Play", CC_CALLBACK_1(Proverka::Play, this));
-	auto menu_Item_2 = MenuItemFont::create("Highscores", CC_CALLBACK_1(Proverka::Highscores, this));
-	auto menu_Item_3 = MenuItemFont::create("Settings", CC_CALLBACK_1(Proverka::Settings, this));
-	auto menu_Item_4 = MenuItemImage::create("CloseNormal.png", "CloseSelected.png", CC_CALLBACK_1(Proverka::ImageButton, this));
+	auto menu_Item_1 = MenuItemFont::create("Play", CC_CALLBACK_1(MenuMain::Play, this));
+	auto menu_Item_2 = MenuItemFont::create("Highscores", CC_CALLBACK_1(MenuMain::Highscores, this));
+	auto menu_Item_3 = MenuItemFont::create("Settings", CC_CALLBACK_1(MenuMain::Settings, this));
+	auto menu_Item_4 = MenuItemImage::create("CloseNormal.png", "CloseSelected.png", CC_CALLBACK_1(MenuMain::ImageButton, this));
 	/*
 	menu_Item_1->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 4));
 	menu_Item_2->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 3));
 	menu_Item_3->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 2));
 	menu_Item_4->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 1));
 	*/
+	////tut ne to
 	auto *menu = Menu::create(menu_Item_1, menu_Item_2, menu_Item_3, menu_Item_4, NULL);
 	//menu->setPosition(Point(0, 0));
 	menu->alignItemsVertically();
@@ -74,7 +75,7 @@ bool Proverka::init()
 }
 
 /////////////ÒÓÒ ß ÏÈØÓÓÓÓ
-void Proverka::Play(cocos2d::Ref *pSpender)
+void MenuMain::Play(cocos2d::Ref *pSpender)
 {
 	CCLOG("Play");
 	//auto scene = NewScene::createScene();
@@ -83,28 +84,28 @@ void Proverka::Play(cocos2d::Ref *pSpender)
 	Director::getInstance()->replaceScene(scene);
 }
 
-void Proverka::Highscores(cocos2d::Ref *pSpender)
+void MenuMain::Highscores(cocos2d::Ref *pSpender)
 {
 	CCLOG("Highscores");
 }
 
-void Proverka::Settings(cocos2d::Ref *pSpender)
+void MenuMain::Settings(cocos2d::Ref *pSpender)
 {
 	CCLOG("Settings");
 }
 
-void Proverka::ImageButton(cocos2d::Ref *pSpender)
+void MenuMain::ImageButton(cocos2d::Ref *pSpender)
 {
 	CCLOG("Image Button");
 }
 
-void Proverka::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
+void MenuMain::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	sprite1->stopAllActions();
 }
 
 
-void Proverka::menuCloseCallback(Ref* pSender)
+void MenuMain::menuCloseCallback(Ref* pSender)
 {
     //Close the cocos2d-x game scene and quit the application
     Director::getInstance()->end();
