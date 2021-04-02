@@ -22,22 +22,12 @@ public:
 	void keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
 	bool isKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
 
-<<<<<<< HEAD
 	void update(float dt);
-
-	///////рср ъ охьссссссс
 	void Play(Ref *pSender);
 	void Highscores(Ref *pSender);
 	void Settings(Ref *pSender);
-
 	void ImageButton(Ref *pSender);
-
-
-=======
 	void Exit(Ref *pSender);
-	//void Pause(Ref *pSender);
-	//void Start(Ref *pSender);
->>>>>>> ad2cec88ec5a3f32885f7417e5e1f5f9ea467385
 };
 
 #endif // __HELLOWORLD_SCENE_H__
