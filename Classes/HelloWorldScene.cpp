@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /****************************************************************************
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
@@ -22,7 +23,10 @@
  THE SOFTWARE.
  ****************************************************************************/
 
+=======
+>>>>>>> ad2cec88ec5a3f32885f7417e5e1f5f9ea467385
 #include "HelloWorldScene.h"
+#include "MenuMain.h"
 #include "ui/CocosGUI.h"
 
 USING_NS_CC;
@@ -64,7 +68,26 @@ bool HelloWorld::init()
 		background->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
 		// add the sprite as a child to this layer
+<<<<<<< HEAD
 		this->addChild(background, 0);
+=======
+		this->addChild(sprite, 0);
+	}
+
+	auto label = Label::createWithTTF("SCENE 1", "fonts/Marker Felt.ttf", 24);
+	if (label == nullptr)
+	{
+		problemLoading("'fonts/Marker Felt.ttf'");
+	}
+	else
+	{
+		// position the label on the center of the screen
+		label->setPosition(Vec2(origin.x + visibleSize.width / 2,
+			origin.y + visibleSize.height - label->getContentSize().height));
+
+		// add the label as a child to this layer
+		this->addChild(label, 1);
+>>>>>>> ad2cec88ec5a3f32885f7417e5e1f5f9ea467385
 	}
 
 	sprite1 = Sprite::create("player/Programmer7.png");
@@ -80,6 +103,7 @@ bool HelloWorld::init()
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(HelloWorld::keyReleased, this);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);// if you are using cocos2d-x 3.0alpha.1 and later!// if you are using cocos2d-x 3.0alpha.1 and later!
 
+<<<<<<< HEAD
 	this->scheduleUpdate();
 
 	return true;
@@ -122,6 +146,39 @@ void HelloWorld::update(float dt) {
 	}
 }
 
+=======
+	auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(HelloWorld::Exit, this));
+	auto *menu = Menu::create(menu_Item_1, NULL);
+	menu->alignItemsVertically();
+	menu->setPosition(Point(850, 570));
+	this->addChild(menu);
+
+
+	return true;
+}
+
+void HelloWorld::Exit(cocos2d::Ref *pSpender)
+{
+	CCLOG("Exit");
+	auto scene = MenuMain::createScene();
+	Director::getInstance()->replaceScene(scene);
+	//Director::getInstance()->pause();
+	//Director::getInstance()->popScene();
+}
+/*
+void HelloWorld::Pause(cocos2d::Ref *pSpender)
+{
+	CCLOG("Pause");
+	Director::getInstance()->pause();
+}
+
+void HelloWorld::Start(cocos2d::Ref *pSpender)
+{
+	CCLOG("Start");
+	Director::getInstance()->startAnimation();
+}
+*/
+>>>>>>> ad2cec88ec5a3f32885f7417e5e1f5f9ea467385
 void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	CCLOG("Key with keycode %d pressed", keyCode);
@@ -198,5 +255,16 @@ void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::E
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
+<<<<<<< HEAD
 	Director::getInstance()->end();
 }
+=======
+    //Close the cocos2d-x game scene and quit the application
+    Director::getInstance()->end();
+
+    /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
+
+    //EventCustom customEndEvent("game_scene_close_event");
+    //_eventDispatcher->dispatchEvent(&customEndEvent);
+}
+>>>>>>> ad2cec88ec5a3f32885f7417e5e1f5f9ea467385
