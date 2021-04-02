@@ -1,28 +1,5 @@
-/****************************************************************************
- Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
- 
- http://www.cocos2d-x.org
- 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- 
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
-
 #include "HelloWorldScene.h"
+#include "MenuMain.h"
 #include "ui/CocosGUI.h"
 
 USING_NS_CC;
@@ -68,7 +45,7 @@ bool HelloWorld::init()
 		this->addChild(sprite, 0);
 	}
 
-	auto label = Label::createWithTTF("HALO MA MUCHACHOES)))", "fonts/Marker Felt.ttf", 24);
+	auto label = Label::createWithTTF("SCENE 1", "fonts/Marker Felt.ttf", 24);
 	if (label == nullptr)
 	{
 		problemLoading("'fonts/Marker Felt.ttf'");
@@ -93,54 +70,35 @@ bool HelloWorld::init()
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(HelloWorld::keyReleased, this);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);// if you are using cocos2d-x 3.0alpha.1 and later!// if you are using cocos2d-x 3.0alpha.1 and later!
 
-
-	//auto StartButton=Button
-
-
-	/////////////////////////////////////////////////////////////////////////////////рср ъ охььсссссс
-	/*
-	auto menu_Item_1 = MenuItemFont::create("Play", CC_CALLBACK_1(HelloWorld::Play, this));
-	auto menu_Item_2 = MenuItemFont::create("Highscores", CC_CALLBACK_1(HelloWorld::Highscores, this));
-	auto menu_Item_3 = MenuItemFont::create("Settings", CC_CALLBACK_1(HelloWorld::Settings, this));
-	auto menu_Item_4 = MenuItemImage::create("CloseNormal.png", "CloseSelected.png", CC_CALLBACK_1(HelloWorld::ImageButton, this));
-	
-	//menu_Item_1->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 4));
-	//menu_Item_2->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 3));
-	//menu_Item_3->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 2));
-	//menu_Item_4->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 1));
-	
-	auto *menu = Menu::create(menu_Item_1, menu_Item_2, menu_Item_3, menu_Item_4, NULL);
-	//menu->setPosition(Point(0, 0));
+	auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(HelloWorld::Exit, this));
+	auto *menu = Menu::create(menu_Item_1, NULL);
 	menu->alignItemsVertically();
+	menu->setPosition(Point(850, 570));
 	this->addChild(menu);
-	*/
+
+
 	return true;
 }
 
-/////////////рср ъ охьсссс
+void HelloWorld::Exit(cocos2d::Ref *pSpender)
+{
+	CCLOG("Exit");
+	auto scene = MenuMain::createScene();
+	Director::getInstance()->replaceScene(scene);
+	//Director::getInstance()->pause();
+	//Director::getInstance()->popScene();
+}
 /*
-void HelloWorld::Play(cocos2d::Ref *pSpender)
+void HelloWorld::Pause(cocos2d::Ref *pSpender)
 {
-	CCLOG("Play");
-	auto scene = NewScene::createScene();
-	Director::getInstance()->pushScene(scene);
-	//auto scene = HelloWorld::createScene();
-	//Director::getInstance()->replaceScene(scene);
+	CCLOG("Pause");
+	Director::getInstance()->pause();
 }
 
-void HelloWorld::Highscores(cocos2d::Ref *pSpender)
+void HelloWorld::Start(cocos2d::Ref *pSpender)
 {
-	CCLOG("Highscores");
-}
-
-void HelloWorld::Settings(cocos2d::Ref *pSpender)
-{
-	CCLOG("Settings");
-}
-
-void HelloWorld::ImageButton(cocos2d::Ref *pSpender)
-{
-	CCLOG("Image Button");
+	CCLOG("Start");
+	Director::getInstance()->startAnimation();
 }
 */
 void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
@@ -199,7 +157,4 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
     //EventCustom customEndEvent("game_scene_close_event");
     //_eventDispatcher->dispatchEvent(&customEndEvent);
-
-
 }
-
