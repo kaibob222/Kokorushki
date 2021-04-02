@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:850e539dedc79d280376049fe8963e5b3be7de33f05f10a8f0630f0a56110f13
-size 72
+{
+    "engine_version": "cocos2d-x-4.0", 
+    "project_type": "cpp"
+}

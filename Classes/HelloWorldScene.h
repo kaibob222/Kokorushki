@@ -46,6 +46,7 @@ public:
 	void keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
 	bool isKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
 
+	void update(float dt);
 
 	///////рср ъ охьссссссс
 	void Play(Ref *pSender);
