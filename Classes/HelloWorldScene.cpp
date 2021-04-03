@@ -86,21 +86,21 @@ bool HelloWorld::init()
 bool isJumping = false;
 bool isRight = false;
 float jumpForce = 10;
-int maxJump = 25;
+int maxJump = 30;
 bool grounded = true;
 bool moveRight = false;
 bool moveLeft = false;
-int y = 150;
 bool goDown = false;
 
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
+
 	if (isJumping)
 	{
 		if (jumpForce < maxJump)
 		{
 			sprite1->setPosition(Point(pos.x, pos.y + jumpForce));
-			jumpForce += 2;
+			jumpForce += 2.5;
 		}
 		else
 		{
@@ -123,7 +123,7 @@ void HelloWorld::update(float dt) {
 			moveLeft = false;
 		}
 	}
-	Point gravity = Point(0, -2);
+	Point gravity = Point(0, -2.5);
 	if (goDown) {
 		if (pos.y > 150)
 		{
@@ -144,11 +144,11 @@ void HelloWorld::update(float dt) {
 	/*if (pos.y > 150) {
 		sprite1->setPosition(pos.x, pos.y += gravity.y);
 	}*/
-	/*if (moveRight) {
-		sprite1->setPosition(pos.x+5, pos.y+gravity.y);
+	if (moveRight) {
+		sprite1->setPosition(pos.x+20, pos.y+gravity.y);
 		moveRight = false;
 		goDown = true;
-	}*/
+	}
 	/*if (isJumping && jumpForce < maxJump) {
 		ActionInterval* jump = JumpTo::create(0.5, Point(pos.x, pos.y), jumpForce++, 1);
 		sprite1->runAction(jump);
