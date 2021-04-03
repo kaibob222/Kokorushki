@@ -86,38 +86,81 @@ bool HelloWorld::init()
 bool isJumping = false;
 bool isRight = false;
 float jumpForce = 10;
-bool jumpControl = false;
 int maxJump = 25;
 bool grounded = true;
 bool moveRight = false;
 bool moveLeft = false;
 int y = 150;
+bool goDown = false;
 
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
-	/*Point gravity = Point(0, -3);
+	if (isJumping)
+	{
+		if (jumpForce < maxJump)
+		{
+			sprite1->setPosition(Point(pos.x, pos.y + jumpForce));
+			jumpForce += 2;
+		}
+		else
+		{
+			isJumping = false;
+			goDown = true;
+		}
+	}
+	if (isJumping == false && pos.y > 150)
+	{
+		goDown = true;
+		grounded = false;
+	}
+	else
+	{
+		if (pos.y == 150)
+		{
+			goDown = false;
+			grounded = true;
+			moveRight = false;  
+			moveLeft = false;
+		}
+	}
+	Point gravity = Point(0, -2);
+	if (goDown) {
+		if (pos.y > 150)
+		{
+			sprite1->setPosition(pos.x+gravity.x, pos.y + gravity.y);
+			grounded = false;
+		}
+		else
+		{
+			if (pos.y == 150)
+			{
+				isJumping = false;
+				goDown = false;
+				grounded = true;
+			}
+		}
+
+	}
 	/*if (pos.y > 150) {
 		sprite1->setPosition(pos.x, pos.y += gravity.y);
 	}*/
 	/*if (moveRight) {
-		if (pos.y > 150) {
-			sprite1->setPosition(pos.x+=gravity.x+1, pos.y+=gravity.y);
-		}
+		sprite1->setPosition(pos.x+5, pos.y+gravity.y);
+		moveRight = false;
+		goDown = true;
 	}*/
-	if (isJumping && jumpForce < maxJump) {
-		//if (pos.y <= 150 && grounded) {
-			ActionInterval* jump = JumpTo::create(0.5, Point(pos.x, pos.y), jumpForce++, 1);
-			sprite1->runAction(jump);
-		//}
-	}
-	if (pos.y <= 150 && pos.y >= 140) {
+	/*if (isJumping && jumpForce < maxJump) {
+		ActionInterval* jump = JumpTo::create(0.5, Point(pos.x, pos.y), jumpForce++, 1);
+		sprite1->runAction(jump);
+	}*/
+	/*if (pos.y <= 150 && pos.y >= 140) {
 		grounded = true;
 		moveLeft = false;
 		moveRight = false;
 	}
 	else {
 		grounded = false;
-	}
+	}*/
 }
 
 void HelloWorld::Exit(cocos2d::Ref *pSpender)
@@ -125,22 +168,7 @@ void HelloWorld::Exit(cocos2d::Ref *pSpender)
 	CCLOG("Exit");
 	auto scene = MenuMain::createScene();
 	Director::getInstance()->replaceScene(scene);
-	//Director::getInstance()->pause();
-	//Director::getInstance()->popScene();
 }
-/*
-void HelloWorld::Pause(cocos2d::Ref *pSpender)
-{
-	CCLOG("Pause");
-	Director::getInstance()->pause();
-}
-
-void HelloWorld::Start(cocos2d::Ref *pSpender)
-{
-	CCLOG("Start");
-	Director::getInstance()->startAnimation();
-}
-*/
 
 void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
@@ -197,15 +225,17 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	if ((int)keyCode == 59)//key Space was pressed
 	{
 		isJumping = true;
-		jumpControl = true;
 	}
 }
 
 void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	if (isJumping == false) sprite1->stopAllActions();
-	jumpControl = false;
-	isJumping = false;
+	if (isJumping == true)
+	{
+		goDown = true;
+		isJumping = false;
+	}
 	if (isRight) {
 		sprite1->setTexture("player/Programmer7.png");
 	}
