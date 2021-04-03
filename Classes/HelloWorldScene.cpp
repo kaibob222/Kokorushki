@@ -141,10 +141,7 @@ void HelloWorld::update(float dt) {
 		}
 
 	}
-	/*if (pos.y > 150) {
-		sprite1->setPosition(pos.x, pos.y += gravity.y);
-	}*/
-	if (moveRight) {
+	/*if (moveRight) {
 		sprite1->setPosition(pos.x+20, pos.y+gravity.y);
 		moveRight = false;
 		goDown = true;
