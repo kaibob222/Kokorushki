@@ -5,6 +5,13 @@
 
 class Unit
 {
+	private:
+		 int hp;
+	   	 float x;
+		 float y;
+		 
+
+public :
 };
 
 
