@@ -1,8 +1,11 @@
 #include "HelloWorldScene.h"
 #include "MenuMain.h"
 #include "ui/CocosGUI.h"
+#include "Scene2.h"
 
 USING_NS_CC;
+
+extern int q;
 
 Scene* HelloWorld::createScene()
 {
@@ -43,7 +46,7 @@ bool HelloWorld::init()
 		// add the sprite as a child to this layer
 		this->addChild(background, 0);
 	}
-
+	
 	auto label = Label::createWithTTF("SCENE 1", "fonts/Marker Felt.ttf", 24);
 	if (label == nullptr)
 	{
@@ -58,9 +61,14 @@ bool HelloWorld::init()
 		// add the label as a child to this layer
 		this->addChild(label, 1);
 	}
-
+	
 	sprite1 = Sprite::create("player/Programmer7.png");
 	sprite1->setPosition(Point(20, 150));
+
+	if (q == 1) {
+		sprite1->setPosition(Point(900, 150));
+		q = 0;
+	}
 
 	/*auto spriteBody = PhysicsBody::createCircle(sprite1->getContentSize().width, PhysicsMaterial(0, 1, 0));
 	sprite1->setPhysicsBody(spriteBody);*/
@@ -79,7 +87,6 @@ bool HelloWorld::init()
 	this->addChild(menu);
 
 	this->scheduleUpdate();
-
 	return true;
 }
 
@@ -94,6 +101,11 @@ bool goDown = false;
 
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
+
+	if (sprite1->getPosition() > Point(900, 150)) {
+		auto scene = Scene2::createScene();
+		Director::getInstance()->replaceScene(scene);
+	}
 
 	if (isJumping)
 	{
@@ -223,6 +235,7 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	{
 		isJumping = true;
 	}
+	
 }
 
 void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
