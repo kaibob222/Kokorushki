@@ -64,11 +64,14 @@ bool Scene2::init()
 
 	sprite1 = Sprite::create("player/Programmer7.png");
 	sprite1->setPosition(Point(20, 150));
+	sprite2 = Sprite::create("enemy/enemy2.png");
+	sprite2->setPosition(Point(600, 160));
 
 	/*auto spriteBody = PhysicsBody::createCircle(sprite1->getContentSize().width, PhysicsMaterial(0, 1, 0));
 	sprite1->setPhysicsBody(spriteBody);*/
 
 	this->addChild(sprite1);
+	this->addChild(sprite2);
 
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Scene2::keyPressed, this);
@@ -97,8 +100,9 @@ bool goDown1 = false;
 
 void Scene2::update(float dt) {
 	Point pos = sprite1->getPosition();
+	Point pos1 = sprite2->getPosition();
 
-	if (sprite1->getPosition() < Point(10, 150)) {
+	if (sprite1->getPosition() < Point(10, 150)|| sprite2->getPosition() < Point(10, 150)) {
 		q = 1;
 		auto scene = HelloWorld::createScene();
 		Director::getInstance()->replaceScene(scene);
@@ -202,6 +206,7 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 	Animation* animation1 = Animation::createWithSpriteFrames(animLeftWalk, 0.05f);
 	Animate* animate1 = Animate::create(animation1);
 	Point pos = sprite1->getPosition();
+	Point pos1 = sprite2->getPosition();
 	if ((int)keyCode == 127 || (int)keyCode == 27)//keys D or -> pressed
 	{
 		isRight1 = true;
@@ -239,6 +244,7 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 void Scene2::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	if (isJumping1 == false) sprite1->stopAllActions();
+
 	if (isJumping1 == true)
 	{
 		goDown1 = true;
@@ -248,7 +254,7 @@ void Scene2::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event
 		sprite1->setTexture("player/Programmer7.png");
 	}
 	else {
-		sprite1->setTexture("player/Programmer3.png");
+		sprite1->setTexture("player/Programmer7.png");
 	}
 	jumpForce1 = 10;
 }

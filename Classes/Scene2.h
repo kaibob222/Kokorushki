@@ -17,6 +17,7 @@ public:
     CREATE_FUNC(Scene2);
 
 	cocos2d::Sprite *sprite1;
+	cocos2d::Sprite* sprite2;
 
 	void keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
 	void keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
