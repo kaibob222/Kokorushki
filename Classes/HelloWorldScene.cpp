@@ -1,74 +1,53 @@
-/****************************************************************************
- Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
- 
- http://www.cocos2d-x.org
- 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- 
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
-
 #include "HelloWorldScene.h"
+#include "MenuMain.h"
 #include "ui/CocosGUI.h"
+#include "Scene2.h"
 
 USING_NS_CC;
 
+extern int q;
+
 Scene* HelloWorld::createScene()
 {
-    return HelloWorld::create();
+	return HelloWorld::create();
 }
 
 // Print useful error message instead of segfaulting when files are not there.
 static void problemLoading(const char* filename)
 {
-    printf("Error while loading: %s\n", filename);
-    printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
+	printf("Error while loading: %s\n", filename);
+	printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    if ( !Scene::init() )
-    {
-        return false;
-    }
+	if (!Scene::init())
+	{
+		return false;
+	}
 
 	Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
 	Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	Point pos = Point(20, (visibleSize.height / 2) - 150);
 
-	auto sprite = Sprite::create("lightforest.jpg");
-	if (sprite == nullptr)
+	auto background = Sprite::create("2.png");
+	if (background == nullptr)
 	{
-		problemLoading("'lightforest.jpg'");
+		problemLoading("'2.png'");
 	}
 	else
 	{
 		// position the sprite on the center of the screen
-		sprite->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+		background->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
 		// add the sprite as a child to this layer
-		this->addChild(sprite, 0);
+		this->addChild(background, 0);
 	}
-
-	auto label = Label::createWithTTF("HALO MA MUCHACHOES)))", "fonts/Marker Felt.ttf", 24);
+	
+	auto label = Label::createWithTTF("SCENE 1", "fonts/Marker Felt.ttf", 24);
 	if (label == nullptr)
 	{
 		problemLoading("'fonts/Marker Felt.ttf'");
@@ -82,9 +61,14 @@ bool HelloWorld::init()
 		// add the label as a child to this layer
 		this->addChild(label, 1);
 	}
+	
+	sprite1 = Sprite::create("Adv.png", Rect(30, 50, 110, 150));
+	sprite1->setPosition(Point(50, 150));
 
-	sprite1 = Sprite::create("player/Programmer7.png");
-	sprite1->setPosition(pos);
+	if (q == 1) {
+		sprite1->setPosition(Point(900, 110));
+		q = 0;
+	}
 
 	this->addChild(sprite1);
 
@@ -93,113 +77,242 @@ bool HelloWorld::init()
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(HelloWorld::keyReleased, this);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);// if you are using cocos2d-x 3.0alpha.1 and later!// if you are using cocos2d-x 3.0alpha.1 and later!
 
-
-	//auto StartButton=Button
-
-
-	/////////////////////////////////////////////////////////////////////////////////рср ъ охььсссссс
-	/*
-	auto menu_Item_1 = MenuItemFont::create("Play", CC_CALLBACK_1(HelloWorld::Play, this));
-	auto menu_Item_2 = MenuItemFont::create("Highscores", CC_CALLBACK_1(HelloWorld::Highscores, this));
-	auto menu_Item_3 = MenuItemFont::create("Settings", CC_CALLBACK_1(HelloWorld::Settings, this));
-	auto menu_Item_4 = MenuItemImage::create("CloseNormal.png", "CloseSelected.png", CC_CALLBACK_1(HelloWorld::ImageButton, this));
-	
-	//menu_Item_1->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 4));
-	//menu_Item_2->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 3));
-	//menu_Item_3->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 2));
-	//menu_Item_4->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 1));
-	
-	auto *menu = Menu::create(menu_Item_1, menu_Item_2, menu_Item_3, menu_Item_4, NULL);
-	//menu->setPosition(Point(0, 0));
+	auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(HelloWorld::Exit, this));
+	auto *menu = Menu::create(menu_Item_1, NULL);
 	menu->alignItemsVertically();
+	menu->setPosition(Point(850, 570));
 	this->addChild(menu);
-	*/
+
+	this->scheduleUpdate();
 	return true;
 }
 
-/////////////рср ъ охьсссс
-/*
-void HelloWorld::Play(cocos2d::Ref *pSpender)
-{
-	CCLOG("Play");
-	auto scene = NewScene::createScene();
-	Director::getInstance()->pushScene(scene);
-	//auto scene = HelloWorld::createScene();
-	//Director::getInstance()->replaceScene(scene);
+bool isJumping = false;
+bool isRight = false;
+float jumpForce = 10;
+int maxJump = 40;
+bool isWalking = false;
+//bool grounded = true;
+bool isPunching = false;
+bool moveRight = false;
+bool moveLeft = false;
+bool goDown = false;
+float HeroWidth = 110;
+float HeroHeight = 145;
+
+void HelloWorld::update(float dt) {
+	Point pos = sprite1->getPosition();
+
+	if (sprite1->getPosition() > Point(900, 110)) {
+		auto scene = Scene2::createScene();
+		Director::getInstance()->replaceScene(scene);
+	}
+
+	if (isJumping && !isWalking)
+	{
+		if (jumpForce < maxJump)
+		{
+			sprite1->setPosition(Point(pos.x, pos.y + jumpForce));
+			jumpForce += 5;
+		}
+		else
+		{
+			isJumping = false;
+			goDown = true;
+		}
+	}
+	if (isJumping == false && pos.y > 110)
+	{
+		goDown = true;
+		//grounded = false;
+	}
+	else
+	{
+		if (pos.y == 110)
+		{
+			goDown = false;
+			//grounded = true;
+			moveRight = false;  
+			moveLeft = false;
+		}
+	}
+	Point gravity = Point(0, -5);
+	if (goDown) {
+		if (pos.y > 110)
+		{
+			sprite1->setPosition(pos.x+gravity.x, pos.y + gravity.y);
+			//grounded = false;
+		}
+		else
+		{
+			if (pos.y == 110)
+			{
+				isJumping = false;
+				goDown = false;
+				//grounded = true;
+			}
+		}
+
+	}
+	/*if (moveRight) {
+		if (pos.y > 150)
+		{
+			float x = 2.5;
+			float y = 2 * x;
+			sprite1->setPosition(pos.x + x, pos.y - y);
+			x -= 0.5;
+			//moveRight = false;
+			//goDown = true;
+		}
+		//moveRight = false;
+		//goDown = true;
+	}*/
+	/*if (isJumping && jumpForce < maxJump) {
+		ActionInterval* jump = JumpTo::create(0.5, Point(pos.x, pos.y), jumpForce++, 1);
+		sprite1->runAction(jump);
+	}*/
+	/*if (pos.y <= 150 && pos.y >= 140) {
+		grounded = true;
+		moveLeft = false;
+		moveRight = false;
+	}
+	else {
+		grounded = false;
+	}*/
 }
 
-void HelloWorld::Highscores(cocos2d::Ref *pSpender)
+void HelloWorld::Exit(cocos2d::Ref *pSpender)
 {
-	CCLOG("Highscores");
+	CCLOG("Exit");
+	auto scene = MenuMain::createScene();
+	Director::getInstance()->replaceScene(scene);
 }
 
-void HelloWorld::Settings(cocos2d::Ref *pSpender)
-{
-	CCLOG("Settings");
-}
-
-void HelloWorld::ImageButton(cocos2d::Ref *pSpender)
-{
-	CCLOG("Image Button");
-}
-*/
 void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	CCLOG("Key with keycode %d pressed", keyCode);
 	Vector<SpriteFrame*> animRightWalk;
-	animRightWalk.reserve(7);
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer7.png", Rect(0, -4.5, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer71.png", Rect(1, 0, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer72.png", Rect(0, 1, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer73.png", Rect(1, 0, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer74.png", Rect(0, 1, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer75.png", Rect(1, 0, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer76.png", Rect(0, 1, 64, 128)));
-	Animation* animation = Animation::createWithSpriteFrames(animRightWalk, 0.1f);
+	animRightWalk.reserve(8);
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(20, 195, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(175, 195, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(330, 195, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(494, 195, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(648, 195, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(805, 195, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(955, 195, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(1110, 195, HeroWidth, HeroHeight)));
+	Animation* animation = Animation::createWithSpriteFrames(animRightWalk, 0.05f);
 	Animate* animate = Animate::create(animation);
 	Vector<SpriteFrame*> animLeftWalk;
-	animLeftWalk.reserve(7);
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer3.png", Rect(-3.75, -4.2, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer31.png", Rect(1, 0, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer32.png", Rect(0, 1, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer33.png", Rect(1, 0, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer34.png", Rect(0, 1, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer35.png", Rect(1, 0, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer36.png", Rect(0, 1, 64, 128)));
-	Animation* animation1 = Animation::createWithSpriteFrames(animLeftWalk, 0.1f);
+	animLeftWalk.reserve(8);
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(40, 1428, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(197, 1428, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(350, 1428, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(511, 1428, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(670, 1428, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(822, 1428, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(975, 1428, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(1128, 1428, HeroWidth, HeroHeight)));
+	Animation* animation1 = Animation::createWithSpriteFrames(animLeftWalk, 0.05f);
 	Animate* animate1 = Animate::create(animation1);
-	if ((int)keyCode == 127)//key D was pressed
+	Point pos = sprite1->getPosition();
+	if ((int)keyCode == 127 || (int)keyCode == 27)//keys D or -> pressed
 	{
-		ActionInterval* move = MoveBy::create(0.5, Point(30, 0));
-		sprite1->runAction(RepeatForever::create(Sequence::create(move, move, NULL)));
-		sprite1->runAction(RepeatForever::create(animate));
-		sprite1->setTexture("player/Programmer7.png");
+		isWalking = true;
+		isRight = true;
+		if (!isJumping)//(grounded)
+		{
+			ActionInterval* move = MoveBy::create(0.15, Point(50, 0));
+			sprite1->runAction(RepeatForever::create(Sequence::create(move, move, NULL)));
+			sprite1->runAction(RepeatForever::create(animate));
+		}
+		else {
+			moveRight = true;
+		}
 	}
-	if ((int)keyCode == 124)//key A was pressed
+	if ((int)keyCode == 124 || (int)keyCode == 26)//keys A or <- pressed
 	{
-		ActionInterval* move = MoveBy::create(0.5, Point(-30, 0));
-		sprite1->runAction(RepeatForever::create(Sequence::create(move, move, NULL)));
-		sprite1->runAction(RepeatForever::create(animate1));
-		sprite1->setTexture("player/Programmer3.png");
+		isWalking = true;
+		isRight = false;
+		if (!isJumping)//(grounded)
+		{
+			ActionInterval* move = MoveBy::create(0.15, Point(-50, 0));
+			sprite1->runAction(RepeatForever::create(Sequence::create(move, move, NULL)));
+			sprite1->runAction(RepeatForever::create(animate1));
+		}
+		else {
+			moveLeft = true;
+		}
 	}
+	if ((int)keyCode == 133)//key J pressed
+	{
+		isPunching = true;
+		Vector<SpriteFrame*> punch;
+		punch.reserve(10);
+		punch.pushBack(SpriteFrame::create("Adv.png", Rect(27, 360, HeroWidth, HeroHeight)));
+		punch.pushBack(SpriteFrame::create("Adv.png", Rect(177, 360, HeroWidth + 20, HeroHeight)));
+		punch.pushBack(SpriteFrame::create("Adv.png", Rect(331, 348, HeroWidth + 20, HeroHeight)));
+		punch.pushBack(SpriteFrame::create("Adv.png", Rect(485, 343, HeroWidth + 20, HeroHeight)));
+		punch.pushBack(SpriteFrame::create("Adv.png", Rect(635, 347, HeroWidth + 20, HeroHeight)));
+		punch.pushBack(SpriteFrame::create("Adv.png", Rect(791, 355, HeroWidth + 20, HeroHeight)));
+		punch.pushBack(SpriteFrame::create("Adv.png", Rect(947, 356, HeroWidth + 20, HeroHeight)));
+		punch.pushBack(SpriteFrame::create("Adv.png", Rect(1100, 356, HeroWidth, HeroHeight)));
+		punch.pushBack(SpriteFrame::create("Adv.png", Rect(1256, 360, HeroWidth, HeroHeight)));
+		punch.pushBack(SpriteFrame::create("Adv.png", Rect(1410, 356, HeroWidth, HeroHeight)));
+		Animation* punchanimation = Animation::createWithSpriteFrames(punch, 0.15f);
+		Animate* punchanimate = Animate::create(punchanimation);
+		sprite1->runAction(punchanimate);
+		isPunching = false;
+	}
+	if ((int)keyCode == 59)//key Space was pressed
+	{
+		isJumping = true;
+		if (isRight && isWalking)
+		{
+			Vector<SpriteFrame*> animRightJump;
+			animRightJump.reserve(6);
+			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(27, 820, HeroWidth, HeroHeight)));
+			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(173, 820, HeroWidth, HeroHeight)));
+			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(332, 810, HeroWidth, HeroHeight)));
+			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(489, 798, HeroWidth, HeroHeight)));
+			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(635, 800, HeroWidth, HeroHeight)));
+			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(787, 820, HeroWidth, HeroHeight)));
+			Animation* Jumpanimation = Animation::createWithSpriteFrames(animRightJump, 1.0f);
+			Animate* Jumpanimate = Animate::create(Jumpanimation);
+			Point pos1 = sprite1->getPosition();
+			ActionInterval* jump = JumpTo::create(1, Point(pos.x + 30, pos.y), 50, 1);
+			sprite1->runAction(jump);
+			sprite1->runAction(Jumpanimate);
+		}
+	}
+	
 }
 
 void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
-	sprite1->stopAllActions();
+	if (!isJumping)
+	{
+		sprite1->stopAllActions();//solve it
+	}
+	isWalking = false;
+	if (isJumping)
+	{
+		goDown = true;
+		isJumping = false;
+	}
+	if (isRight) {
+		sprite1->setTexture("Adv.png");
+		sprite1->setTextureRect(Rect(20, 50, HeroWidth, HeroHeight));
+	}
+	else {
+		sprite1->setTexture("Adv.png");
+		sprite1->setTextureRect(Rect(47, 1593, HeroWidth, HeroHeight));
+	}
+	jumpForce = 10;
 }
 
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
-    //Close the cocos2d-x game scene and quit the application
-    Director::getInstance()->end();
-
-    /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
-
-    //EventCustom customEndEvent("game_scene_close_event");
-    //_eventDispatcher->dispatchEvent(&customEndEvent);
-
-
+	Director::getInstance()->end();
 }
-
