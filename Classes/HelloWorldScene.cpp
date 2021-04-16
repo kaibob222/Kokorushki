@@ -97,8 +97,9 @@ bool isPunching = false;
 bool moveRight = false;
 bool moveLeft = false;
 bool goDown = false;
-float HeroWidth = 110;
-float HeroHeight = 145;
+float HeroWidth = 100;
+float HeroHeight = 110;
+float SwordSize = 45;
 
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
@@ -278,72 +279,87 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	}
 	if ((int)keyCode == 133)//key J pressed
 	{
-		if (!isPunching)
+		if (!isWalking)
 		{
-			if (isRight)
+			if (!isPunching)
 			{
-				Vector<SpriteFrame*> punch;
-				punch.reserve(8);
-				punch.pushBack(SpriteFrame::create("Adv.png", Rect(27, 360, HeroWidth, HeroHeight)));
-				punch.pushBack(SpriteFrame::create("Adv.png", Rect(177, 360, HeroWidth + 20, HeroHeight)));
-				punch.pushBack(SpriteFrame::create("Adv.png", Rect(331, 348, HeroWidth + 20, HeroHeight)));
-				punch.pushBack(SpriteFrame::create("Adv.png", Rect(485, 343, HeroWidth + 20, HeroHeight)));
-				punch.pushBack(SpriteFrame::create("Adv.png", Rect(635, 347, HeroWidth + 20, HeroHeight)));
-				punch.pushBack(SpriteFrame::create("Adv.png", Rect(791, 355, HeroWidth + 20, HeroHeight)));
-				punch.pushBack(SpriteFrame::create("Adv.png", Rect(947, 356, HeroWidth + 20, HeroHeight)));
-				Animation* punchanimation = Animation::createWithSpriteFrames(punch, 0.15f);
-				Animate* punchanimate = Animate::create(punchanimation);
-				sprite1->runAction(punchanimate);
-				isPunching = true;
+				if (isRight)
+				{
+					Vector<SpriteFrame*> punch;
+					punch.reserve(8);
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(27, 360, HeroWidth, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(177, 360, HeroWidth + SwordSize, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(331, 348, HeroWidth + SwordSize, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(485, 343, HeroWidth + SwordSize, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(635, 347, HeroWidth + SwordSize, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(791, 355, HeroWidth + SwordSize, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(947, 356, HeroWidth + SwordSize, HeroHeight)));
+					Animation* punchanimation = Animation::createWithSpriteFrames(punch, 0.15f);
+					Animate* punchanimate = Animate::create(punchanimation);
+					sprite1->runAction(punchanimate);
+					isPunching = true;
+				}
+				else
+				{
+					Vector<SpriteFrame*> punchLeft;
+					punchLeft.reserve(8);
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(49, 1595, HeroWidth, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(160, 1589, HeroWidth + SwordSize, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(304, 1577, HeroWidth + SwordSize, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(476, 1571, HeroWidth + SwordSize, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(615, 1577, HeroWidth + SwordSize, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(773, 1590, HeroWidth + SwordSize, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(934, 1587, HeroWidth + SwordSize, HeroHeight)));
+					Animation* punchLeftanimation = Animation::createWithSpriteFrames(punchLeft, 0.15f);
+					Animate* punchLeftanimate = Animate::create(punchLeftanimation);
+					sprite1->runAction(punchLeftanimate);
+					isPunching = true;
+				}
 			}
 			else
 			{
-				Vector<SpriteFrame*> punchLeft;
-				punchLeft.reserve(8);
-				punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(49, 1595, HeroWidth, HeroHeight)));
-				punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(165, 1589, HeroWidth + 20, HeroHeight)));
-				punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(308, 1577, HeroWidth + 20, HeroHeight)));
-				punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(476, 1571, HeroWidth + 20, HeroHeight)));
-				punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(621, 1577, HeroWidth + 20, HeroHeight)));
-				punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(775, 1590, HeroWidth + 20, HeroHeight)));
-				punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(934, 1587, HeroWidth + 20, HeroHeight)));
-				Animation* punchLeftanimation = Animation::createWithSpriteFrames(punchLeft, 0.15f);
-				Animate* punchLeftanimate = Animate::create(punchLeftanimation);
-				sprite1->runAction(punchLeftanimate);
-				isPunching = true;
-			}
-		}
-		else
-		{
-			if (isRight)
-			{
-				Vector<SpriteFrame*> punchi;
-				punchi.reserve(8);
-				punchi.pushBack(SpriteFrame::create("Adv.png", Rect(27, 511, HeroWidth + 20, HeroHeight)));
-				punchi.pushBack(SpriteFrame::create("Adv.png", Rect(177, 511, HeroWidth + 20, HeroHeight)));
-				punchi.pushBack(SpriteFrame::create("Adv.png", Rect(331, 511, HeroWidth + 20, HeroHeight)));
-				punchi.pushBack(SpriteFrame::create("Adv.png", Rect(485, 511, HeroWidth + 20, HeroHeight)));
-				punchi.pushBack(SpriteFrame::create("Adv.png", Rect(635, 511, HeroWidth + 20, HeroHeight)));
-				punchi.pushBack(SpriteFrame::create("Adv.png", Rect(797, 511, HeroWidth + 20, HeroHeight)));
-				punchi.pushBack(SpriteFrame::create("Adv.png", Rect(951, 511, HeroWidth + 20, HeroHeight)));
-				Animation* punchianimation = Animation::createWithSpriteFrames(punchi, 0.15f);
-				Animate* punchianimate = Animate::create(punchianimation);
-				sprite1->runAction(punchianimate);
-			}
-			else
-			{
-				Vector<SpriteFrame*> punchiLeft;
-				punchiLeft.reserve(8);
-				punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(1, 1740, HeroWidth + 20, HeroHeight)));
-				punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(179, 1746, HeroWidth, HeroHeight)));
-				punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(354, 1745, HeroWidth, HeroHeight)));
-				punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(510, 1745, HeroWidth, HeroHeight)));
-				punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(663, 1745, HeroWidth, HeroHeight)));
-				punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(817, 1745, HeroWidth, HeroHeight)));
-				punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(931, 1745, HeroWidth + 20, HeroHeight)));
-				Animation* punchiLeftanimation = Animation::createWithSpriteFrames(punchiLeft, 0.15f);
-				Animate* punchiLeftanimate = Animate::create(punchiLeftanimation);
-				sprite1->runAction(punchiLeftanimate);
+				if (isRight)
+				{
+					Vector<SpriteFrame*> punchi;
+					punchi.reserve(12);
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(27, 511, HeroWidth + SwordSize, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(177, 511, HeroWidth + SwordSize, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(331, 511, HeroWidth + SwordSize, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(485, 511, HeroWidth + SwordSize, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(635, 511, HeroWidth + SwordSize, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(797, 511, HeroWidth + SwordSize, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(19, 670, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(175, 670, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(333, 670, HeroWidth + SwordSize, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(489, 670, HeroWidth + SwordSize, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(641, 670, HeroWidth + SwordSize, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(799, 670, HeroWidth + SwordSize, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(948, 670, HeroWidth + SwordSize, HeroHeight)));
+					Animation* punchianimation = Animation::createWithSpriteFrames(punchi, 0.15f);
+					Animate* punchianimate = Animate::create(punchianimation);
+					sprite1->runAction(punchianimate);
+				}
+				else
+				{
+					Vector<SpriteFrame*> punchiLeft;
+					punchiLeft.reserve(13);
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(1, 1740, HeroWidth + SwordSize, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(179, 1746, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(354, 1745, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(510, 1745, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(663, 1745, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(817, 1745, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(53, 1900, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(206, 1900, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(306, 1900, HeroWidth + SwordSize, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(458, 1900, HeroWidth + SwordSize, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(609, 1900, HeroWidth + SwordSize, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(765, 1900, HeroWidth + SwordSize, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(931, 1900, HeroWidth + SwordSize, HeroHeight)));
+					Animation* punchiLeftanimation = Animation::createWithSpriteFrames(punchiLeft, 0.15f);
+					Animate* punchiLeftanimate = Animate::create(punchiLeftanimation);
+					sprite1->runAction(punchiLeftanimate);
+				}
 			}
 		}
 	}
