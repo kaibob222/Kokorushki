@@ -62,7 +62,7 @@ bool HelloWorld::init()
 		this->addChild(label, 1);
 	}
 	
-	sprite1 = Sprite::create("Adv.png", Rect(30, 50, 110, 150));
+	sprite1 = Sprite::create("Adv.png", Rect(30, 50, 100, 110));
 	sprite1->setPosition(Point(50, 150));
 
 	if (q == 1) {
