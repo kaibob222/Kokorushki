@@ -33,17 +33,10 @@ bool HelloWorld::init()
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-<<<<<<< HEAD
 	auto background = Sprite::create("2.png");
 	if (background == nullptr)
 	{
 		problemLoading("'2.png'");
-=======
-	auto background = Sprite::create("art1.jpg");
-	if (background == nullptr)
-	{
-		problemLoading("'art1.jpg'");
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 	}
 	else
 	{
@@ -69,7 +62,6 @@ bool HelloWorld::init()
 		this->addChild(label, 1);
 	}
 	
-<<<<<<< HEAD
 	sprite1 = Sprite::create("Adv.png", Rect(30, 50, 110, 150));
 	sprite1->setPosition(Point(50, 150));
 
@@ -77,18 +69,6 @@ bool HelloWorld::init()
 		sprite1->setPosition(Point(900, 110));
 		q = 0;
 	}
-=======
-	sprite1 = Sprite::create("player/Programmer7.png");
-	sprite1->setPosition(Point(20, 150));
-
-	if (q == 1) {
-		sprite1->setPosition(Point(900, 150));
-		q = 0;
-	}
-
-	/*auto spriteBody = PhysicsBody::createCircle(sprite1->getContentSize().width, PhysicsMaterial(0, 1, 0));
-	sprite1->setPhysicsBody(spriteBody);*/
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 
 	this->addChild(sprite1);
 
@@ -110,7 +90,6 @@ bool HelloWorld::init()
 bool isJumping = false;
 bool isRight = false;
 float jumpForce = 10;
-<<<<<<< HEAD
 int maxJump = 40;
 bool isWalking = false;
 //bool grounded = true;
@@ -120,40 +99,21 @@ bool moveLeft = false;
 bool goDown = false;
 float HeroWidth = 110;
 float HeroHeight = 145;
-=======
-int maxJump = 30;
-bool grounded = true;
-bool moveRight = false;
-bool moveLeft = false;
-bool goDown = false;
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
 
-<<<<<<< HEAD
 	if (sprite1->getPosition() > Point(900, 110)) {
-=======
-	if (sprite1->getPosition() > Point(900, 150)) {
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 		auto scene = Scene2::createScene();
 		Director::getInstance()->replaceScene(scene);
 	}
 
-<<<<<<< HEAD
 	if (isJumping && !isWalking)
-=======
-	if (isJumping)
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 	{
 		if (jumpForce < maxJump)
 		{
 			sprite1->setPosition(Point(pos.x, pos.y + jumpForce));
-<<<<<<< HEAD
 			jumpForce += 5;
-=======
-			jumpForce += 2.5;
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 		}
 		else
 		{
@@ -161,7 +121,6 @@ void HelloWorld::update(float dt) {
 			goDown = true;
 		}
 	}
-<<<<<<< HEAD
 	if (isJumping == false && pos.y > 110)
 	{
 		goDown = true;
@@ -173,24 +132,10 @@ void HelloWorld::update(float dt) {
 		{
 			goDown = false;
 			//grounded = true;
-=======
-	if (isJumping == false && pos.y > 150)
-	{
-		goDown = true;
-		grounded = false;
-	}
-	else
-	{
-		if (pos.y == 150)
-		{
-			goDown = false;
-			grounded = true;
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 			moveRight = false;  
 			moveLeft = false;
 		}
 	}
-<<<<<<< HEAD
 	Point gravity = Point(0, -5);
 	if (goDown) {
 		if (pos.y > 110)
@@ -205,28 +150,11 @@ void HelloWorld::update(float dt) {
 				isJumping = false;
 				goDown = false;
 				//grounded = true;
-=======
-	Point gravity = Point(0, -2.5);
-	if (goDown) {
-		if (pos.y > 150)
-		{
-			sprite1->setPosition(pos.x+gravity.x, pos.y + gravity.y);
-			grounded = false;
-		}
-		else
-		{
-			if (pos.y == 150)
-			{
-				isJumping = false;
-				goDown = false;
-				grounded = true;
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 			}
 		}
 
 	}
 	/*if (moveRight) {
-<<<<<<< HEAD
 		if (pos.y > 150)
 		{
 			float x = 2.5;
@@ -239,12 +167,6 @@ void HelloWorld::update(float dt) {
 		//moveRight = false;
 		//goDown = true;
 	}*/
-=======
-		sprite1->setPosition(pos.x+20, pos.y+gravity.y);
-		moveRight = false;
-		goDown = true;
-	}
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 	/*if (isJumping && jumpForce < maxJump) {
 		ActionInterval* jump = JumpTo::create(0.5, Point(pos.x, pos.y), jumpForce++, 1);
 		sprite1->runAction(jump);
@@ -270,7 +192,6 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 {
 	CCLOG("Key with keycode %d pressed", keyCode);
 	Vector<SpriteFrame*> animRightWalk;
-<<<<<<< HEAD
 	animRightWalk.reserve(8);
 	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(20, 195, HeroWidth, HeroHeight)));
 	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(175, 195, HeroWidth, HeroHeight)));
@@ -292,32 +213,10 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(822, 1428, HeroWidth, HeroHeight)));
 	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(975, 1428, HeroWidth, HeroHeight)));
 	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(1128, 1428, HeroWidth, HeroHeight)));
-=======
-	animRightWalk.reserve(7);
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer7.png", Rect(0, -4.5, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer71.png", Rect(1, 0, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer72.png", Rect(0, 1, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer73.png", Rect(1, 0, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer74.png", Rect(0, 1, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer75.png", Rect(1, 0, 64, 128)));
-	animRightWalk.pushBack(SpriteFrame::create("player/Programmer76.png", Rect(0, 1, 64, 128)));
-	Animation* animation = Animation::createWithSpriteFrames(animRightWalk, 0.05f);
-	Animate* animate = Animate::create(animation);
-	Vector<SpriteFrame*> animLeftWalk;
-	animLeftWalk.reserve(7);
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer3.png", Rect(-3.75, -4.2, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer31.png", Rect(1, 0, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer32.png", Rect(0, 1, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer33.png", Rect(1, 0, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer34.png", Rect(0, 1, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer35.png", Rect(1, 0, 64, 128)));
-	animLeftWalk.pushBack(SpriteFrame::create("player/Programmer36.png", Rect(0, 1, 64, 128)));
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 	Animation* animation1 = Animation::createWithSpriteFrames(animLeftWalk, 0.05f);
 	Animate* animate1 = Animate::create(animation1);
 	Point pos = sprite1->getPosition();
 	if ((int)keyCode == 127 || (int)keyCode == 27)//keys D or -> pressed
-<<<<<<< HEAD
 	{
 		isWalking = true;
 		isRight = true;
@@ -385,71 +284,29 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 			sprite1->runAction(jump);
 			sprite1->runAction(Jumpanimate);
 		}
-=======
-	{
-		isRight = true;
-		if (grounded)
-		{
-			ActionInterval* move = MoveBy::create(0.15, Point(50, 0));
-			sprite1->runAction(RepeatForever::create(Sequence::create(move, move, NULL)));
-			sprite1->runAction(RepeatForever::create(animate));
-		}
-		else {
-			moveRight = true;
-		}
-	}
-	if ((int)keyCode == 124 || (int)keyCode == 26)//keys A or <- pressed
-	{
-		isRight = false;
-		if (grounded)
-		{
-			ActionInterval* move = MoveBy::create(0.15, Point(-50, 0));
-			sprite1->runAction(RepeatForever::create(Sequence::create(move, move, NULL)));
-			sprite1->runAction(RepeatForever::create(animate1));
-		}
-		else {
-			moveLeft = true;
-		}
-	}
-	if ((int)keyCode == 59)//key Space was pressed
-	{
-		isJumping = true;
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 	}
 	
 }
 
 void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
-<<<<<<< HEAD
 	if (!isJumping)
 	{
 		sprite1->stopAllActions();//solve it
 	}
 	isWalking = false;
 	if (isJumping)
-=======
-	if (isJumping == false) sprite1->stopAllActions();
-	if (isJumping == true)
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 	{
 		goDown = true;
 		isJumping = false;
 	}
 	if (isRight) {
-<<<<<<< HEAD
 		sprite1->setTexture("Adv.png");
 		sprite1->setTextureRect(Rect(20, 50, HeroWidth, HeroHeight));
 	}
 	else {
 		sprite1->setTexture("Adv.png");
 		sprite1->setTextureRect(Rect(47, 1593, HeroWidth, HeroHeight));
-=======
-		sprite1->setTexture("player/Programmer7.png");
-	}
-	else {
-		sprite1->setTexture("player/Programmer3.png");
->>>>>>> 73108256745be146d2e4a16c7c125c724d0f1492
 	}
 	jumpForce = 10;
 }
