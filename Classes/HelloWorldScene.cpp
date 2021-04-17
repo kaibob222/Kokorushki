@@ -108,7 +108,7 @@ void HelloWorld::update(float dt) {
 		Director::getInstance()->replaceScene(scene);
 	}
 
-	if (isJumping && !isWalking)
+	/*if (isJumping && !isWalking)
 	{
 		if (jumpForce < maxJump)
 		{
@@ -364,46 +364,93 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	}
 	if ((int)keyCode == 59)//key Space was pressed
 	{
-		isJumping = true;
-		if (isWalking)
+		Point posi = sprite1->getPosition();
+		if (posi.y==150)
 		{
-			if (isRight)
+			if (isWalking)
 			{
-				Vector<SpriteFrame*> animRightJump;
-				animRightJump.reserve(7);
-				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(3, 801, HeroWidth, HeroHeight)));
-				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(152, 801, HeroWidth, HeroHeight)));
-				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(304, 801, HeroWidth, HeroHeight)));
-				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(594, 801, HeroWidth, HeroHeight)));
-				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(613, 801, HeroWidth, HeroHeight)));
-				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(765, 801, HeroWidth, HeroHeight)));
-				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(1, 33, HeroWidth, HeroHeight)));
-				Animation* Jumpanimation = Animation::createWithSpriteFrames(animRightJump, 0.15f);
-				Animate* Jumpanimate = Animate::create(Jumpanimation);
-				Point pos1 = sprite1->getPosition();
-				//ActionInterval* jump = JumpTo::create(1, Point(pos.x + 30, pos.y), 50, 1);
-				//sprite1->runAction(jump);
-				sprite1->runAction(Jumpanimate);
+				if (isRight)
+				{
+					isJumping = true;
+					Vector<SpriteFrame*> animRightJump;
+					animRightJump.reserve(7);
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(3, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(152, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(304, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(594, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(613, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(765, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(1, 33, HeroWidth, HeroHeight)));
+					Animation* Jumpanimation = Animation::createWithSpriteFrames(animRightJump, 0.15f);
+					Animate* Jumpanimate = Animate::create(Jumpanimation);
+					ActionInterval* jump = JumpBy::create(0.5, Point(60, 0), 60, 1);
+					sprite1->runAction(jump);
+					sprite1->runAction(Jumpanimate);
+					//isJumping = false;
+				}
+				else
+				{
+					isJumping = true;
+					Vector<SpriteFrame*> animLeftJump;
+					animLeftJump.reserve(4);
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(18, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(173, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(325, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(474, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(632, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(786, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(18, 1264, HeroWidth, HeroHeight)));
+					Animation* JumpLeftanimation = Animation::createWithSpriteFrames(animLeftJump, 0.15f);
+					Animate* JumpLeftanimate = Animate::create(JumpLeftanimation);
+					ActionInterval* jump1 = JumpBy::create(0.5, Point(-60, 0), 60, 1);
+					sprite1->runAction(jump1);
+					sprite1->runAction(JumpLeftanimate);
+					//isJumping = false;
+				}
 			}
 			else
 			{
-				Vector<SpriteFrame*> animLeftJump;
-				animLeftJump.reserve(4);
-				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(18, 2031, HeroWidth, HeroHeight)));
-				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(173, 2031, HeroWidth, HeroHeight)));
-				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(325, 2031, HeroWidth, HeroHeight)));
-				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(474, 2031, HeroWidth, HeroHeight)));
-				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(632, 2031, HeroWidth, HeroHeight)));
-				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(786, 2031, HeroWidth, HeroHeight)));
-				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(18, 1264, HeroWidth, HeroHeight)));
-				Animation* JumpLeftanimation = Animation::createWithSpriteFrames(animLeftJump, 0.15f);
-				Animate* JumpLeftanimate = Animate::create(JumpLeftanimation);
-				Point pos1 = sprite1->getPosition();
-				//ActionInterval* jump1 = JumpTo::create(1, Point(pos.x + 30, pos.y), 50, 1);
-				//sprite1->runAction(jump1);
-				sprite1->runAction(JumpLeftanimate);
+				if (isRight)
+				{
+					isJumping = true;
+					Vector<SpriteFrame*> animRightJump;
+					animRightJump.reserve(7);
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(3, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(152, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(304, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(594, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(613, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(765, 801, HeroWidth, HeroHeight)));
+					animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(1, 33, HeroWidth, HeroHeight)));
+					Animation* Jumpanimation = Animation::createWithSpriteFrames(animRightJump, 0.15f);
+					Animate* Jumpanimate = Animate::create(Jumpanimation);
+					ActionInterval* jump = JumpBy::create(0.5, Point(0, 0), 60, 1);
+					sprite1->runAction(jump);
+					sprite1->runAction(Jumpanimate);
+					//isJumping = false;
+				}
+				else
+				{
+					isJumping = true;
+					Vector<SpriteFrame*> animLeftJump;
+					animLeftJump.reserve(4);
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(18, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(173, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(325, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(474, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(632, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(786, 2031, HeroWidth, HeroHeight)));
+					animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(18, 1264, HeroWidth, HeroHeight)));
+					Animation* JumpLeftanimation = Animation::createWithSpriteFrames(animLeftJump, 0.15f);
+					Animate* JumpLeftanimate = Animate::create(JumpLeftanimation);
+					ActionInterval* jump1 = JumpBy::create(0.5, Point(0, 0), 60, 1);
+					sprite1->runAction(jump1);
+					sprite1->runAction(JumpLeftanimate);
+					//isJumping = false;
+				}
 			}
 		}
+		isJumping = false;
 	}
 	
 }
@@ -415,11 +462,11 @@ void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::E
 	sprite1->stopActionByTag(3);
 	sprite1->stopActionByTag(4);
 	isWalking = false;
-	if (isJumping)
+	/*if (isJumping)
 	{
 		goDown = true;
 		isJumping = false;
-	}
+	}*/
 	if (isRight) {
 		sprite1->setTexture("Adv.png");
 		sprite1->setTextureRect(Rect(1, 33, HeroWidth, HeroHeight));
@@ -429,6 +476,7 @@ void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::E
 		sprite1->setTextureRect(Rect(18, 1264, HeroWidth, HeroHeight));
 	}
 	jumpForce = 10;
+	//isJumping = false;
 }
 
 
