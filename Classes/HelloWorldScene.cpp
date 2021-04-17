@@ -62,11 +62,14 @@ bool HelloWorld::init()
 		this->addChild(label, 1);
 	}
 	
-	sprite1 = Sprite::create("Adv.png", Rect(30, 50, 100, 110));
-	sprite1->setPosition(Point(50, 150));
-
+	if (q == 0) {
+		sprite1 = Sprite::create("Adv.png", Rect(1, 33, 137, 131));
+		sprite1->setPosition(Point(50, 150));
+		q = 0;
+	}
 	if (q == 1) {
-		sprite1->setPosition(Point(900, 110));
+		sprite1 = Sprite::create("Adv.png", Rect(18, 1264, 137, 131));
+		sprite1->setPosition(Point(880, 150));
 		q = 0;
 	}
 
@@ -103,7 +106,7 @@ float HeroHeight = 131;
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
 
-	if (sprite1->getPosition() > Point(900, 110)) {
+	if (pos > Point(880, 150)) {
 		auto scene = Scene2::createScene();
 		Director::getInstance()->replaceScene(scene);
 	}
