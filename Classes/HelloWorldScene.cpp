@@ -97,9 +97,8 @@ bool isPunching = false;
 bool moveRight = false;
 bool moveLeft = false;
 bool goDown = false;
-float HeroWidth = 100;
-float HeroHeight = 110;
-float SwordSize = 45;
+float HeroWidth = 137;
+float HeroHeight = 131;
 
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
@@ -194,26 +193,26 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	CCLOG("Key with keycode %d pressed", keyCode);
 	Vector<SpriteFrame*> animRightWalk;
 	animRightWalk.reserve(8);
-	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(20, 195, HeroWidth, HeroHeight)));
-	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(175, 195, HeroWidth, HeroHeight)));
-	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(330, 195, HeroWidth, HeroHeight)));
-	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(494, 195, HeroWidth, HeroHeight)));
-	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(648, 195, HeroWidth, HeroHeight)));
-	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(805, 195, HeroWidth, HeroHeight)));
-	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(955, 195, HeroWidth, HeroHeight)));
-	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(1110, 195, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(1, 180, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(150, 180, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(305, 180, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(460, 180, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(613, 180, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(768, 180, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(920, 180, HeroWidth, HeroHeight)));
+	animRightWalk.pushBack(SpriteFrame::create("Adv.png", Rect(1077, 180, HeroWidth, HeroHeight)));
 	Animation* animation = Animation::createWithSpriteFrames(animRightWalk, 0.05f);
 	Animate* animate = Animate::create(animation);
 	Vector<SpriteFrame*> animLeftWalk;
 	animLeftWalk.reserve(8);
-	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(40, 1428, HeroWidth, HeroHeight)));
-	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(197, 1428, HeroWidth, HeroHeight)));
-	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(350, 1428, HeroWidth, HeroHeight)));
-	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(511, 1428, HeroWidth, HeroHeight)));
-	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(670, 1428, HeroWidth, HeroHeight)));
-	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(822, 1428, HeroWidth, HeroHeight)));
-	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(975, 1428, HeroWidth, HeroHeight)));
-	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(1128, 1428, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(19, 1412, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(172, 1412, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(324, 1412, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(478, 1412, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(634, 1412, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(787, 1412, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(941, 1412, HeroWidth, HeroHeight)));
+	animLeftWalk.pushBack(SpriteFrame::create("Adv.png", Rect(1095, 1412, HeroWidth, HeroHeight)));
 	Animation* animation1 = Animation::createWithSpriteFrames(animLeftWalk, 0.05f);
 	Animate* animate1 = Animate::create(animation1);
 	Point pos = sprite1->getPosition();
@@ -223,9 +222,9 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 		{
 			Vector<SpriteFrame*> nopunch;
 			nopunch.reserve(3);
-			nopunch.pushBack(SpriteFrame::create("Adv.png", Rect(1109, 511, HeroWidth, HeroHeight)));
-			nopunch.pushBack(SpriteFrame::create("Adv.png", Rect(1261, 511, HeroWidth, HeroHeight)));
-			nopunch.pushBack(SpriteFrame::create("Adv.png", Rect(1418, 511, HeroWidth, HeroHeight)));
+			nopunch.pushBack(SpriteFrame::create("Adv.png", Rect(1077, 344, HeroWidth, HeroHeight)));
+			nopunch.pushBack(SpriteFrame::create("Adv.png", Rect(1228, 344, HeroWidth, HeroHeight)));
+			nopunch.pushBack(SpriteFrame::create("Adv.png", Rect(1384, 344, HeroWidth, HeroHeight)));
 			Animation* nopunchanimation = Animation::createWithSpriteFrames(nopunch, 0.15f);
 			Animate* nopunchanimate = Animate::create(nopunchanimation);
 			sprite1->runAction(nopunchanimate);
@@ -253,9 +252,9 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 		{
 			Vector<SpriteFrame*> noLeftpunch;
 			noLeftpunch.reserve(3);
-			noLeftpunch.pushBack(SpriteFrame::create("Adv.png", Rect(1116, 1589, HeroWidth, HeroHeight)));
-			noLeftpunch.pushBack(SpriteFrame::create("Adv.png", Rect(1280, 1589, HeroWidth, HeroHeight)));
-			noLeftpunch.pushBack(SpriteFrame::create("Adv.png", Rect(1430, 1589, HeroWidth, HeroHeight)));
+			noLeftpunch.pushBack(SpriteFrame::create("Adv.png", Rect(1087, 1727, HeroWidth, HeroHeight)));
+			noLeftpunch.pushBack(SpriteFrame::create("Adv.png", Rect(1244, 1727, HeroWidth, HeroHeight)));
+			noLeftpunch.pushBack(SpriteFrame::create("Adv.png", Rect(1398, 1727, HeroWidth, HeroHeight)));
 			Animation* noLeftpunchanimation = Animation::createWithSpriteFrames(noLeftpunch, 0.15f);
 			Animate* noLeftpunchanimate = Animate::create(noLeftpunchanimation);
 			sprite1->runAction(noLeftpunchanimate);
@@ -286,14 +285,14 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 				if (isRight)
 				{
 					Vector<SpriteFrame*> punch;
-					punch.reserve(8);
-					punch.pushBack(SpriteFrame::create("Adv.png", Rect(27, 360, HeroWidth, HeroHeight)));
-					punch.pushBack(SpriteFrame::create("Adv.png", Rect(177, 360, HeroWidth + SwordSize, HeroHeight)));
-					punch.pushBack(SpriteFrame::create("Adv.png", Rect(331, 348, HeroWidth + SwordSize, HeroHeight)));
-					punch.pushBack(SpriteFrame::create("Adv.png", Rect(485, 343, HeroWidth + SwordSize, HeroHeight)));
-					punch.pushBack(SpriteFrame::create("Adv.png", Rect(635, 347, HeroWidth + SwordSize, HeroHeight)));
-					punch.pushBack(SpriteFrame::create("Adv.png", Rect(791, 355, HeroWidth + SwordSize, HeroHeight)));
-					punch.pushBack(SpriteFrame::create("Adv.png", Rect(947, 356, HeroWidth + SwordSize, HeroHeight)));
+					punch.reserve(7);//137.131
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(3, 344, HeroWidth, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(165, 344, HeroWidth, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(327, 344, HeroWidth, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(475, 344, HeroWidth, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(631, 344, HeroWidth, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(785, 344, HeroWidth, HeroHeight)));
+					punch.pushBack(SpriteFrame::create("Adv.png", Rect(935, 344, HeroWidth, HeroHeight)));
 					Animation* punchanimation = Animation::createWithSpriteFrames(punch, 0.15f);
 					Animate* punchanimate = Animate::create(punchanimation);
 					sprite1->runAction(punchanimate);
@@ -302,14 +301,14 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 				else
 				{
 					Vector<SpriteFrame*> punchLeft;
-					punchLeft.reserve(8);
-					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(49, 1595, HeroWidth, HeroHeight)));
-					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(160, 1589, HeroWidth + SwordSize, HeroHeight)));
-					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(304, 1577, HeroWidth + SwordSize, HeroHeight)));
-					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(476, 1571, HeroWidth + SwordSize, HeroHeight)));
-					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(615, 1577, HeroWidth + SwordSize, HeroHeight)));
-					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(773, 1590, HeroWidth + SwordSize, HeroHeight)));
-					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(934, 1587, HeroWidth + SwordSize, HeroHeight)));
+					punchLeft.reserve(7);
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(18, 1571, HeroWidth, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(159, 1571, HeroWidth, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(309, 1571, HeroWidth, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(467, 1571, HeroWidth, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(620, 1571, HeroWidth, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(772, 1571, HeroWidth, HeroHeight)));
+					punchLeft.pushBack(SpriteFrame::create("Adv.png", Rect(929, 1571, HeroWidth, HeroHeight)));
 					Animation* punchLeftanimation = Animation::createWithSpriteFrames(punchLeft, 0.15f);
 					Animate* punchLeftanimate = Animate::create(punchLeftanimation);
 					sprite1->runAction(punchLeftanimate);
@@ -321,20 +320,20 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 				if (isRight)
 				{
 					Vector<SpriteFrame*> punchi;
-					punchi.reserve(12);
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(27, 511, HeroWidth + SwordSize, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(177, 511, HeroWidth + SwordSize, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(331, 511, HeroWidth + SwordSize, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(485, 511, HeroWidth + SwordSize, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(635, 511, HeroWidth + SwordSize, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(797, 511, HeroWidth + SwordSize, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(19, 670, HeroWidth, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(175, 670, HeroWidth, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(333, 670, HeroWidth + SwordSize, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(489, 670, HeroWidth + SwordSize, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(641, 670, HeroWidth + SwordSize, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(799, 670, HeroWidth + SwordSize, HeroHeight)));
-					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(948, 670, HeroWidth + SwordSize, HeroHeight)));
+					punchi.reserve(13);
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(18, 501, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(158, 501, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(305, 501, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(455, 501, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(610, 501, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(766, 501, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(0, 653, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(150, 653, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(332, 653, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(486, 653, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(640, 653, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(794, 653, HeroWidth, HeroHeight)));
+					punchi.pushBack(SpriteFrame::create("Adv.png", Rect(934, 653, HeroWidth, HeroHeight)));
 					Animation* punchianimation = Animation::createWithSpriteFrames(punchi, 0.15f);
 					Animate* punchianimate = Animate::create(punchianimation);
 					sprite1->runAction(punchianimate);
@@ -343,19 +342,19 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 				{
 					Vector<SpriteFrame*> punchiLeft;
 					punchiLeft.reserve(13);
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(1, 1740, HeroWidth + SwordSize, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(179, 1746, HeroWidth, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(354, 1745, HeroWidth, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(510, 1745, HeroWidth, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(663, 1745, HeroWidth, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(817, 1745, HeroWidth, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(53, 1900, HeroWidth, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(206, 1900, HeroWidth, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(306, 1900, HeroWidth + SwordSize, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(458, 1900, HeroWidth + SwordSize, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(609, 1900, HeroWidth + SwordSize, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(765, 1900, HeroWidth + SwordSize, HeroHeight)));
-					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(931, 1900, HeroWidth + SwordSize, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(0, 1727, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(152, 1727, HeroWidth-10, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(316, 1727, HeroWidth-10, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(470, 1727, HeroWidth-10, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(623, 1727, HeroWidth-10, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(774, 1727, HeroWidth-10, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(18, 1882, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(169, 1882, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(297, 1882, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(450, 1882, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(604, 1882, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(750, 1882, HeroWidth, HeroHeight)));
+					punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(922, 1882, HeroWidth, HeroHeight)));
 					Animation* punchiLeftanimation = Animation::createWithSpriteFrames(punchiLeft, 0.15f);
 					Animate* punchiLeftanimate = Animate::create(punchiLeftanimation);
 					sprite1->runAction(punchiLeftanimate);
@@ -366,22 +365,44 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	if ((int)keyCode == 59)//key Space was pressed
 	{
 		isJumping = true;
-		if (isRight && isWalking)
+		if (isWalking)
 		{
-			Vector<SpriteFrame*> animRightJump;
-			animRightJump.reserve(4);
-			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(27, 820, HeroWidth, HeroHeight)));
-			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(173, 820, HeroWidth, HeroHeight)));
-			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(332, 810, HeroWidth, HeroHeight)));
-			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(489, 798, HeroWidth, HeroHeight)));
-			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(635, 800, HeroWidth, HeroHeight)));
-			animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(787, 820, HeroWidth, HeroHeight)));
-			Animation* Jumpanimation = Animation::createWithSpriteFrames(animRightJump, 0.15f);
-			Animate* Jumpanimate = Animate::create(Jumpanimation);
-			Point pos1 = sprite1->getPosition();
-			ActionInterval* jump = JumpTo::create(1, Point(pos.x + 30, pos.y), 50, 1);
-			sprite1->runAction(jump);
-			sprite1->runAction(Jumpanimate);
+			if (isRight)
+			{
+				Vector<SpriteFrame*> animRightJump;
+				animRightJump.reserve(7);
+				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(3, 801, HeroWidth, HeroHeight)));
+				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(152, 801, HeroWidth, HeroHeight)));
+				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(304, 801, HeroWidth, HeroHeight)));
+				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(594, 801, HeroWidth, HeroHeight)));
+				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(613, 801, HeroWidth, HeroHeight)));
+				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(765, 801, HeroWidth, HeroHeight)));
+				animRightJump.pushBack(SpriteFrame::create("Adv.png", Rect(1, 33, HeroWidth, HeroHeight)));
+				Animation* Jumpanimation = Animation::createWithSpriteFrames(animRightJump, 0.15f);
+				Animate* Jumpanimate = Animate::create(Jumpanimation);
+				Point pos1 = sprite1->getPosition();
+				//ActionInterval* jump = JumpTo::create(1, Point(pos.x + 30, pos.y), 50, 1);
+				//sprite1->runAction(jump);
+				sprite1->runAction(Jumpanimate);
+			}
+			else
+			{
+				Vector<SpriteFrame*> animLeftJump;
+				animLeftJump.reserve(4);
+				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(18, 2031, HeroWidth, HeroHeight)));
+				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(173, 2031, HeroWidth, HeroHeight)));
+				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(325, 2031, HeroWidth, HeroHeight)));
+				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(474, 2031, HeroWidth, HeroHeight)));
+				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(632, 2031, HeroWidth, HeroHeight)));
+				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(786, 2031, HeroWidth, HeroHeight)));
+				animLeftJump.pushBack(SpriteFrame::create("Adv.png", Rect(18, 1264, HeroWidth, HeroHeight)));
+				Animation* JumpLeftanimation = Animation::createWithSpriteFrames(animLeftJump, 0.15f);
+				Animate* JumpLeftanimate = Animate::create(JumpLeftanimation);
+				Point pos1 = sprite1->getPosition();
+				//ActionInterval* jump1 = JumpTo::create(1, Point(pos.x + 30, pos.y), 50, 1);
+				//sprite1->runAction(jump1);
+				sprite1->runAction(JumpLeftanimate);
+			}
 		}
 	}
 	
@@ -401,11 +422,11 @@ void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::E
 	}
 	if (isRight) {
 		sprite1->setTexture("Adv.png");
-		sprite1->setTextureRect(Rect(20, 50, HeroWidth, HeroHeight));
+		sprite1->setTextureRect(Rect(1, 33, HeroWidth, HeroHeight));
 	}
 	else {
 		sprite1->setTexture("Adv.png");
-		sprite1->setTextureRect(Rect(47, 1593, HeroWidth, HeroHeight));
+		sprite1->setTextureRect(Rect(18, 1264, HeroWidth, HeroHeight));
 	}
 	jumpForce = 10;
 }
