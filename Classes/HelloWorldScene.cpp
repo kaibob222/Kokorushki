@@ -2,6 +2,7 @@
 #include "MenuMain.h"
 #include "ui/CocosGUI.h"
 #include "Scene2.h"
+#include "Animation.h"
 
 USING_NS_CC;
 
