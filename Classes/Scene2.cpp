@@ -92,7 +92,6 @@ bool isRight1 = false;
 float jumpForce1 = 10;
 int maxJump1 = 40;
 bool isWalking1 = false;
-//bool grounded = true;
 bool isPunching1 = false;
 bool moveRight1 = false;
 bool moveLeft1 = false;
@@ -107,78 +106,6 @@ void Scene2::update(float dt) {
 		auto scene = HelloWorld::createScene();
 		Director::getInstance()->replaceScene(scene);
 	}
-
-	/*if (isJumping && !isWalking)
-	{
-		if (jumpForce < maxJump)
-		{
-			sprite1->setPosition(Point(pos.x, pos.y + jumpForce));
-			jumpForce += 5;
-		}
-		else
-		{
-			isJumping = false;
-			goDown = true;
-		}
-	}
-	if (isJumping == false && pos.y > 110)
-	{
-		goDown = true;
-		//grounded = false;
-	}
-	else
-	{
-		if (pos.y == 110)
-		{
-			goDown = false;
-			//grounded = true;
-			moveRight = false;
-			moveLeft = false;
-		}
-	}
-	Point gravity = Point(0, -5);
-	if (goDown) {
-		if (pos.y > 110)
-		{
-			sprite1->setPosition(pos.x+gravity.x, pos.y + gravity.y);
-			//grounded = false;
-		}
-		else
-		{
-			if (pos.y == 110)
-			{
-				isJumping = false;
-				goDown = false;
-				//grounded = true;
-			}
-		}
-
-	}
-	/*if (moveRight) {
-		if (pos.y > 150)
-		{
-			float x = 2.5;
-			float y = 2 * x;
-			sprite1->setPosition(pos.x + x, pos.y - y);
-			x -= 0.5;
-			//moveRight = false;
-			//goDown = true;
-		}
-		//moveRight = false;
-		//goDown = true;
-	}*/
-	/*if (isJumping && jumpForce < maxJump) {
-		ActionInterval* jump = JumpTo::create(0.5, Point(pos.x, pos.y), jumpForce++, 1);
-		sprite1->runAction(jump);
-	}*/
-	/*if (pos.y <= 150 && pos.y >= 140) {
-		grounded = true;
-		moveLeft = false;
-		moveRight = false;
-	}
-	else {
-		grounded = false;
-	}*/
 }
 
 void Scene2::Exit(cocos2d::Ref *pSpender)
@@ -194,6 +121,11 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 	Point pos = sprite1->getPosition();
 	if ((int)keyCode == 127 || (int)keyCode == 27)//keys D or -> pressed
 	{
+		CCLOG("right");
+		for (int i = 1; i <= 8; i++)
+		{
+			sprite1->stopActionByTag(i);
+		}
 		if (isPunching1)
 		{
 			Animate* nopunchanimate = Animate::create(Anim::noRightPunch());
@@ -202,7 +134,7 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 		}
 		isWalking1 = true;
 		isRight1 = true;
-		if (!isJumping1)//(grounded)
+		if (!isJumping1)
 		{
 			ActionInterval* move = MoveBy::create(0.15, Point(50, 0));
 			auto repeatForever = cocos2d::RepeatForever::create(Sequence::create(move, move, NULL));
@@ -219,6 +151,11 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 	}
 	if ((int)keyCode == 124 || (int)keyCode == 26)//keys A or <- pressed
 	{
+		CCLOG("left");
+		for (int i = 1; i <= 8; i++)
+		{
+			sprite1->stopActionByTag(i);
+		}
 		if (isPunching1)
 		{
 			Animate* noLeftpunchanimate = Animate::create(Anim::noLeftPunch());
@@ -227,7 +164,7 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 		}
 		isWalking1 = true;
 		isRight1 = false;
-		if (!isJumping1)//(grounded)
+		if (!isJumping1)
 		{
 			ActionInterval* move1 = MoveBy::create(0.15, Point(-50, 0));
 			auto repeatForever1 = cocos2d::RepeatForever::create(Sequence::create(move1, move1, NULL));
@@ -244,58 +181,70 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 	}
 	if ((int)keyCode == 133)//key J pressed
 	{
-		if (!isPunching1)
+		CCLOG("fight!");
+		for (int i = 1; i <= 8; i++)
 		{
-			if (isRight1)
-			{
-				Animate* punchanimate = Animate::create(Anim::rightPunch());
-				sprite1->runAction(punchanimate);
-				isPunching1 = true;
-			}
-			else
-			{
-				Animate* punchLeftanimate = Animate::create(Anim::leftPunch());
-				sprite1->runAction(punchLeftanimate);
-				isPunching1 = true;
-			}
+			sprite1->stopActionByTag(i);
 		}
-		else
+		if (!isWalking1)
 		{
-			if (isRight1)
+			if (!isPunching1)
 			{
-				Animate* punchianimate = Animate::create(Anim::rightPunchi());
-				sprite1->runAction(punchianimate);
+				if (isRight1)
+				{
+					Animate* punchanimate = Animate::create(Anim::rightPunch());
+					sprite1->runAction(punchanimate);
+					isPunching1 = true;
+				}
+				else
+				{
+					Animate* punchLeftanimate = Animate::create(Anim::leftPunch());
+					punchLeftanimate->setTag(6);
+					sprite1->runAction(punchLeftanimate);
+					isPunching1 = true;
+				}
 			}
 			else
 			{
-				Animate* punchiLeftanimate = Animate::create(Anim::leftPunchi());
-				sprite1->runAction(punchiLeftanimate);
+				if (isRight1)
+				{
+					Animate* punchianimate = Animate::create(Anim::rightPunchi());
+					punchianimate->setTag(7);
+					sprite1->runAction(punchianimate);
+				}
+				else
+				{
+					Animate* punchiLeftanimate = Animate::create(Anim::leftPunchi());
+					punchiLeftanimate->setTag(8);
+					sprite1->runAction(punchiLeftanimate);
+				}
 			}
 		}
 	}
 	if ((int)keyCode == 59)//key Space was pressed
 	{
+		CCLOG("jump");
 		Point posi = sprite1->getPosition();
 		if (posi.y == 150)
 		{
+			CCLOG("hey");
 			if (isWalking1)
 			{
 				if (isRight1)
 				{
 					isJumping1 = true;
 					Animate* Jumpanimate = Animate::create(Anim::rightJump());
-					ActionInterval* jump = JumpBy::create(0.5, Point(60, 0), 60, 1);
+					ActionInterval* jump = JumpBy::create(0.5, Point(80, 0), 60, 1);
 					sprite1->runAction(jump);
 					sprite1->runAction(Jumpanimate);
-					//isJumping = false;
 				}
 				else
 				{
+					isJumping1 = true;
 					Animate* JumpLeftanimate = Animate::create(Anim::leftJump());
-					ActionInterval* jump1 = JumpBy::create(0.5, Point(-60, 0), 60, 1);
+					ActionInterval* jump1 = JumpBy::create(0.5, Point(-80, 0), 60, 1);
 					sprite1->runAction(jump1);
 					sprite1->runAction(JumpLeftanimate);
-					//isJumping = false;
 				}
 			}
 			else
@@ -307,7 +256,6 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 					ActionInterval* jump = JumpBy::create(0.5, Point(0, 0), 60, 1);
 					sprite1->runAction(jump);
 					sprite1->runAction(Jumpanimate);
-					//isJumping = false;
 				}
 				else
 				{
@@ -316,7 +264,6 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 					ActionInterval* jump1 = JumpBy::create(0.5, Point(0, 0), 60, 1);
 					sprite1->runAction(jump1);
 					sprite1->runAction(JumpLeftanimate);
-					//isJumping = false;
 				}
 			}
 		}
@@ -327,10 +274,11 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 
 void Scene2::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
-	sprite1->stopActionByTag(1);
-	sprite1->stopActionByTag(2);
-	sprite1->stopActionByTag(3);
-	sprite1->stopActionByTag(4);
+	for (int i = 1; i <= 4; i++)
+	{
+		sprite1->stopActionByTag(i);
+	}
+	isWalking1 = false;
 	if (isRight1) {
 		sprite1->setTexture("Adv.png");
 		sprite1->setTextureRect(Rect(1, 33, 137, 131));

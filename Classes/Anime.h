@@ -9,7 +9,6 @@ private:
 	float x;
 	float y;
 
-
 public:
 	static cocos2d::Animation* walkRight();
 	static cocos2d::Animation* walkLeft();
@@ -22,6 +21,5 @@ public:
 	static cocos2d::Animation* leftJump();
 	static cocos2d::Animation* rightJump();
 };
-
 
 #endif
