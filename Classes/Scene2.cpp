@@ -3,6 +3,7 @@
 #include "ui/CocosGUI.h"
 #include "HelloWorldScene.h"
 #include "Anime.h"
+#include "Hero.h"
 
 USING_NS_CC;
 
@@ -87,16 +88,6 @@ bool Scene2::init()
 	return true;
 }
 
-bool isJumping1 = false;
-bool isRight1 = false;
-float jumpForce1 = 10;
-int maxJump1 = 40;
-bool isWalking1 = false;
-bool isPunching1 = false;
-bool moveRight1 = false;
-bool moveLeft1 = false;
-bool goDown1 = false;
-
 void Scene2::update(float dt) {
 	Point pos = sprite1->getPosition();
 	Point pos1 = sprite2->getPosition();
@@ -121,155 +112,32 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 	Point pos = sprite1->getPosition();
 	if ((int)keyCode == 127 || (int)keyCode == 27)//keys D or -> pressed
 	{
-		CCLOG("right");
 		for (int i = 1; i <= 8; i++)
 		{
 			sprite1->stopActionByTag(i);
 		}
-		if (isPunching1)
-		{
-			Animate* nopunchanimate = Animate::create(Anim::noRightPunch());
-			sprite1->runAction(nopunchanimate);
-			isPunching1 = false;
-		}
-		isWalking1 = true;
-		isRight1 = true;
-		if (!isJumping1)
-		{
-			ActionInterval* move = MoveBy::create(0.15, Point(50, 0));
-			auto repeatForever = cocos2d::RepeatForever::create(Sequence::create(move, move, NULL));
-			repeatForever->setTag(1);
-			sprite1->runAction(repeatForever);
-			Animate* animate = Animate::create(Anim::walkRight());
-			auto repAnimate = cocos2d::RepeatForever::create(RepeatForever::create(animate));
-			repAnimate->setTag(2);
-			sprite1->runAction(repAnimate);
-		}
-		else {
-			moveRight1 = true;
-		}
+		Hero::goRight(sprite1);
 	}
 	if ((int)keyCode == 124 || (int)keyCode == 26)//keys A or <- pressed
 	{
-		CCLOG("left");
 		for (int i = 1; i <= 8; i++)
 		{
 			sprite1->stopActionByTag(i);
 		}
-		if (isPunching1)
-		{
-			Animate* noLeftpunchanimate = Animate::create(Anim::noLeftPunch());
-			sprite1->runAction(noLeftpunchanimate);
-			isPunching1 = false;
-		}
-		isWalking1 = true;
-		isRight1 = false;
-		if (!isJumping1)
-		{
-			ActionInterval* move1 = MoveBy::create(0.15, Point(-50, 0));
-			auto repeatForever1 = cocos2d::RepeatForever::create(Sequence::create(move1, move1, NULL));
-			repeatForever1->setTag(3);
-			sprite1->runAction(repeatForever1);
-			Animate* animate1 = Animate::create(Anim::walkLeft());
-			auto repAnimate1 = cocos2d::RepeatForever::create(RepeatForever::create(animate1));
-			repAnimate1->setTag(4);
-			sprite1->runAction(repAnimate1);
-		}
-		else {
-			moveLeft1 = true;
-		}
+		Hero::goLeft(sprite1);
 	}
 	if ((int)keyCode == 133)//key J pressed
 	{
-		CCLOG("fight!");
 		for (int i = 1; i <= 8; i++)
 		{
 			sprite1->stopActionByTag(i);
 		}
-		if (!isWalking1)
-		{
-			if (!isPunching1)
-			{
-				if (isRight1)
-				{
-					Animate* punchanimate = Animate::create(Anim::rightPunch());
-					sprite1->runAction(punchanimate);
-					isPunching1 = true;
-				}
-				else
-				{
-					Animate* punchLeftanimate = Animate::create(Anim::leftPunch());
-					punchLeftanimate->setTag(6);
-					sprite1->runAction(punchLeftanimate);
-					isPunching1 = true;
-				}
-			}
-			else
-			{
-				if (isRight1)
-				{
-					Animate* punchianimate = Animate::create(Anim::rightPunchi());
-					punchianimate->setTag(7);
-					sprite1->runAction(punchianimate);
-				}
-				else
-				{
-					Animate* punchiLeftanimate = Animate::create(Anim::leftPunchi());
-					punchiLeftanimate->setTag(8);
-					sprite1->runAction(punchiLeftanimate);
-				}
-			}
-		}
+		Hero::heroPunch(sprite1);
 	}
 	if ((int)keyCode == 59)//key Space was pressed
 	{
-		CCLOG("jump");
-		Point posi = sprite1->getPosition();
-		if (posi.y == 150)
-		{
-			CCLOG("hey");
-			if (isWalking1)
-			{
-				if (isRight1)
-				{
-					isJumping1 = true;
-					Animate* Jumpanimate = Animate::create(Anim::rightJump());
-					ActionInterval* jump = JumpBy::create(0.5, Point(80, 0), 60, 1);
-					sprite1->runAction(jump);
-					sprite1->runAction(Jumpanimate);
-				}
-				else
-				{
-					isJumping1 = true;
-					Animate* JumpLeftanimate = Animate::create(Anim::leftJump());
-					ActionInterval* jump1 = JumpBy::create(0.5, Point(-80, 0), 60, 1);
-					sprite1->runAction(jump1);
-					sprite1->runAction(JumpLeftanimate);
-				}
-			}
-			else
-			{
-				if (isRight1)
-				{
-					isJumping1 = true;
-					Animate* Jumpanimate = Animate::create(Anim::rightJump());
-					ActionInterval* jump = JumpBy::create(0.5, Point(0, 0), 60, 1);
-					sprite1->runAction(jump);
-					sprite1->runAction(Jumpanimate);
-				}
-				else
-				{
-					isJumping1 = true;
-					Animate* JumpLeftanimate = Animate::create(Anim::leftJump());
-					ActionInterval* jump1 = JumpBy::create(0.5, Point(0, 0), 60, 1);
-					sprite1->runAction(jump1);
-					sprite1->runAction(JumpLeftanimate);
-				}
-			}
-		}
-		isJumping1 = false;
+		Hero::heroJump(sprite1);
 	}
-
 }
 
 void Scene2::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
@@ -278,18 +146,8 @@ void Scene2::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event
 	{
 		sprite1->stopActionByTag(i);
 	}
-	isWalking1 = false;
-	if (isRight1) {
-		sprite1->setTexture("Adv.png");
-		sprite1->setTextureRect(Rect(1, 33, 137, 131));
-	}
-	else {
-		sprite1->setTexture("Adv.png");
-		sprite1->setTextureRect(Rect(18, 1264, 137, 131));
-	}
-	jumpForce1 = 10;
+	Hero::heroStop(sprite1);
 }
-
 
 void Scene2::menuCloseCallback(Ref* pSender)
 {
