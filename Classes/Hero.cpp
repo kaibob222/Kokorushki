@@ -15,19 +15,6 @@ bool isPunching = false;
 bool moveRight = false;
 bool moveLeft = false;
 bool goDown = false;
-//cocos2d::Sprite* heroSprite;
-
-/*void startClass()
-{
-	if (Hero::sceneId == 1)
-	{
-		heroSprite = HelloWorld::sprite1;
-	}
-	else if (Hero::sceneId == 2)
-	{
-		heroSprite = Scene2::sprite1;
-	}
-}*/
 
 void Hero::goRight(Sprite* heroSprite)
 {
@@ -178,4 +165,32 @@ void Hero::heroStop(cocos2d::Sprite* heroSprite)
 		heroSprite->setTextureRect(Rect(18, 1264, 137, 131));
 	}
 	jumpForce = 10;
+}
+
+void Hero::heroHurt(cocos2d::Sprite* heroSprite)
+{
+	if (isRight)
+	{
+		Animate* rightHurtanimate = Animate::create(Anim::rightHurt());
+		heroSprite->runAction(rightHurtanimate);
+	}
+	else
+	{
+		Animate* leftHurtanimate = Animate::create(Anim::leftHurt());
+		heroSprite->runAction(leftHurtanimate);
+	}
+}
+
+void Hero::heroDeath(cocos2d::Sprite* heroSprite)
+{
+	if (isRight)
+	{
+		Animate* rightDeathanimate = Animate::create(Anim::rightDeath());
+		heroSprite->runAction(rightDeathanimate);
+	}
+	else
+	{
+		Animate* leftDeathanimate = Animate::create(Anim::leftDeath());
+		heroSprite->runAction(leftDeathanimate);
+	}
 }

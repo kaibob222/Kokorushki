@@ -139,6 +139,14 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	{
 		Hero::heroJump(sprite1);
 	}
+	if ((int)keyCode == 164)//key Enter was pressed
+	{
+		Hero::heroHurt(sprite1);
+	}
+	if ((int)keyCode == 139)//key Enter was pressed
+	{
+		Hero::heroDeath(sprite1);
+	}
 }
 
 void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)

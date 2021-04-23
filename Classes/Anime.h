@@ -20,6 +20,10 @@ public:
 	static cocos2d::Animation* rightPunchi();
 	static cocos2d::Animation* leftJump();
 	static cocos2d::Animation* rightJump();
+	static cocos2d::Animation* leftHurt();
+	static cocos2d::Animation* rightHurt();
+	static cocos2d::Animation* leftDeath();
+	static cocos2d::Animation* rightDeath();
 };
 
 #endif

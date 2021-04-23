@@ -155,3 +155,59 @@ cocos2d::Animation* Anim::leftJump()
 	 Animation* JumpLeftanimation = Animation::createWithSpriteFrames(animLeftJump, 0.15f);
 	 return JumpLeftanimation;
  }
+
+cocos2d::Animation* Anim::leftHurt()
+{
+	Vector<SpriteFrame*> animLeftHurt;
+	animLeftHurt.reserve(5);
+	animLeftHurt.pushBack(SpriteFrame::create("Adv.png", Rect(18, 2187, HeroWidth, HeroHeight)));
+	animLeftHurt.pushBack(SpriteFrame::create("Adv.png", Rect(170, 2187, HeroWidth, HeroHeight)));
+	animLeftHurt.pushBack(SpriteFrame::create("Adv.png", Rect(329, 2187, HeroWidth, HeroHeight)));
+	animLeftHurt.pushBack(SpriteFrame::create("Adv.png", Rect(478, 2187, HeroWidth, HeroHeight)));
+	animLeftHurt.pushBack(SpriteFrame::create("Adv.png", Rect(18, 2187, HeroWidth, HeroHeight)));
+	Animation* HurtLeftanimation = Animation::createWithSpriteFrames(animLeftHurt, 0.15f);
+	return HurtLeftanimation;
+}
+
+cocos2d::Animation* Anim::rightHurt()
+{
+	Vector<SpriteFrame*> animRightHurt;
+	animRightHurt.reserve(5);
+	animRightHurt.pushBack(SpriteFrame::create("Adv.png", Rect(0, 960, HeroWidth, HeroHeight)));
+	animRightHurt.pushBack(SpriteFrame::create("Adv.png", Rect(152, 960, HeroWidth, HeroHeight)));
+	animRightHurt.pushBack(SpriteFrame::create("Adv.png", Rect(304, 960, HeroWidth, HeroHeight)));
+	animRightHurt.pushBack(SpriteFrame::create("Adv.png", Rect(458, 960, HeroWidth, HeroHeight)));
+	animRightHurt.pushBack(SpriteFrame::create("Adv.png", Rect(0, 960, HeroWidth, HeroHeight)));
+	Animation* HurtRightanimation = Animation::createWithSpriteFrames(animRightHurt, 0.15f);
+	return HurtRightanimation;
+}
+
+cocos2d::Animation* Anim::rightDeath()
+{
+	Vector<SpriteFrame*> animRightDeath;
+	animRightDeath.reserve(7);
+	animRightDeath.pushBack(SpriteFrame::create("Adv.png", Rect(1, 1108, HeroWidth, HeroHeight)));
+	animRightDeath.pushBack(SpriteFrame::create("Adv.png", Rect(151, 1108, HeroWidth, HeroHeight)));
+	animRightDeath.pushBack(SpriteFrame::create("Adv.png", Rect(305, 1108, HeroWidth, HeroHeight)));
+	animRightDeath.pushBack(SpriteFrame::create("Adv.png", Rect(461, 1108, HeroWidth, HeroHeight)));
+	animRightDeath.pushBack(SpriteFrame::create("Adv.png", Rect(621, 1108, HeroWidth, HeroHeight)));
+	animRightDeath.pushBack(SpriteFrame::create("Adv.png", Rect(780, 1108, HeroWidth, HeroHeight)));
+	animRightDeath.pushBack(SpriteFrame::create("Adv.png", Rect(932, 1108, HeroWidth, HeroHeight)));
+	Animation* DeathRightanimation = Animation::createWithSpriteFrames(animRightDeath, 0.15f);
+	return DeathRightanimation;
+}
+
+cocos2d::Animation* Anim::leftDeath()
+{
+	Vector<SpriteFrame*> animLeftDeath;
+	animLeftDeath.reserve(7);
+	animLeftDeath.pushBack(SpriteFrame::create("Adv.png", Rect(18, 2341, HeroWidth, HeroHeight)));
+	animLeftDeath.pushBack(SpriteFrame::create("Adv.png", Rect(172, 2341, HeroWidth, HeroHeight)));
+	animLeftDeath.pushBack(SpriteFrame::create("Adv.png", Rect(328, 2341, HeroWidth, HeroHeight)));
+	animLeftDeath.pushBack(SpriteFrame::create("Adv.png", Rect(476, 2341, HeroWidth, HeroHeight)));
+	animLeftDeath.pushBack(SpriteFrame::create("Adv.png", Rect(624, 2341, HeroWidth, HeroHeight-13)));
+	animLeftDeath.pushBack(SpriteFrame::create("Adv.png", Rect(775, 2341, HeroWidth, HeroHeight-13)));
+	animLeftDeath.pushBack(SpriteFrame::create("Adv.png", Rect(929, 2341, HeroWidth, HeroHeight-13)));
+	Animation* DeathLeftanimation = Animation::createWithSpriteFrames(animLeftDeath, 0.15f);
+	return DeathLeftanimation;
+}
