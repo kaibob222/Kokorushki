@@ -28,6 +28,9 @@ public:
 	void Settings(Ref *pSender);
 	void ImageButton(Ref *pSender);
 	void Exit(Ref *pSender);
+
+	void Heart(Ref *pSender);
+	void Pause(Ref *pSender);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

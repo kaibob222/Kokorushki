@@ -26,7 +26,7 @@ bool MenuMain::init()
 	auto menu_Item_1 = MenuItemFont::create("Play", CC_CALLBACK_1(MenuMain::Play, this));
 	auto menu_Item_2 = MenuItemFont::create("Highscores", CC_CALLBACK_1(MenuMain::Highscores, this));
 	auto menu_Item_3 = MenuItemFont::create("Settings", CC_CALLBACK_1(MenuMain::Settings, this));
-	auto menu_Item_4 = MenuItemImage::create("CloseNormal.png", "CloseSelected.png", CC_CALLBACK_1(MenuMain::ImageButton, this));
+	auto menu_Item_4 = MenuItemImage::create("CloseNormal2.png", "CloseNormal2.png", CC_CALLBACK_1(MenuMain::ImageButton, this));
 	
 	auto *menu = Menu::create(menu_Item_1, menu_Item_2, menu_Item_3, menu_Item_4, NULL);
 	
