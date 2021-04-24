@@ -2,12 +2,14 @@
 #include "MenuMain.h"
 #include "ui/CocosGUI.h"
 #include "Scene2.h"
+#include "GameOver.h"
 #include "Anime.h"
 #include "Hero.h"
 
 USING_NS_CC;
 
 extern int q;
+extern int xp;
 
 //Scene* HelloWorld::createScene()
 //{
@@ -109,15 +111,52 @@ bool HelloWorld::init()
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);// if you are using cocos2d-x 3.0alpha.1 and later!// if you are using cocos2d-x 3.0alpha.1 and later!
 
 	auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(HelloWorld::Exit, this));
-	auto *menu = Menu::create(menu_Item_1, NULL);
-	menu->alignItemsVertically();
-	menu->setPosition(Point(850, 570));
-	this->addChild(menu);
+	//auto menu_Item_0 = MenuItemFont::create("Pause", CC_CALLBACK_1(HelloWorld::Pause, this));
+	auto menu_Item_2 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+	auto menu_Item_3 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+	auto menu_Item_4 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 
+	auto *menu = Menu::create(menu_Item_1, NULL);
+	//auto *menu0 = Menu::create(menu_Item_0, NULL);
+	auto *menu2 = Menu::create(menu_Item_2, NULL);
+	auto *menu3 = Menu::create(menu_Item_3, NULL);
+	auto *menu4 = Menu::create(menu_Item_4, NULL);
+	//menu->alignItemsVertically();
+	menu->setPosition(Point(850, 570));
+	//menu0->setPosition(Point(750, 570));
+	menu2->setPosition(Point(20, 570));
+	menu3->setPosition(Point(60, 570));
+	menu4->setPosition(Point(100, 570));
+	this->addChild(menu);
+	//this->addChild(menu0);
+	this->addChild(menu2);
+	this->addChild(menu3);
+	this->addChild(menu4);
 	this->scheduleUpdate();
 
-	
+	if (xp == 2) {
+		auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+		auto *menu4 = Menu::create(menu_Item_4, NULL);
+		menu4->setPosition(Point(100, 570));
+		this->addChild(menu4);
+	}
+	if (xp == 1) {
+		auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+		auto *menu3 = Menu::create(menu_Item_3, NULL);
+		auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+		auto *menu4 = Menu::create(menu_Item_4, NULL);
+		menu3->setPosition(Point(60, 570));
+		menu4->setPosition(Point(100, 570));
+		this->addChild(menu3);
+		this->addChild(menu4);
+	}
+
 	return true;
+}
+
+void HelloWorld::Heart(cocos2d::Ref *pSpender)
+{
+	CCLOG("Image Button");
 }
 
 void HelloWorld::update(float dt) {
@@ -136,10 +175,47 @@ void HelloWorld::Exit(cocos2d::Ref *pSpender)
 	Director::getInstance()->replaceScene(scene);
 }
 
+/*void HelloWorld::Pause(cocos2d::Ref *pSpender)
+{
+	CCLOG("Pause");
+	//auto pausedSet = this->getScheduler()->pauseAllTargets();
+	Director::getInstance()->pause();
+}*/
+
 void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	CCLOG("Key with keycode %d pressed", keyCode);
 	Point pos = sprite1->getPosition();
+	if ((int)keyCode == 164)
+	{
+		xp--;
+		if (xp == 2) {
+			auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+			auto *menu4 = Menu::create(menu_Item_4, NULL);
+			menu4->setPosition(Point(100, 570));
+			this->addChild(menu4);
+			Hero::heroHurt(sprite1);
+		}
+		if (xp == 1) {
+			auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+			auto *menu3 = Menu::create(menu_Item_3, NULL);
+			menu3->setPosition(Point(60, 570));
+			this->addChild(menu3);
+			Hero::heroHurt(sprite1);
+		}
+		if (xp == 0) {
+			auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+			auto *menu2 = Menu::create(menu_Item_2, NULL);
+			menu2->setPosition(Point(20, 570));
+			this->addChild(menu2);
+			Hero::heroDeath(sprite1);
+			xp = 3;
+			auto scene = GameOver::createScene();
+			Director::getInstance()->replaceScene(scene);
+		}
+	}
+
+
 	if ((int)keyCode == 127 || (int)keyCode == 27)//keys D or -> pressed
 	{
 		for (int i = 1; i <= 8; i++)
@@ -167,6 +243,14 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	if ((int)keyCode == 59)//key Space was pressed
 	{
 		Hero::heroJump(sprite1);
+	}
+	/*if ((int)keyCode == 164)//key Enter was pressed
+	{
+		Hero::heroHurt(sprite1);
+	}*/
+	if ((int)keyCode == 139)//key Enter was pressed
+	{
+		Hero::heroDeath(sprite1);
 	}
 }
 

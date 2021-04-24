@@ -2,12 +2,15 @@
 #include "MenuMain.h"
 #include "ui/CocosGUI.h"
 #include "HelloWorldScene.h"
+#include "GameOver.h"
 #include "Anime.h"
 #include "Hero.h"
 
 USING_NS_CC;
 
 int q;
+bool motion = false;
+int xp = 3;
 
 Scene* Scene2::createScene()
 {
@@ -66,11 +69,36 @@ bool Scene2::init()
 
 	sprite1 = Sprite::create("Adv.png", Rect(1, 33, 137, 131));
 	sprite1->setPosition(Point(50, 150));
-	sprite2 = Sprite::create("enemy/enemy2.png");
-	sprite2->setPosition(Point(600, 185));
+
+	auto mySprite = Sprite::create("enemy/Skel.png");
+	Vector<SpriteFrame*> animFrames;
+	animFrames.reserve(10);
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(0, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(173, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(173, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(173, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(519, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(519, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(0, 0, 170, 251)));
+	/*animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(380, 33, 138, 230)));*/
+	/*animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(700, 33, 150, 220)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(1, 33, 150, 220)));*/
+
+	mySprite->setPosition(Point(600, 205));
+	Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
+	Animate* animate = Animate::create(animation);
+	mySprite->runAction(RepeatForever::create(animate));
+
+	/*sprite2 = Sprite::create("enemy/Skel.png", Rect(1, 33, 170, 220));
+	sprite2->setPosition(Point(600, 205));*/
 
 	this->addChild(sprite1);
-	this->addChild(sprite2);
+	this->addChild(mySprite);
 
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Scene2::keyPressed, this);
@@ -78,19 +106,54 @@ bool Scene2::init()
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 
 	auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(Scene2::Exit, this));
+	auto menu_Item_2 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+	auto menu_Item_3 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+	auto menu_Item_4 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+	
 	auto *menu = Menu::create(menu_Item_1, NULL);
 	menu->alignItemsVertically();
-	menu->setPosition(Point(880, 570));
+	auto *menu2 = Menu::create(menu_Item_2, NULL);
+	auto *menu3 = Menu::create(menu_Item_3, NULL);
+	auto *menu4 = Menu::create(menu_Item_4, NULL);
+	menu->setPosition(Point(850, 570));
+	menu2->setPosition(Point(20, 570));
+	menu3->setPosition(Point(60, 570));
+	menu4->setPosition(Point(100, 570));
 	this->addChild(menu);
+	this->addChild(menu2);
+	this->addChild(menu3);
+	this->addChild(menu4);
 
 	this->scheduleUpdate();
+
+	if (xp == 2) {
+		auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+		auto *menu4 = Menu::create(menu_Item_4, NULL);
+		menu4->setPosition(Point(100, 570));
+		this->addChild(menu4);
+	}
+	if (xp == 1) {
+		auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+		auto *menu3 = Menu::create(menu_Item_3, NULL);
+		menu3->setPosition(Point(60, 570));
+		this->addChild(menu3);
+		auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+		auto *menu4 = Menu::create(menu_Item_4, NULL);
+		menu4->setPosition(Point(100, 570));
+		this->addChild(menu4);
+	}
 
 	return true;
 }
 
+void Scene2::Heart(cocos2d::Ref *pSpender)
+{
+	CCLOG("Image Button");
+}
+
 void Scene2::update(float dt) {
 	Point pos = sprite1->getPosition();
-	Point pos1 = sprite2->getPosition();
+	/*Point pos1 = sprite2->getPosition();*/
 
 	if (pos < Point(50, 150)) {
 		q = 1;
@@ -110,6 +173,35 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 {
 	CCLOG("Key with keycode %d pressed", keyCode);
 	Point pos = sprite1->getPosition();
+	if ((int)keyCode == 164)
+	{
+		xp--;
+		if (xp == 2) {
+			auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+			auto *menu4 = Menu::create(menu_Item_4, NULL);
+			menu4->setPosition(Point(100, 570));
+			this->addChild(menu4);
+			Hero::heroHurt(sprite1);
+		}
+		if (xp == 1) {
+			auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+			auto *menu3 = Menu::create(menu_Item_3, NULL);
+			menu3->setPosition(Point(60, 570));
+			this->addChild(menu3);
+			Hero::heroHurt(sprite1);
+		}
+		if (xp == 0) {
+			auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+			auto *menu2 = Menu::create(menu_Item_2, NULL);
+			menu2->setPosition(Point(20, 570));
+			this->addChild(menu2);
+			Hero::heroDeath(sprite1);
+			xp = 3;
+			auto scene = GameOver::createScene();
+			Director::getInstance()->replaceScene(scene);
+		}
+	}
+
 	if ((int)keyCode == 127 || (int)keyCode == 27)//keys D or -> pressed
 	{
 		for (int i = 1; i <= 8; i++)
@@ -137,6 +229,14 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 	if ((int)keyCode == 59)//key Space was pressed
 	{
 		Hero::heroJump(sprite1);
+	}
+	/*if ((int)keyCode == 164)//key Enter was pressed
+	{
+		Hero::heroHurt(sprite1);
+	}*/
+	if ((int)keyCode == 139)//key Enter was pressed
+	{
+		Hero::heroDeath(sprite1);
 	}
 }
 
