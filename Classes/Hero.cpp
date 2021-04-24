@@ -28,7 +28,6 @@ bool goDown = false;
 		heroSprite = Scene2::sprite1;
 	}
 }*/
-
 void Hero::goRight(Sprite* heroSprite)
 {
 	if (isPunching)
