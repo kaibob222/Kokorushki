@@ -8,6 +8,7 @@
 USING_NS_CC;
 
 int q;
+bool motion = false;
 
 Scene* Scene2::createScene()
 {
@@ -66,11 +67,36 @@ bool Scene2::init()
 
 	sprite1 = Sprite::create("Adv.png", Rect(1, 33, 137, 131));
 	sprite1->setPosition(Point(50, 150));
-	sprite2 = Sprite::create("enemy/enemy2.png");
-	sprite2->setPosition(Point(600, 185));
+
+	auto mySprite = Sprite::create("enemy/Skel.png");
+	Vector<SpriteFrame*> animFrames;
+	animFrames.reserve(10);
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(0, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(173, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(173, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(173, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(519, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(519, 0, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(0, 0, 170, 251)));
+	/*animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(380, 33, 138, 230)));*/
+	/*animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(700, 33, 150, 220)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(1, 33, 150, 220)));*/
+
+	mySprite->setPosition(Point(600, 205));
+	Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
+	Animate* animate = Animate::create(animation);
+	mySprite->runAction(RepeatForever::create(animate));
+
+	/*sprite2 = Sprite::create("enemy/Skel.png", Rect(1, 33, 170, 220));
+	sprite2->setPosition(Point(600, 205));*/
 
 	this->addChild(sprite1);
-	this->addChild(sprite2);
+	this->addChild(mySprite);
 
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Scene2::keyPressed, this);
@@ -80,7 +106,7 @@ bool Scene2::init()
 	auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(Scene2::Exit, this));
 	auto *menu = Menu::create(menu_Item_1, NULL);
 	menu->alignItemsVertically();
-	menu->setPosition(Point(880, 570));
+	menu->setPosition(Point(850, 570));
 	this->addChild(menu);
 
 	this->scheduleUpdate();
@@ -90,7 +116,7 @@ bool Scene2::init()
 
 void Scene2::update(float dt) {
 	Point pos = sprite1->getPosition();
-	Point pos1 = sprite2->getPosition();
+	/*Point pos1 = sprite2->getPosition();*/
 
 	if (pos < Point(50, 150)) {
 		q = 1;
