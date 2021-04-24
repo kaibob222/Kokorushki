@@ -167,18 +167,21 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 			auto *menu4 = Menu::create(menu_Item_4, NULL);
 			menu4->setPosition(Point(100, 570));
 			this->addChild(menu4);
+			Hero::heroHurt(sprite1);
 		}
 		if (xp == 1) {
 			auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 			auto *menu3 = Menu::create(menu_Item_3, NULL);
 			menu3->setPosition(Point(60, 570));
 			this->addChild(menu3);
+			Hero::heroHurt(sprite1);
 		}
 		if (xp == 0) {
 			auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 			auto *menu2 = Menu::create(menu_Item_2, NULL);
 			menu2->setPosition(Point(20, 570));
 			this->addChild(menu2);
+			Hero::heroDeath(sprite1);
 			xp = 3;
 			auto scene = GameOver::createScene();
 			Director::getInstance()->replaceScene(scene);
@@ -214,10 +217,10 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	{
 		Hero::heroJump(sprite1);
 	}
-	if ((int)keyCode == 164)//key Enter was pressed
+	/*if ((int)keyCode == 164)//key Enter was pressed
 	{
 		Hero::heroHurt(sprite1);
-	}
+	}*/
 	if ((int)keyCode == 139)//key Enter was pressed
 	{
 		Hero::heroDeath(sprite1);
