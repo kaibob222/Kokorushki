@@ -146,6 +146,9 @@ bool Scene2::init()
 	return true;
 }
 
+bool isPaused1 = false;
+int q112 = 0;
+
 void Scene2::Heart(cocos2d::Ref *pSpender)
 {
 	CCLOG("Image Button");
@@ -153,12 +156,22 @@ void Scene2::Heart(cocos2d::Ref *pSpender)
 
 void Scene2::update(float dt) {
 	Point pos = sprite1->getPosition();
-	/*Point pos1 = sprite2->getPosition();*/
 
 	if (pos < Point(50, 150)) {
 		q = 1;
 		auto scene = HelloWorld::createScene();
 		Director::getInstance()->replaceScene(scene);
+	}
+	if (isPaused1)
+	{
+		q112++;
+		if (q112 == 100)
+		{
+			auto scene = GameOver::createScene();
+			Director::getInstance()->replaceScene(scene);
+			q112 = 0;
+			isPaused1 = false;
+		}
 	}
 }
 
@@ -191,14 +204,13 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 			Hero::heroHurt(sprite1);
 		}
 		if (xp == 0) {
+			Hero::heroDeath(sprite1);
+			isPaused1 = true;
 			auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
 			auto *menu2 = Menu::create(menu_Item_2, NULL);
 			menu2->setPosition(Point(20, 570));
 			this->addChild(menu2);
-			Hero::heroDeath(sprite1);
 			xp = 3;
-			auto scene = GameOver::createScene();
-			Director::getInstance()->replaceScene(scene);
 		}
 	}
 
@@ -230,14 +242,14 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 	{
 		Hero::heroJump(sprite1);
 	}
-	/*if ((int)keyCode == 164)//key Enter was pressed
+	if ((int)keyCode == 164)//key Enter was pressed
 	{
 		Hero::heroHurt(sprite1);
-	}*/
-	if ((int)keyCode == 139)//key Enter was pressed
+	}
+	/*if ((int)keyCode == 139)//key P was pressed
 	{
 		Hero::heroDeath(sprite1);
-	}
+	}*/
 }
 
 void Scene2::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
