@@ -7,7 +7,6 @@ class HelloWorld : public cocos2d::Scene
 {
 public:
     static cocos2d::Scene* createScene();
-
     virtual bool init();
     
     // a selector callback
@@ -27,9 +26,16 @@ public:
 	void Settings(Ref *pSender);
 	void ImageButton(Ref *pSender);
 	void Exit(Ref *pSender);
-
 	void Heart(Ref *pSender);
 	void Pause(Ref *pSender);
+private:
+	cocos2d::PhysicsWorld *sceneWorld;
+
+	void SetPhysicsWorld(cocos2d::PhysicsWorld *world) {
+		sceneWorld = world;
+	};
+
+	
 };
 
 #endif // __HELLOWORLD_SCENE_H__
