@@ -15,6 +15,7 @@ bool isPunching = false;
 bool moveRight = false;
 bool moveLeft = false;
 bool goDown = false;
+
 void Hero::goRight(Sprite* heroSprite)
 {
 	if (isPunching)

@@ -10,10 +10,6 @@ class Physics
 public:
 	void setPhysics(Unit unit);
 private:
-	cocos2d::PhysicsWorld *sceneWorld;
-
-	void SetPhysicsWorld(cocos2d::PhysicsWorld *world) {
-		sceneWorld = world;
-	};
+	void update(float dt);
 };
 #endif

@@ -11,23 +11,10 @@ USING_NS_CC;
 extern int q;
 extern int xp;
 
-//Scene* HelloWorld::createScene()
-//{
-//	return HelloWorld::create();
-//}
-//physics look a down 
 Scene* HelloWorld::createScene()
 {
-	auto scene1 = HelloWorld::createWithPhysics();
-	scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-
-	scene1->getPhysicsWorld()->setGravity(Vec2(0, 0));
-
-	auto layer = HelloWorld::create();
-	layer->SetPhysicsWorld(scene1-> getPhysicsWorld());
-	scene1->addChild(layer);
-	return scene1;
-};
+	return HelloWorld::create();
+}
 
 static void problemLoading(const char* filename)
 {
@@ -48,17 +35,6 @@ bool HelloWorld::init()
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	///phy
-	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
-	auto edgeNode = Node::create();
-	edgeNode->setPosition(Point(visibleSize.width /2 + origin.x, visibleSize.height /2 + origin.y));
-	edgeNode->setPhysicsBody(edgeBody);
-
-	this->addChild(edgeNode);
-
-
-	///
 
 	auto background = Sprite::create("2.png");
 	if (background == nullptr)
@@ -99,10 +75,7 @@ bool HelloWorld::init()
 		sprite1->setPosition(Point(880, 150));
 		q = 0;
 	}
-	// physics
-	auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize()/1.5, PhysicsMaterial(0, 1, 0));
-	sprite1->setPhysicsBody(spriteBody);
-	//
+
 	this->addChild(sprite1);
 
 	auto keyboardListener = EventListenerKeyboard::create();
