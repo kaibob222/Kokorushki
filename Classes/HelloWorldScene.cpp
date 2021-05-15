@@ -125,7 +125,7 @@ bool HelloWorld::init()
 		this->addChild(menu4);
 	}
 
-	//JsonAdapter::JsonInit();
+	JsonAdapter::JsonInit();
 
 	return true;
 }
