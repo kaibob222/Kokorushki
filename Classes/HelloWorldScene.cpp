@@ -5,6 +5,7 @@
 #include "GameOver.h"
 #include "Anime.h"
 #include "Hero.h"
+#include "JsonAdapter.h"
 
 USING_NS_CC;
 
@@ -150,6 +151,8 @@ bool HelloWorld::init()
 		this->addChild(menu3);
 		this->addChild(menu4);
 	}
+
+	//JsonAdapter::JsonInit();
 
 	return true;
 }
