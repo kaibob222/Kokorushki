@@ -5,6 +5,7 @@
 #include "Unit.h"
 
 class Enemy : public Unit
-{
+{	public:
+	static void enemyPhysics(cocos2d::Sprite* heroSprite);
 };
 #endif

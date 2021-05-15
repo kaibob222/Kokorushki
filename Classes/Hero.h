@@ -17,5 +17,6 @@ public:
 	static void heroStop(cocos2d::Sprite* heroSprite);
 	static void heroHurt(cocos2d::Sprite* heroSprite);
 	static void heroDeath(cocos2d::Sprite* heroSprite);
+	static void heroPhysics(cocos2d::Sprite* heroSprite);
 };
 #endif
