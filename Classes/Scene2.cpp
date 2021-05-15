@@ -5,6 +5,7 @@
 #include "GameOver.h"
 #include "Anime.h"
 #include "Hero.h"
+#include "Enemy.h"
 
 USING_NS_CC;
 
@@ -12,11 +13,22 @@ int q;
 bool motion = false;
 int xp = 3;
 
+//Scene* Scene2::createScene()
+//{
+//	return Scene2::create();
+//}
 Scene* Scene2::createScene()
 {
-	return Scene2::create();
-}
+	auto scene2 = Scene2::createWithPhysics();
+	scene2->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
+	scene2->getPhysicsWorld()->setGravity(Vec2(0, 0));
+
+	auto layer = Scene2::create();
+	layer->SetPhysicsWorld(scene2->getPhysicsWorld());
+	scene2->addChild(layer);
+	return scene2;
+}
 // Print useful error message instead of segfaulting when files are not there.
 static void problemLoading(const char* filename)
 {
@@ -40,6 +52,17 @@ bool Scene2::init()
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+	///phy
+	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
+	auto edgeNode = Node::create();
+	edgeNode->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+	edgeNode->setPhysicsBody(edgeBody);
+
+	this->addChild(edgeNode);
+
+
+	///
 
 	auto background = Sprite::create("scene2.jpg");
 	if (background == nullptr)
@@ -73,9 +96,10 @@ bool Scene2::init()
 	sprite1 = Sprite::create("Adv.png", Rect(1, 33, 137, 131));
 	sprite1->setPosition(Point(50, 150));
 
-	auto Enemy = Sprite::create("enemy/Skel.png");
+	auto Enemy = Sprite::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251));
+	Enemy->setPosition(Point(400, 205));
 	Vector<SpriteFrame*> animFrames;
-
+	
 
 	animFrames.reserve(10);
 	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
@@ -94,10 +118,12 @@ bool Scene2::init()
 	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
 	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
 
-	Enemy->setPosition(Point(700, 205));
+	
 	Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
 	Animate* animate = Animate::create(animation);
 	Enemy->runAction(RepeatForever::create(animate));
+
+
 
 	this->animateEnemy(Enemy);
 	float actualDuration = 0.3f;
@@ -107,12 +133,19 @@ bool Scene2::init()
 	auto actionMove = MoveBy::create(actualDuration, position.operator * (10));
 	auto actionMoveDone = CallFuncN::create(CC_CALLBACK_1(Scene2::enemyMoveFinished, this));
 	Enemy->runAction(Sequence::create(actionMove, actionMoveDone, NULL));
+	//enemy physicbody
 
-
+	Enemy::enemyPhysics(Enemy);
+//	Enemy-> getPhysicsBody()->setCategoryBitmask(0x02);    // 0010
+//	Enemy-> getPhysicsBody()->setCollisionBitmask(0x01);
+	//hero physicsbody
+	Hero::heroPhysics(sprite1);
+	//sprite1->getPhysicsBody()->setCategoryBitmask(0xFFFFFFFF);    // 0010
+	//sprite1->getPhysicsBody()->setCollisionBitmask(0xFFFFFFFF);   // 0001
 
 	this->addChild(sprite1);
 	this->addChild(Enemy);
-
+	
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Scene2::keyPressed, this);
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(Scene2::keyReleased, this);
