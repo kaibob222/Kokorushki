@@ -24,6 +24,9 @@ static void problemLoading(const char* filename)
 	printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
 
+
+
+
 // on "init" you need to initialize your instance
 bool Scene2::init()
 {
@@ -70,35 +73,45 @@ bool Scene2::init()
 	sprite1 = Sprite::create("Adv.png", Rect(1, 33, 137, 131));
 	sprite1->setPosition(Point(50, 150));
 
-	auto mySprite = Sprite::create("enemy/Skel.png");
+	auto Enemy = Sprite::create("enemy/Skel.png");
 	Vector<SpriteFrame*> animFrames;
-	animFrames.reserve(10);
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(0, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(173, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(173, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(173, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(346, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(519, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(519, 0, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(0, 0, 170, 251)));
-	/*animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(380, 33, 138, 230)));*/
-	/*animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(700, 33, 150, 220)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skel.png", Rect(1, 33, 150, 220)));*/
 
-	mySprite->setPosition(Point(600, 205));
+
+	animFrames.reserve(10);
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
+
+	Enemy->setPosition(Point(700, 205));
 	Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
 	Animate* animate = Animate::create(animation);
-	mySprite->runAction(RepeatForever::create(animate));
+	Enemy->runAction(RepeatForever::create(animate));
 
-	/*sprite2 = Sprite::create("enemy/Skel.png", Rect(1, 33, 170, 220));
-	sprite2->setPosition(Point(600, 205));*/
+	this->animateEnemy(Enemy);
+	float actualDuration = 0.3f;
+
+	auto position = (sprite1->getPosition() - Enemy->getPosition());
+	position.normalize();
+	auto actionMove = MoveBy::create(actualDuration, position.operator * (10));
+	auto actionMoveDone = CallFuncN::create(CC_CALLBACK_1(Scene2::enemyMoveFinished, this));
+	Enemy->runAction(Sequence::create(actionMove, actionMoveDone, NULL));
+
+
 
 	this->addChild(sprite1);
-	this->addChild(mySprite);
+	this->addChild(Enemy);
 
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Scene2::keyPressed, this);
@@ -142,12 +155,44 @@ bool Scene2::init()
 		menu4->setPosition(Point(100, 570));
 		this->addChild(menu4);
 	}
+	this->enemyMoveFinished(Enemy);
 
 	return true;
 }
 
 bool isPaused1 = false;
 int q112 = 0;
+void Scene2::enemyMoveFinished(cocos2d::Ref* pSpender)
+{
+	Sprite* Enemy = (Sprite*)pSpender;
+	this->animateEnemy(Enemy);
+}
+
+void Scene2::animateEnemy(cocos2d::Ref* pSpender)
+{
+	Sprite* Enemy = (Sprite*)pSpender;
+	/*this->animateEnemy(Enemy);*/
+	float actualDuration = 0.3f;
+
+	auto position = (sprite1->getPosition() - Enemy->getPosition());
+	position.normalize();
+	auto actionMove = MoveBy::create(actualDuration, position.operator * (11));
+	auto actionMoveDone = CallFuncN::create(CC_CALLBACK_1(Scene2::enemyMoveFinished, this));
+	Enemy->runAction(Sequence::create(actionMove, actionMoveDone, NULL));
+
+	auto actionTo1 = RotateTo::create(0, 0, 0); 
+	auto actionTo2 = RotateTo::create(0, 0, 180);
+	auto diff = (sprite1->getPosition(), Enemy->getPosition());
+
+	if (diff.x < 0) {
+		Enemy->runAction(actionTo2);
+	}
+	if (diff.x > 0) {
+		Enemy->runAction(actionTo1);
+	}
+	
+}
+
 
 void Scene2::Heart(cocos2d::Ref *pSpender)
 {
