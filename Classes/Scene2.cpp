@@ -27,6 +27,7 @@ Scene* Scene2::createScene()
 	auto layer = Scene2::create();
 	layer->SetPhysicsWorld(scene2->getPhysicsWorld());
 	scene2->addChild(layer);
+	
 	return scene2;
 }
 // Print useful error message instead of segfaulting when files are not there.

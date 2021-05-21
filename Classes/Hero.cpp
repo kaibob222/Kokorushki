@@ -196,10 +196,10 @@ void Hero::heroDeath(cocos2d::Sprite* heroSprite)
 }
 
 void Hero::heroPhysics(cocos2d::Sprite* heroSprite) {
-	auto spriteBody = PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(0, 0, 0));
+	auto spriteBody = PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
 	heroSprite->setPhysicsBody(spriteBody);
-	/*spriteBody->isRotationEnabled();*/
-	spriteBody->setDynamic(false);
+	spriteBody->setRotationEnable(false);
+	spriteBody->setDynamic(true);
 	
 	
 	
