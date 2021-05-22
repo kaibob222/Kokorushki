@@ -152,8 +152,6 @@ bool HelloWorld::init()
 		this->addChild(menu4);
 	}
 
-	JsonAdapter::JsonInit();
-
 	return true;
 }
 
@@ -169,8 +167,9 @@ void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
 
 	if (pos > Point(880, 150)) {
-		auto scene = Scene2::createScene();
-		Director::getInstance()->replaceScene(scene);
+		JsonAdapter::JsonInit(2);
+		//auto scene = Scene2::createScene();
+		//Director::getInstance()->replaceScene(scene);
 	}
 	if (isPaused)
 	{

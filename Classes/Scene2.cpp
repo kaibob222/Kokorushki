@@ -237,8 +237,9 @@ void Scene2::update(float dt) {
 
 	if (pos < Point(50, 150)) {
 		q = 1;
-		auto scene = HelloWorld::createScene();
-		Director::getInstance()->replaceScene(scene);
+		JsonAdapter::JsonInit(1);
+		//auto scene = HelloWorld::createScene();
+		//Director::getInstance()->replaceScene(scene);
 	}
 	if (isPaused1)
 	{
