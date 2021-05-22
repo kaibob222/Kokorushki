@@ -18,7 +18,7 @@ Scene* HelloWorld::createScene()
 	auto scene1 = HelloWorld::createWithPhysics();
 	scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
-	scene1->getPhysicsWorld()->setGravity(Vec2(0, 0));
+	scene1->getPhysicsWorld()->setGravity(Vec2(1, 0));
 
 	auto layer = HelloWorld::create();
 	layer->SetPhysicsWorld(scene1->getPhysicsWorld());
@@ -49,12 +49,14 @@ bool HelloWorld::init()
 	///phy
 	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
 	auto edgeNode = Node::create();
-	edgeNode->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+	edgeNode->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + 103));
 	edgeNode->setPhysicsBody(edgeBody);
 
 	this->addChild(edgeNode);
-
-
+	/*auto earth = PhysicsBody::createBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT);
+	auto earthNode = Node::create();
+	earthNode->setPhysicsBody(earth);*/
+	
 	///
 
 	auto background = Sprite::create("2.png");

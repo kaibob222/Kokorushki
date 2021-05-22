@@ -27,6 +27,7 @@ Scene* Scene2::createScene()
 	auto layer = Scene2::create();
 	layer->SetPhysicsWorld(scene2->getPhysicsWorld());
 	scene2->addChild(layer);
+	
 	return scene2;
 }
 // Print useful error message instead of segfaulting when files are not there.
@@ -96,44 +97,61 @@ bool Scene2::init()
 	sprite1 = Sprite::create("Adv.png", Rect(1, 33, 137, 131));
 	sprite1->setPosition(Point(50, 150));
 
-	auto Enemy = Sprite::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251));
-	Enemy->setPosition(Point(400, 205));
+	auto Enemy = Sprite::create("enemy/Skelet2.png", Rect(20, 0, 170, 251));
+	Enemy->setPosition(Point(700, 150)); //205 defolt
 	Vector<SpriteFrame*> animFrames;
-	
+	bool key = false;
 
-	animFrames.reserve(10);
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
-	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 730, 170, 251)));
+	if (key == false)
+	{
+		animFrames.reserve(15);
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1580, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1580, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1820, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1820, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2080, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2080, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2340, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2340, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2585, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2585, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2840, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2840, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3100, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3100, 533, 170, 251)));
+		/*animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(550, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(800, 533, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(800, 533, 170, 251)));*/
+		/*animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 785, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 785, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 785, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 785, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 785, 170, 251)));*/
 
-	
-	Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
-	Animate* animate = Animate::create(animation);
-	Enemy->runAction(RepeatForever::create(animate));
-
-
-
-	this->animateEnemy(Enemy);
-	float actualDuration = 0.3f;
-
-	auto position = (sprite1->getPosition() - Enemy->getPosition());
-	position.normalize();
-	auto actionMove = MoveBy::create(actualDuration, position.operator * (10));
-	auto actionMoveDone = CallFuncN::create(CC_CALLBACK_1(Scene2::enemyMoveFinished, this));
-	Enemy->runAction(Sequence::create(actionMove, actionMoveDone, NULL));
+		Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
+		Animate* animate = Animate::create(animation);
+		Enemy->runAction(RepeatForever::create(animate));
+	}
 	//enemy physicbody
+
+	/*animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2860, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(3121, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 785, 170, 251)));
+	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 785, 170, 251)));*/
 
 	Enemy::enemyPhysics(Enemy);
 //	Enemy-> getPhysicsBody()->setCategoryBitmask(0x02);    // 0010
@@ -145,6 +163,9 @@ bool Scene2::init()
 
 	this->addChild(sprite1);
 	this->addChild(Enemy);
+
+
+
 	
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Scene2::keyPressed, this);
@@ -204,26 +225,57 @@ void Scene2::enemyMoveFinished(cocos2d::Ref* pSpender)
 void Scene2::animateEnemy(cocos2d::Ref* pSpender)
 {
 	Sprite* Enemy = (Sprite*)pSpender;
-	/*this->animateEnemy(Enemy);*/
+
 	float actualDuration = 0.3f;
 
 	auto position = (sprite1->getPosition() - Enemy->getPosition());
 	position.normalize();
-	auto actionMove = MoveBy::create(actualDuration, position.operator * (11));
+	auto actionMove = MoveBy::create(actualDuration, position.operator * (10));
 	auto actionMoveDone = CallFuncN::create(CC_CALLBACK_1(Scene2::enemyMoveFinished, this));
 	Enemy->runAction(Sequence::create(actionMove, actionMoveDone, NULL));
 
-	auto actionTo1 = RotateTo::create(0, 0, 0); 
-	auto actionTo2 = RotateTo::create(0, 0, 180);
-	auto diff = (sprite1->getPosition(), Enemy->getPosition());
+	if (((Enemy->getPositionX() - sprite1->getPositionX()) <= 200))
+	{
 
-	if (diff.x < 0) {
-		Enemy->runAction(actionTo2);
+		Vector<SpriteFrame*> animFrames;
+		animFrames.reserve(40);
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(30, 10, 170, 250)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(30, 10, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(300, 10, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(300, 10, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(540, 10, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(540, 10, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(820, 10, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(820, 10, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1000, 10, 250, 270)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1000, 10, 250, 270)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1000, 10, 250, 270)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1320, 10, 170, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1320, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1320, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1820, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1820, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2000, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2000, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2000, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2000, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2000, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2300, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2300, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2300, 10, 200, 251)));
+		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2300, 10, 200, 251)));
+
+
+		Animation* animation = Animation::createWithSpriteFrames(animFrames, 1.0f);
+		Animate* animate = Animate::create(animation);
+		Enemy->runAction(RepeatForever::create(animate));
 	}
-	if (diff.x > 0) {
-		Enemy->runAction(actionTo1);
-	}
-	
 }
 
 
