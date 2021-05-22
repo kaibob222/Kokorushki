@@ -18,7 +18,7 @@ Scene* HelloWorld::createScene()
 	auto scene1 = HelloWorld::createWithPhysics();
 	scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
-	scene1->getPhysicsWorld()->setGravity(Vec2(1, 0));
+	scene1->getPhysicsWorld()->setGravity(Vec2(0, -2));
 
 	auto layer = HelloWorld::create();
 	layer->SetPhysicsWorld(scene1->getPhysicsWorld());
