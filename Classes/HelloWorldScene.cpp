@@ -6,29 +6,26 @@
 #include "GameOver.h"
 #include "Anime.h"
 #include "Hero.h"
+#include "JsonAdapter.h"
 
 USING_NS_CC;
 
 extern int q;
 extern int xp;
 
-//Scene* HelloWorld::createScene()
-//{
-//	return HelloWorld::create();
-//}
 //physics look a down 
 Scene* HelloWorld::createScene()
 {
 	auto scene1 = HelloWorld::createWithPhysics();
 	scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
-	scene1->getPhysicsWorld()->setGravity(Vec2(0, 0));
+	scene1->getPhysicsWorld()->setGravity(Vec2(0, -2));
 
 	auto layer = HelloWorld::create();
-	layer->SetPhysicsWorld(scene1-> getPhysicsWorld());
+	layer->SetPhysicsWorld(scene1->getPhysicsWorld());
 	scene1->addChild(layer);
 	return scene1;
-};
+}
 
 static void problemLoading(const char* filename)
 {
@@ -44,6 +41,8 @@ bool HelloWorld::init()
 	{
 		return false;
 	}
+
+	
 
 	Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
 	Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
@@ -62,12 +61,20 @@ bool HelloWorld::init()
 	musS1 = AudioEngine::play2d("bg2.mp3", true, 1.0);
 
 	///phy
-	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
+	/*auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
 	auto edgeNode = Node::create();
-	edgeNode->setPosition(Point(visibleSize.width /2 + origin.x, visibleSize.height /2 + origin.y));
+	edgeNode->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + 103));
 	edgeNode->setPhysicsBody(edgeBody);
 
-	this->addChild(edgeNode);
+	this->addChild(edgeNode);*/
+	/*auto earth = PhysicsBody::createBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT);
+	auto earthNode = Node::create();
+	earthNode->setPhysicsBody(earth);*/
+	
+	///
+	auto map = TMXTiledMap::create("map/map.tmx");
+	HelloWorld::loadMap(map);
+	
 
 	auto background = Sprite::create("2.png");
 	if (background == nullptr)
@@ -80,7 +87,7 @@ bool HelloWorld::init()
 		background->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
 		// add the sprite as a child to this layer
-		this->addChild(background, 0);
+		//this->addChild(background, 0);
 	}
 
 	auto label = Label::createWithTTF("SCENE 1", "fonts/Marker Felt.ttf", 24);
@@ -108,10 +115,16 @@ bool HelloWorld::init()
 		sprite1->setPosition(Point(880, 150));
 		q = 0;
 	}
+
 	// physics
-	auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize()/1.5, PhysicsMaterial(0, 1, 0));
-	sprite1->setPhysicsBody(spriteBody);
+	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
+	//sprite1->setPhysicsBody(spriteBody);
+	auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
+
+	Hero::heroPhysics(sprite1);
+	
 	//
+
 	this->addChild(sprite1);
 
 	auto keyboardListener = EventListenerKeyboard::create();
@@ -163,6 +176,9 @@ bool HelloWorld::init()
 	return true;
 }
 
+bool isPaused = false;
+int q111 = 0;
+
 void HelloWorld::Heart(cocos2d::Ref *pSpender)
 {
 	CCLOG("Image Button");
@@ -175,7 +191,22 @@ void HelloWorld::update(float dt) {
 		auto scene = Scene2::createScene();
 		AudioEngine::stop(musS1);
 		Director::getInstance()->replaceScene(scene);
+		JsonAdapter::JsonInit(2);
+		//auto scene = Scene2::createScene();
+		//Director::getInstance()->replaceScene(scene);
 	}
+	if (isPaused)
+	{
+		q111++;
+		if (q111 == 100)
+		{
+			auto scene = GameOver::createScene();
+			Director::getInstance()->replaceScene(scene);
+			q111 = 0;
+			isPaused = false;
+		}
+	}
+	
 }
 
 void HelloWorld::Exit(cocos2d::Ref *pSpender)
@@ -215,14 +246,13 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 			Hero::heroHurt(sprite1);
 		}
 		if (xp == 0) {
+			Hero::heroDeath(sprite1);
+			isPaused = true;
 			auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 			auto *menu2 = Menu::create(menu_Item_2, NULL);
 			menu2->setPosition(Point(20, 570));
 			this->addChild(menu2);
-			Hero::heroDeath(sprite1);
 			xp = 3;
-			auto scene = GameOver::createScene();
-			Director::getInstance()->replaceScene(scene);
 		}
 	}
 
@@ -258,14 +288,14 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 		jump = AudioEngine::play2d("jump1.mp3", false);
 		Hero::heroJump(sprite1);
 	}
-	/*if ((int)keyCode == 164)//key Enter was pressed
+	if ((int)keyCode == 164)//key Enter was pressed
 	{
 		Hero::heroHurt(sprite1);
-	}*/
-	if ((int)keyCode == 139)//key Enter was pressed
+	}
+	/*if ((int)keyCode == 139)//key P was pressed
 	{
 		Hero::heroDeath(sprite1);
-	}
+	}*/
 }
 
 void HelloWorld::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)

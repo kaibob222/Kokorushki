@@ -16,6 +16,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(Scene2);
 
+
 	cocos2d::Sprite *sprite1;
 	cocos2d::Sprite* sprite2;
 
@@ -29,6 +30,17 @@ public:
 	void ImageButton(Ref *pSender);
 	void Exit(Ref *pSender);
 	void Heart(Ref *pSender);
+	void animateEnemy(Ref* pSender);
+	void enemyMoveFinished(Ref *pSender);
+	void Hurt(Ref *pSender);
+	//void onContactBegin(PhysicsContact& contact);
+	//void tick(float dt);
+private:
+	cocos2d::PhysicsWorld *sceneWorld;
+
+	void SetPhysicsWorld(cocos2d::PhysicsWorld *world) {
+		sceneWorld = world;
+	};
 };
 
 #endif // __HELLOWORLD_SCENE_H__
