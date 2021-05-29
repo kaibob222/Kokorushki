@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "AudioEngine.h"
 #include "MenuMain.h"
 #include "ui/CocosGUI.h"
 #include "Scene2.h"
@@ -35,6 +36,7 @@ static void problemLoading(const char* filename)
 	printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
 
+int musS1;
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
@@ -49,6 +51,16 @@ bool HelloWorld::init()
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+
+	//auto map = TMXTiledMap::create("qwer3.tmx");
+	//auto objectsGroups = map->getObjectGroups("");
+	//auto layer = map->getLayer("layer1");
+	//this->addChild(map);
+	//this->addChild(layer);
+
+	//music
+	musS1 = AudioEngine::play2d("bg2.mp3", true, 1.0);
+
 	///phy
 	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
 	auto edgeNode = Node::create();
@@ -56,9 +68,6 @@ bool HelloWorld::init()
 	edgeNode->setPhysicsBody(edgeBody);
 
 	this->addChild(edgeNode);
-
-
-	///
 
 	auto background = Sprite::create("2.png");
 	if (background == nullptr)
@@ -73,7 +82,7 @@ bool HelloWorld::init()
 		// add the sprite as a child to this layer
 		this->addChild(background, 0);
 	}
-	
+
 	auto label = Label::createWithTTF("SCENE 1", "fonts/Marker Felt.ttf", 24);
 	if (label == nullptr)
 	{
@@ -164,6 +173,7 @@ void HelloWorld::update(float dt) {
 
 	if (pos > Point(880, 150)) {
 		auto scene = Scene2::createScene();
+		AudioEngine::stop(musS1);
 		Director::getInstance()->replaceScene(scene);
 	}
 }
@@ -172,6 +182,7 @@ void HelloWorld::Exit(cocos2d::Ref *pSpender)
 {
 	CCLOG("Exit");
 	auto scene = MenuMain::createScene();
+	AudioEngine::stop(musS1);
 	Director::getInstance()->replaceScene(scene);
 }
 
@@ -240,8 +251,11 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 		}
 		Hero::heroPunch(sprite1);
 	}
+	
 	if ((int)keyCode == 59)//key Space was pressed
 	{
+		int jump;
+		jump = AudioEngine::play2d("jump1.mp3", false);
 		Hero::heroJump(sprite1);
 	}
 	/*if ((int)keyCode == 164)//key Enter was pressed

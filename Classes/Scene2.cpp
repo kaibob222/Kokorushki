@@ -1,4 +1,5 @@
 #include "Scene2.h"
+#include "AudioEngine.h"
 #include "MenuMain.h"
 #include "ui/CocosGUI.h"
 #include "HelloWorldScene.h"
@@ -24,6 +25,7 @@ static void problemLoading(const char* filename)
 	printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
 
+int musS2;
 // on "init" you need to initialize your instance
 bool Scene2::init()
 {
@@ -35,8 +37,12 @@ bool Scene2::init()
 	Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
 	Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
 
+
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+	//music
+	musS2 = AudioEngine::play2d("bg2.mp3", true, 1.0);
 
 	auto background = Sprite::create("scene2.jpg");
 	if (background == nullptr)
@@ -158,6 +164,7 @@ void Scene2::update(float dt) {
 	if (pos < Point(50, 150)) {
 		q = 1;
 		auto scene = HelloWorld::createScene();
+		AudioEngine::stop(musS2);
 		Director::getInstance()->replaceScene(scene);
 	}
 }
@@ -166,6 +173,7 @@ void Scene2::Exit(cocos2d::Ref *pSpender)
 {
 	CCLOG("Exit");
 	auto scene = MenuMain::createScene();
+	AudioEngine::stop(musS2);
 	Director::getInstance()->replaceScene(scene);
 }
 
@@ -228,6 +236,8 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 	}
 	if ((int)keyCode == 59)//key Space was pressed
 	{
+		int jump;
+		jump = AudioEngine::play2d("jump1.mp3", false);
 		Hero::heroJump(sprite1);
 	}
 	/*if ((int)keyCode == 164)//key Enter was pressed
