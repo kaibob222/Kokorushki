@@ -221,10 +221,40 @@ void Scene2::enemyMoveFinished(cocos2d::Ref* pSpender)
 	Sprite* Enemy = (Sprite*)pSpender;
 	this->animateEnemy(Enemy);
 }
+void Scene2::Hurt(cocos2d::Ref* pSpender) {
 
+	xp--;
+	if (xp == 2) {
+		auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+		auto *menu4 = Menu::create(menu_Item_4, NULL);
+		menu4->setPosition(Point(100, 570));
+		this->addChild(menu4);
+		Hero::heroHurt(sprite1);
+	}
+	if (xp == 1) {
+		auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+		auto *menu3 = Menu::create(menu_Item_3, NULL);
+		menu3->setPosition(Point(60, 570));
+		this->addChild(menu3);
+		Hero::heroHurt(sprite1);
+	}
+	if (xp == 0) {
+		Hero::heroDeath(sprite1);
+		isPaused1 = true;
+		auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+		auto *menu2 = Menu::create(menu_Item_2, NULL);
+		menu2->setPosition(Point(20, 570));
+		this->addChild(menu2);
+		xp = 3;
+	}
+	Hero::heroHurt(sprite1);
+}
 void Scene2::animateEnemy(cocos2d::Ref* pSpender)
 {
 	Sprite* Enemy = (Sprite*)pSpender;
+
+	if ((abs(Enemy->getPositionX() - sprite1->getPositionX()) <= 150))
+	Scene2::Hurt(pSpender);
 
 	float actualDuration = 0.3f;
 
@@ -277,34 +307,7 @@ void Scene2::animateEnemy(cocos2d::Ref* pSpender)
 		Animate* animate = Animate::create(animation);
 		Enemy->runAction(RepeatForever::create(animate));*/
 		
-		for (int i=0;i < 1000;i++) {
-
-			}
-		xp--;
-		if (xp == 2) {
-			auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
-			auto *menu4 = Menu::create(menu_Item_4, NULL);
-			menu4->setPosition(Point(100, 570));
-			this->addChild(menu4);
-			Hero::heroHurt(sprite1);
-		}
-		if (xp == 1) {
-			auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
-			auto *menu3 = Menu::create(menu_Item_3, NULL);
-			menu3->setPosition(Point(60, 570));
-			this->addChild(menu3);
-			Hero::heroHurt(sprite1);
-		}
-		if (xp == 0) {
-			Hero::heroDeath(sprite1);
-			isPaused1 = true;
-			auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
-			auto *menu2 = Menu::create(menu_Item_2, NULL);
-			menu2->setPosition(Point(20, 570));
-			this->addChild(menu2);
-			xp = 3;
-		}
-		Hero::heroHurt(sprite1);
+		
 	}
 }
 
@@ -334,76 +337,8 @@ void Scene2::update(float dt) {
 			isPaused1 = false;
 		}
 	}
-	if ((abs(Enemy->getPositionX() - sprite1->getPositionX()) <= 150))
-	{
-
-		/*	Vector<SpriteFrame*> animFrames;
-			animFrames.reserve(40);
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(30, 10, 170, 250)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(30, 10, 170, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(300, 10, 170, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(300, 10, 170, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(540, 10, 170, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(540, 10, 170, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(820, 10, 170, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(820, 10, 170, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1000, 10, 250, 270)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1000, 10, 250, 270)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1000, 10, 250, 270)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1320, 10, 170, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1320, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1320, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1820, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1820, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2000, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2000, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2000, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2000, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2000, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2300, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2300, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2300, 10, 200, 251)));
-			animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2300, 10, 200, 251)));
-
-
-			Animation* animation = Animation::createWithSpriteFrames(animFrames, 1.0f);
-			Animate* animate = Animate::create(animation);
-			Enemy->runAction(RepeatForever::create(animate));*/
-
-		for (int i = 0;i < 1000;i++) {
-
-		}
-		xp--;
-		if (xp == 2) {
-			auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
-			auto *menu4 = Menu::create(menu_Item_4, NULL);
-			menu4->setPosition(Point(100, 570));
-			this->addChild(menu4);
-			Hero::heroHurt(sprite1);
-		}
-		if (xp == 1) {
-			auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
-			auto *menu3 = Menu::create(menu_Item_3, NULL);
-			menu3->setPosition(Point(60, 570));
-			this->addChild(menu3);
-			Hero::heroHurt(sprite1);
-		}
-		if (xp == 0) {
-			Hero::heroDeath(sprite1);
-			isPaused1 = true;
-			auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
-			auto *menu2 = Menu::create(menu_Item_2, NULL);
-			menu2->setPosition(Point(20, 570));
-			this->addChild(menu2);
-			xp = 3;
-		}
-		Hero::heroHurt(sprite1);
+	
+	
 }
 
 void Scene2::Exit(cocos2d::Ref *pSpender)

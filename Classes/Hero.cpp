@@ -110,7 +110,7 @@ void Hero::heroPunch(cocos2d::Sprite* heroSprite)
 void Hero::heroJump(cocos2d::Sprite* heroSprite)
 {
 	Point pos = heroSprite->getPosition();
-	if (pos.y == 150)
+	if (true)
 	{
 		if (isWalking)
 		{

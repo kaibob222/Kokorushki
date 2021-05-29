@@ -40,6 +40,8 @@ bool HelloWorld::init()
 		return false;
 	}
 
+	
+
 	Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
 	Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
 
@@ -47,17 +49,20 @@ bool HelloWorld::init()
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	///phy
-	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
+	/*auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
 	auto edgeNode = Node::create();
 	edgeNode->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + 103));
 	edgeNode->setPhysicsBody(edgeBody);
 
-	this->addChild(edgeNode);
+	this->addChild(edgeNode);*/
 	/*auto earth = PhysicsBody::createBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT);
 	auto earthNode = Node::create();
 	earthNode->setPhysicsBody(earth);*/
 	
 	///
+	auto map = TMXTiledMap::create("map/map.tmx");
+	HelloWorld::loadMap(map);
+	
 
 	auto background = Sprite::create("2.png");
 	if (background == nullptr)
@@ -70,7 +75,7 @@ bool HelloWorld::init()
 		background->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
 		// add the sprite as a child to this layer
-		this->addChild(background, 0);
+		//this->addChild(background, 0);
 	}
 	
 	auto label = Label::createWithTTF("SCENE 1", "fonts/Marker Felt.ttf", 24);
@@ -102,6 +107,8 @@ bool HelloWorld::init()
 	// physics
 	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
 	//sprite1->setPhysicsBody(spriteBody);
+	auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
+
 	Hero::heroPhysics(sprite1);
 	
 	//
@@ -184,6 +191,7 @@ void HelloWorld::update(float dt) {
 			isPaused = false;
 		}
 	}
+	
 }
 
 void HelloWorld::Exit(cocos2d::Ref *pSpender)
