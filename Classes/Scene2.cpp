@@ -352,6 +352,7 @@ void Scene2::Exit(cocos2d::Ref *pSpender)
 	auto scene = MenuMain::createScene();
 	AudioEngine::stop(musS2);
 	Director::getInstance()->replaceScene(scene);
+
 }
 
 void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
