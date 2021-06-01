@@ -46,6 +46,10 @@ bool HelloWorld::init()
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+	/*mlayer = Layer::create();
+	mlayer->setCameraMask((unsigned short)CameraFlag::USER2);
+	addChild(mlayer);*/
+
 	///phy
 	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
 	auto edgeNode = Node::create();
@@ -53,6 +57,23 @@ bool HelloWorld::init()
 	edgeNode->setPhysicsBody(edgeBody);
 
 	this->addChild(edgeNode);
+
+	/*auto camera = Director::getInstance()->getRunningScene()->getDefaultCamera();
+	camera->setPosition3D(Vec3(0, 0, -1));
+	camera->lookAt(Vec3(0, 0, 0), Vec3(0, 1, 0));*/
+
+	/*auto moveBy = MoveBy::create(0.5, Vec2(0, 0));
+	this->getDefaultCamera()->runAction(moveBy);*/
+
+	/*auto s = Director::getInstance()->getWinSize();
+	auto camera = Camera::createPerspective(60, (GLfloat)s.width / s.height, 10, 100);
+
+	// set parameters for camera
+	camera->setPosition3D(Vec3(0, 100, 100));
+	camera->lookAt(Vec3(0, 0, 0), Vec3(0, 1, 0));
+	
+	addChild(camera);*/
+
 	/*auto earth = PhysicsBody::createBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT);
 	auto earthNode = Node::create();
 	earthNode->setPhysicsBody(earth);*/
@@ -70,7 +91,8 @@ bool HelloWorld::init()
 		background->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
 		// add the sprite as a child to this layer
-		this->addChild(background, 0);
+		this->addChild(background);
+		background->setScale(1.5);
 	}
 	
 	auto label = Label::createWithTTF("SCENE 1", "fonts/Marker Felt.ttf", 24);
@@ -85,7 +107,7 @@ bool HelloWorld::init()
 			origin.y + visibleSize.height - label->getContentSize().height));
 
 		// add the label as a child to this layer
-		this->addChild(label, 1);
+		this->addChild(label);
 	}
 
 	if (q == 0) {
@@ -103,10 +125,17 @@ bool HelloWorld::init()
 	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
 	//sprite1->setPhysicsBody(spriteBody);
 	Hero::heroPhysics(sprite1);
-	
-	//
-
+	auto spritePoss = Vec3(sprite1->getPositionX(), sprite1->getPositionY(), 0);
+	sprite1->setPosition3D(spritePoss);
+	this->setCameraMask((unsigned short)CameraFlag::USER2, true);
 	this->addChild(sprite1);
+
+	auto camera = Camera::createPerspective(180, (float)visibleSize.width / visibleSize.height, 1.0, 1000);
+	camera->setCameraFlag(CameraFlag::USER2);
+	//the calling order matters, we should first call setPosition3D, then call lookAt.
+	camera->setPosition3D(spritePoss + Vec3(0, 0, 800));
+	camera->lookAt(spritePoss, Vec3(0.0, 1.0, 0.0));
+	this->addChild(camera);
 
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HelloWorld::keyPressed, this);
@@ -167,12 +196,14 @@ void HelloWorld::Heart(cocos2d::Ref *pSpender)
 
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
+	auto camera = this->getDefaultCamera();
+	Vec3 Poss = Vec3(pos.x, pos.y, 0);
+	camera->setPosition3D(Poss);
 
 	if (pos > Point(880, 150)) {
 		JsonAdapter::JsonInit(2);
-		//auto scene = Scene2::createScene();
-		//Director::getInstance()->replaceScene(scene);
 	}
+
 	if (isPaused)
 	{
 		q111++;
@@ -204,7 +235,7 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 {
 	CCLOG("Key with keycode %d pressed", keyCode);
 	Point pos = sprite1->getPosition();
-	if ((int)keyCode == 164)
+	if ((int)keyCode == 164)//j pressed
 	{
 		xp--;
 		if (xp == 2) {

@@ -39,6 +39,8 @@ private:
 	void SetPhysicsWorld(cocos2d::PhysicsWorld *world) {
 		sceneWorld = world;
 	};
+	//cocos2d::Camera* camera;
+	//cocos2d::Layer* mlayer;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

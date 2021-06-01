@@ -234,7 +234,7 @@ void Scene2::animateEnemy(cocos2d::Ref* pSpender)
 	auto actionMoveDone = CallFuncN::create(CC_CALLBACK_1(Scene2::enemyMoveFinished, this));
 	Enemy->runAction(Sequence::create(actionMove, actionMoveDone, NULL));
 
-	if (((Enemy->getPositionX() - sprite1->getPositionX()) <= 200))
+	/*if (((Enemy->getPositionX() - sprite1->getPositionX()) <= 200))
 	{
 
 		Vector<SpriteFrame*> animFrames;
@@ -251,7 +251,7 @@ void Scene2::animateEnemy(cocos2d::Ref* pSpender)
 		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1000, 10, 250, 270)));
 		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1000, 10, 250, 270)));
 		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1320, 10, 170, 251)));
-		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1320, 10, 200, 251)));
+		/*animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1320, 10, 200, 251)));
 		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1320, 10, 200, 251)));
 		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
 		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(1520, 10, 200, 251)));
@@ -275,7 +275,7 @@ void Scene2::animateEnemy(cocos2d::Ref* pSpender)
 		Animation* animation = Animation::createWithSpriteFrames(animFrames, 1.0f);
 		Animate* animate = Animate::create(animation);
 		Enemy->runAction(RepeatForever::create(animate));
-	}
+	}*/
 }
 
 
