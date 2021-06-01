@@ -1,5 +1,7 @@
 #include "MenuMain.h"
 #include "ui/CocosGUI.h"
+#include "HelloWorldScene.h"
+#include "AudioEngine.h"
 #include "JsonAdapter.h"
 
 USING_NS_CC;
@@ -9,12 +11,16 @@ Scene* MenuMain::createScene()
 	return MenuMain::create();
 }
 
+int musMenu;
 bool MenuMain::init()
 {
     if ( !Scene::init() )
     {
         return false;
     }
+
+	//music
+	musMenu = AudioEngine::play2d("menu1.mp3", true, 1.0);
 
 	Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
 	Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
@@ -39,6 +45,9 @@ bool MenuMain::init()
 void MenuMain::Play(cocos2d::Ref *pSpender)
 {
 	CCLOG("Play");
+	auto scene = HelloWorld::createScene();
+	AudioEngine::stop(musMenu);
+	Director::getInstance()->replaceScene(scene);
 	JsonAdapter::JsonInit(1);
 	/*auto scene = JsonAdapter::createScene();
 	Director::getInstance()->replaceScene(scene);*/

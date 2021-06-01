@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "AudioEngine.h"
 #include "MenuMain.h"
 #include "ui/CocosGUI.h"
 #include "Scene2.h"
@@ -18,7 +19,7 @@ Scene* HelloWorld::createScene()
 	auto scene1 = HelloWorld::createWithPhysics();
 	scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
-	scene1->getPhysicsWorld()->setGravity(Vec2(1, 0));
+	scene1->getPhysicsWorld()->setGravity(Vec2(0, -2));
 
 	auto layer = HelloWorld::create();
 	layer->SetPhysicsWorld(scene1->getPhysicsWorld());
@@ -32,6 +33,7 @@ static void problemLoading(const char* filename)
 	printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
 
+int musS1;
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
@@ -40,45 +42,39 @@ bool HelloWorld::init()
 		return false;
 	}
 
-	//Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
-	//Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
+	
+
+	Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
+	Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	/*mlayer = Layer::create();
-	mlayer->setCameraMask((unsigned short)CameraFlag::USER2);
-	addChild(mlayer);*/
+
+	//auto map = TMXTiledMap::create("qwer3.tmx");
+	//auto objectsGroups = map->getObjectGroups("");
+	//auto layer = map->getLayer("layer1");
+	//this->addChild(map);
+	//this->addChild(layer);
+
+	//music
+	musS1 = AudioEngine::play2d("bg2.mp3", true, 1.0);
 
 	///phy
-	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
+	/*auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
 	auto edgeNode = Node::create();
 	edgeNode->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + 103));
 	edgeNode->setPhysicsBody(edgeBody);
 
-	this->addChild(edgeNode);
-	   
-	/*auto camera = Director::getInstance()->getRunningScene()->getDefaultCamera();
-	camera->setPosition3D(Vec3(0, 0, -1));
-	camera->lookAt(Vec3(0, 0, 0), Vec3(0, 1, 0));*/
-
-	/*auto moveBy = MoveBy::create(0.5, Vec2(0, 0));
-	this->getDefaultCamera()->runAction(moveBy);*/
-
-	/*auto s = Director::getInstance()->getWinSize();
-	auto camera = Camera::createPerspective(60, (GLfloat)s.width / s.height, 10, 100);
-
-	// set parameters for camera
-	camera->setPosition3D(Vec3(0, 100, 100));
-	camera->lookAt(Vec3(0, 0, 0), Vec3(0, 1, 0));
-	
-	addChild(camera);*/
-
+	this->addChild(edgeNode);*/
 	/*auto earth = PhysicsBody::createBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT);
 	auto earthNode = Node::create();
 	earthNode->setPhysicsBody(earth);*/
 	
 	///
+	auto map = TMXTiledMap::create("map/map.tmx");
+	HelloWorld::loadMap(map);
+	
 
 	auto background = Sprite::create("2.png");
 	if (background == nullptr)
@@ -91,9 +87,9 @@ bool HelloWorld::init()
 		background->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
 		// add the sprite as a child to this layer
-		this->addChild(background);
+		//this->addChild(background, 0);
 	}
-	
+
 	auto label = Label::createWithTTF("SCENE 1", "fonts/Marker Felt.ttf", 24);
 	if (label == nullptr)
 	{
@@ -123,6 +119,8 @@ bool HelloWorld::init()
 	// physics
 	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
 	//sprite1->setPhysicsBody(spriteBody);
+	auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
+
 	Hero::heroPhysics(sprite1);
 	auto spritePos = sprite1->getPosition();
 	//sprite1->setPosition3D(spritePoss);
@@ -210,6 +208,9 @@ void HelloWorld::update(float dt) {
 	camera->setPosition(pos.x+350, pos.y+150);
 
 	if (pos > Point(880, 150)) {
+		auto scene = Scene2::createScene();
+		AudioEngine::stop(musS1);
+		Director::getInstance()->replaceScene(scene);
 		JsonAdapter::JsonInit(2);
 	}
 
@@ -224,12 +225,14 @@ void HelloWorld::update(float dt) {
 			isPaused = false;
 		}
 	}
+	
 }
 
 void HelloWorld::Exit(cocos2d::Ref *pSpender)
 {
 	CCLOG("Exit");
 	auto scene = MenuMain::createScene();
+	AudioEngine::stop(musS1);
 	Director::getInstance()->replaceScene(scene);
 }
 
@@ -297,8 +300,11 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 		}
 		Hero::heroPunch(sprite1);
 	}
+	
 	if ((int)keyCode == 59)//key Space was pressed
 	{
+		int jump;
+		jump = AudioEngine::play2d("jump1.mp3", false);
 		Hero::heroJump(sprite1);
 	}
 	if ((int)keyCode == 164)//key Enter was pressed

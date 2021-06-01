@@ -1,4 +1,5 @@
 #include "Scene2.h"
+#include "AudioEngine.h"
 #include "MenuMain.h"
 #include "ui/CocosGUI.h"
 #include "HelloWorldScene.h"
@@ -27,7 +28,7 @@ Scene* Scene2::createScene()
 	auto layer = Scene2::create();
 	layer->SetPhysicsWorld(scene2->getPhysicsWorld());
 	scene2->addChild(layer);
-	
+
 	return scene2;
 }
 // Print useful error message instead of segfaulting when files are not there.
@@ -37,9 +38,7 @@ static void problemLoading(const char* filename)
 	printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
 
-
-
-
+int musS2;
 // on "init" you need to initialize your instance
 bool Scene2::init()
 {
@@ -51,9 +50,12 @@ bool Scene2::init()
 	Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
 	Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
 
+
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+	//music
+	musS2 = AudioEngine::play2d("bg2.mp3", true, 1.0);
 	///phy
 	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
 	auto edgeNode = Node::create();
@@ -78,7 +80,7 @@ bool Scene2::init()
 		// add the sprite as a child to this layer
 		this->addChild(background, 0);
 	}
-	
+
 	auto label = Label::createWithTTF("SCENE 2", "fonts/Marker Felt.ttf", 24);
 	if (label == nullptr)
 	{
@@ -154,9 +156,9 @@ bool Scene2::init()
 	animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(2350, 785, 170, 251)));*/
 
 	Enemy::enemyPhysics(Enemy);
-//	Enemy-> getPhysicsBody()->setCategoryBitmask(0x02);    // 0010
-//	Enemy-> getPhysicsBody()->setCollisionBitmask(0x01);
-	//hero physicsbody
+	//	Enemy-> getPhysicsBody()->setCategoryBitmask(0x02);    // 0010
+	//	Enemy-> getPhysicsBody()->setCollisionBitmask(0x01);
+		//hero physicsbody
 	Hero::heroPhysics(sprite1);
 	//sprite1->getPhysicsBody()->setCategoryBitmask(0xFFFFFFFF);    // 0010
 	//sprite1->getPhysicsBody()->setCollisionBitmask(0xFFFFFFFF);   // 0001
@@ -166,7 +168,7 @@ bool Scene2::init()
 
 
 
-	
+
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Scene2::keyPressed, this);
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(Scene2::keyReleased, this);
@@ -176,7 +178,7 @@ bool Scene2::init()
 	auto menu_Item_2 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
 	auto menu_Item_3 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
 	auto menu_Item_4 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
-	
+
 	auto *menu = Menu::create(menu_Item_1, NULL);
 	menu->alignItemsVertically();
 	auto *menu2 = Menu::create(menu_Item_2, NULL);
@@ -221,10 +223,40 @@ void Scene2::enemyMoveFinished(cocos2d::Ref* pSpender)
 	Sprite* Enemy = (Sprite*)pSpender;
 	this->animateEnemy(Enemy);
 }
+void Scene2::Hurt(cocos2d::Ref* pSpender) {
 
+	xp--;
+	if (xp == 2) {
+		auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+		auto *menu4 = Menu::create(menu_Item_4, NULL);
+		menu4->setPosition(Point(100, 570));
+		this->addChild(menu4);
+		Hero::heroHurt(sprite1);
+	}
+	if (xp == 1) {
+		auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+		auto *menu3 = Menu::create(menu_Item_3, NULL);
+		menu3->setPosition(Point(60, 570));
+		this->addChild(menu3);
+		Hero::heroHurt(sprite1);
+	}
+	if (xp == 0) {
+		Hero::heroDeath(sprite1);
+		isPaused1 = true;
+		auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(Scene2::Heart, this));
+		auto *menu2 = Menu::create(menu_Item_2, NULL);
+		menu2->setPosition(Point(20, 570));
+		this->addChild(menu2);
+		xp = 3;
+	}
+	Hero::heroHurt(sprite1);
+}
 void Scene2::animateEnemy(cocos2d::Ref* pSpender)
 {
 	Sprite* Enemy = (Sprite*)pSpender;
+
+	if ((abs(Enemy->getPositionX() - sprite1->getPositionX()) <= 150))
+	Scene2::Hurt(pSpender);
 
 	float actualDuration = 0.3f;
 
@@ -232,12 +264,13 @@ void Scene2::animateEnemy(cocos2d::Ref* pSpender)
 	position.normalize();
 	auto actionMove = MoveBy::create(actualDuration, position.operator * (10));
 	auto actionMoveDone = CallFuncN::create(CC_CALLBACK_1(Scene2::enemyMoveFinished, this));
+	if ((abs(Enemy->getPositionX() - sprite1->getPositionX()) >= 150))
 	Enemy->runAction(Sequence::create(actionMove, actionMoveDone, NULL));
 
-	/*if (((Enemy->getPositionX() - sprite1->getPositionX()) <= 200))
+	if ((abs(Enemy->getPositionX() - sprite1->getPositionX()) <= 150))
 	{
 
-		Vector<SpriteFrame*> animFrames;
+	/*	Vector<SpriteFrame*> animFrames;
 		animFrames.reserve(40);
 		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(30, 10, 170, 250)));
 		animFrames.pushBack(SpriteFrame::create("enemy/Skelet2.png", Rect(30, 10, 170, 251)));
@@ -274,8 +307,10 @@ void Scene2::animateEnemy(cocos2d::Ref* pSpender)
 
 		Animation* animation = Animation::createWithSpriteFrames(animFrames, 1.0f);
 		Animate* animate = Animate::create(animation);
-		Enemy->runAction(RepeatForever::create(animate));
-	}*/
+		Enemy->runAction(RepeatForever::create(animate));*/
+		
+		
+	}
 }
 
 
@@ -289,6 +324,9 @@ void Scene2::update(float dt) {
 
 	if (pos < Point(50, 150)) {
 		q = 1;
+		auto scene = HelloWorld::createScene();
+		AudioEngine::stop(musS2);
+		Director::getInstance()->replaceScene(scene);
 		JsonAdapter::JsonInit(1);
 		//auto scene = HelloWorld::createScene();
 		//Director::getInstance()->replaceScene(scene);
@@ -304,12 +342,15 @@ void Scene2::update(float dt) {
 			isPaused1 = false;
 		}
 	}
+	
+	
 }
 
 void Scene2::Exit(cocos2d::Ref *pSpender)
 {
 	CCLOG("Exit");
 	auto scene = MenuMain::createScene();
+	AudioEngine::stop(musS2);
 	Director::getInstance()->replaceScene(scene);
 }
 
@@ -371,6 +412,8 @@ void Scene2::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event 
 	}
 	if ((int)keyCode == 59)//key Space was pressed
 	{
+		int jump;
+		jump = AudioEngine::play2d("jump1.mp3", false);
 		Hero::heroJump(sprite1);
 	}
 	if ((int)keyCode == 164)//key Enter was pressed

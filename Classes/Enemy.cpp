@@ -19,3 +19,6 @@ void Enemy::enemyPhysics(cocos2d::Sprite* enemySprite) {
 	spriteBody->setDynamic(true);
 	
 }
+void Enemy::enemyAttack(cocos2d::Sprite* enemySprite) {
+	
+}

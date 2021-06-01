@@ -33,14 +33,35 @@ public:
 
 	void Heart(Ref *pSender);
 	void Pause(Ref *pSender);
+	
 private:
 	cocos2d::PhysicsWorld *sceneWorld;
 
 	void SetPhysicsWorld(cocos2d::PhysicsWorld *world) {
 		sceneWorld = world;
 	};
-	//cocos2d::Camera* camera;
-	//cocos2d::Layer* mlayer;
+	void loadMap(cocos2d::TMXTiledMap *mp) {
+		///
+		this->addChild(mp, 1, 99); // with a tag of '99'
+		static auto earth = mp->getObjectGroup("earth");
+		auto& obj = earth->getObjects();
+		for (auto & i : obj) {
+			auto dict = i.asValueMap();
+			auto x = dict["x"].asFloat();
+			auto y = dict["y"].asFloat();
+			auto width = dict["width"].asFloat();
+			auto height = dict["height"].asFloat();
+
+
+			auto earthBody = cocos2d::PhysicsBody::createBox(cocos2d::Size(width, height), cocos2d::PhysicsMaterial(0, 0, 0));
+			auto  earthNode = Node::create();
+			earthNode->setPosition(cocos2d::Point(x+450, y + 60));
+			earthNode->setPhysicsBody(earthBody);
+			earthBody->setDynamic(false);
+			this->addChild(earthNode);
+			//earthNode->addComponent(earthBody);
+		}
+	}
 };
 
 #endif // __HELLOWORLD_SCENE_H__

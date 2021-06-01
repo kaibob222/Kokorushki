@@ -32,6 +32,9 @@ public:
 	void Heart(Ref *pSender);
 	void animateEnemy(Ref* pSender);
 	void enemyMoveFinished(Ref *pSender);
+	void Hurt(Ref *pSender);
+	//void onContactBegin(PhysicsContact& contact);
+	//void tick(float dt);
 private:
 	cocos2d::PhysicsWorld *sceneWorld;
 
