@@ -328,8 +328,6 @@ void Scene2::update(float dt) {
 		AudioEngine::stop(musS2);
 		Director::getInstance()->replaceScene(scene);
 		JsonAdapter::JsonInit(1);
-		//auto scene = HelloWorld::createScene();
-		//Director::getInstance()->replaceScene(scene);
 	}
 	if (isPaused1)
 	{
@@ -349,8 +347,8 @@ void Scene2::update(float dt) {
 void Scene2::Exit(cocos2d::Ref *pSpender)
 {
 	CCLOG("Exit");
+	AudioEngine::stopAll();
 	auto scene = MenuMain::createScene();
-	AudioEngine::stop(musS2);
 	Director::getInstance()->replaceScene(scene);
 
 }

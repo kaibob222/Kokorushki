@@ -12,6 +12,7 @@ USING_NS_CC;
 
 extern int q;
 extern int xp;
+int musS1;
 
 //physics look a down 
 Scene* HelloWorld::createScene()
@@ -32,8 +33,6 @@ static void problemLoading(const char* filename)
 	printf("Error while loading: %s\n", filename);
 	printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
-
-int musS1;
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
@@ -232,7 +231,7 @@ void HelloWorld::Exit(cocos2d::Ref *pSpender)
 {
 	CCLOG("Exit");
 	auto scene = MenuMain::createScene();
-	AudioEngine::stop(musS1);
+	AudioEngine::pauseAll();
 	Director::getInstance()->replaceScene(scene);
 }
 
