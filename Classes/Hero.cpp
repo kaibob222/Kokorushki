@@ -172,7 +172,7 @@ void Hero::heroStop(cocos2d::Sprite* heroSprite)
 
 void Hero::heroHurt(cocos2d::Sprite* heroSprite)
 {
-	auto spriteBody = PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(1, 1, 1));
+	auto spriteBody = Hero::heroPhysicsbody(heroSprite);
 	if (isRight)
 	{
 		Animate* rightHurtanimate = Animate::create(Anim::rightHurt());
@@ -201,11 +201,19 @@ void Hero::heroDeath(cocos2d::Sprite* heroSprite)
 		heroSprite->runAction(leftDeathanimate);
 	}
 }
-
-void Hero::heroPhysics(cocos2d::Sprite* heroSprite) {
-	auto spriteBody = PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(1, 1, 1));
-	heroSprite->setPhysicsBody(spriteBody);
-	spriteBody->setRotationEnable(false);
-	spriteBody->setDynamic(true);
+cocos2d::PhysicsBody* Hero::heroPhysicsbody(cocos2d::Sprite* heroSprite) {
 	
+	return  PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(1, 1, 1));
+}
+void Hero::heroPhysics(cocos2d::Sprite* heroSprite) {
+	//auto spriteBody = PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(1, 1, 1));
+	auto spriteBody = Hero::heroPhysicsbody(heroSprite);
+	
+	//spriteBody->addMass(3.);
+	spriteBody->applyImpulse(Vec2(100, 0));
+	spriteBody->setRotationEnable(false);
+//	spriteBody->setDynamic(false);
+	spriteBody->setCollisionBitmask(1);
+	spriteBody->setContactTestBitmask(true);
+	heroSprite->setPhysicsBody(spriteBody);
 }

@@ -7,7 +7,7 @@
 #include "Anime.h"
 #include "Hero.h"
 #include "JsonAdapter.h"
-
+#include "Enemy.h"
 USING_NS_CC;
 
 extern int q;
@@ -20,7 +20,7 @@ Scene* HelloWorld::createScene()
 	auto scene1 = HelloWorld::createWithPhysics();
 	scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
-	scene1->getPhysicsWorld()->setGravity(Vec2(0, -2));
+	scene1->getPhysicsWorld()->setGravity(Vec2(0, -10));
 
 	auto layer = HelloWorld::create();
 	layer->SetPhysicsWorld(scene1->getPhysicsWorld());
@@ -115,11 +115,18 @@ bool HelloWorld::init()
 		q = 0;
 	}
 
+	sprite2 = Sprite::create("enemy/Skelet2.png", Rect(20, 0, 170, 251));
+	sprite2->setPosition(Point(700, 150)); //205 defolt
+
 	// physics
 	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
 	//sprite1->setPhysicsBody(spriteBody);
 	auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
 
+
+	//enemy physicsbody
+	Enemy::enemyPhysics(sprite2);
+	//hero physocsbody
 	Hero::heroPhysics(sprite1);
 	auto spritePos = sprite1->getPosition();
 	//sprite1->setPosition3D(spritePoss);
@@ -130,6 +137,10 @@ bool HelloWorld::init()
 	//camera->setPosition3D(Vec3(0,0,0));
 	camera->setPosition(spritePos.x-10, spritePos.y-10);
 	//this->setCameraMask((unsigned short)CameraFlag::USER2, true);
+
+	
+	//
+	this->addChild(sprite2);
 	this->addChild(sprite1);
 
 	//auto camera = Camera::createPerspective(180, (float)visibleSize.width / visibleSize.height, 1.0, 1000);
@@ -186,6 +197,11 @@ bool HelloWorld::init()
 		this->addChild(menu4);
 	}
 	//this->setScale(1);
+	//contact
+	auto contactListener = EventListenerPhysicsContact::create();
+	contactListener->onContactBegin = CC_CALLBACK_1(HelloWorld::onContactBegin, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+
 	return true;
 }
 
@@ -197,6 +213,43 @@ void HelloWorld::Heart(cocos2d::Ref *pSpender)
 	CCLOG("Image Button");
 }
 
+bool HelloWorld::onContactBegin(PhysicsContact& contact)
+{
+	auto *nodeA = contact.getShapeA()->getBody();
+	auto *nodeB = contact.getShapeB()->getBody();
+
+	if ((1 == nodeA->getCollisionBitmask() && 2 == nodeB->getCollisionBitmask()) || (2 == nodeA->getCollisionBitmask() && 1 == nodeB->getCollisionBitmask()))
+	{
+		CCLOG("COLLISION HAS OCCURED ");
+		xp--;
+		//sprite1->_physicsBody->applyImpulse(Vec2(-100, 0));
+		if (xp == 2) {
+			auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+			auto *menu4 = Menu::create(menu_Item_4, NULL);
+			menu4->setPosition(Point(100, 570));
+			this->addChild(menu4);
+			Hero::heroHurt(sprite1);
+		}
+		if (xp == 1) {
+			auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+			auto *menu3 = Menu::create(menu_Item_3, NULL);
+			menu3->setPosition(Point(60, 570));
+			this->addChild(menu3);
+			Hero::heroHurt(sprite1);
+		}
+		if (xp == 0) {
+			Hero::heroDeath(sprite1);
+			isPaused = true;
+			auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+			auto *menu2 = Menu::create(menu_Item_2, NULL);
+			menu2->setPosition(Point(20, 570));
+			this->addChild(menu2);
+			xp = 3;
+		}
+	}
+
+	return true;
+}
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
 
@@ -222,6 +275,7 @@ void HelloWorld::update(float dt) {
 			Director::getInstance()->replaceScene(scene);
 			q111 = 0;
 			isPaused = false;
+			
 		}
 	}
 	
@@ -298,6 +352,12 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 			sprite1->stopActionByTag(i);
 		}
 		Hero::heroPunch(sprite1);
+		if (abs(sprite2->getPositionX() - sprite1->getPositionX()) < 120) {
+			sprite2->setRotation(-90);
+			sprite2->setPositionY(sprite2->getPositionY() - 50);
+			sprite2->removeComponent(sprite2->getPhysicsBody());
+			//sprite2->setPhysicsBody(nullptr);
+		}
 	}
 	
 	if ((int)keyCode == 59)//key Space was pressed
@@ -330,3 +390,6 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 {
 	Director::getInstance()->end();
 }
+
+
+

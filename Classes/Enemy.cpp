@@ -15,8 +15,11 @@ USING_NS_CC;
 
 void Enemy::enemyPhysics(cocos2d::Sprite* enemySprite) {
 	auto spriteBody = PhysicsBody::createBox(enemySprite->getContentSize() / 1.5, PhysicsMaterial(0, 0, 0));
+	
 	enemySprite->setPhysicsBody(spriteBody);
-	spriteBody->setDynamic(true);
+	spriteBody->setCollisionBitmask(2);
+	spriteBody->setContactTestBitmask(true);
+	spriteBody->setDynamic(false);
 	
 }
 void Enemy::enemyAttack(cocos2d::Sprite* enemySprite) {

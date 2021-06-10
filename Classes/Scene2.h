@@ -22,7 +22,7 @@ public:
 
 	void keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
 	void keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
-
+	bool onContactBegin2(cocos2d::PhysicsContact &contact);
 	void update(float dt);
 	void Play(Ref *pSender);
 	void Highscores(Ref *pSender);
@@ -32,7 +32,7 @@ public:
 	void Heart(Ref *pSender);
 	void animateEnemy(Ref* pSender);
 	void enemyMoveFinished(Ref *pSender);
-	void Hurt(Ref *pSender);
+    void Hurt(Ref *pSender);
 	//void onContactBegin(PhysicsContact& contact);
 	//void tick(float dt);
 private:
