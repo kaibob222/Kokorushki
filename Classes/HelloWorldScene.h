@@ -46,8 +46,11 @@ private:
 		sceneWorld = world;
 	};
 	void loadMap(cocos2d::TMXTiledMap *mp) {
-		///
-		this->addChild(mp, 1, 99); // with a tag of '99'
+		/*///
+		auto layer1 = Node::create();
+		layer1 = mp;
+		layer1->setPositionZ(-1);*/
+		this->addChild(mp, -1, 99); // with a tag of '99'
 		static auto earth = mp->getObjectGroup("earth");
 		auto& obj = earth->getObjects();
 		for (auto & i : obj) {

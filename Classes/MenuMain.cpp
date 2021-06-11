@@ -92,7 +92,7 @@ void MenuMain::Play(cocos2d::Ref *pSpender)
 	auto scene = HelloWorld::createScene();
 	AudioEngine::stop(musMenu);
 	Director::getInstance()->replaceScene(scene);
-	JsonAdapter::JsonInit(1);
+	//JsonAdapter::JsonInit(1);
 	/*auto scene = JsonAdapter::createScene();
 	Director::getInstance()->replaceScene(scene);*/
 }

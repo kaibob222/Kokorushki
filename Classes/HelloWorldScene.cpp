@@ -71,9 +71,11 @@ bool HelloWorld::init()
 	earthNode->setPhysicsBody(earth);*/
 	
 	///
-	auto map = TMXTiledMap::create("map/map.tmx");
-	HelloWorld::loadMap(map);
+
 	
+	//auto layer = map->getLayer("Layer0");
+
+	//auto tile = layer->getTileAt(Vec2(0, 0));
 
 	auto background = Sprite::create("2.png");
 	if (background == nullptr)
@@ -131,14 +133,14 @@ bool HelloWorld::init()
 	auto spritePos = sprite1->getPosition();
 	//sprite1->setPosition3D(spritePoss);
 
-	auto camera = this->getDefaultCamera();
-	Vec3 Poss = sprite1->getPosition3D();
-	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	//camera->setPosition3D(Vec3(0,0,0));
-	camera->setPosition(spritePos.x-10, spritePos.y-10);
+	//auto camera = this->getDefaultCamera();
+	//Vec3 Poss = sprite1->getPosition3D();
+	//camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
+	////camera->setPosition3D(Vec3(0,0,0));
+	//camera->setPosition(spritePos.x-10, spritePos.y-10);
 	//this->setCameraMask((unsigned short)CameraFlag::USER2, true);
 
-	
+	sprite1->setPositionZ(5);
 	//
 	this->addChild(sprite2);
 	this->addChild(sprite1);
@@ -202,6 +204,10 @@ bool HelloWorld::init()
 	contactListener->onContactBegin = CC_CALLBACK_1(HelloWorld::onContactBegin, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 
+	auto map = TMXTiledMap::create("map/primer.tmx");
+	map->getLayerNum();
+	
+	HelloWorld::loadMap(map);
 	return true;
 }
 
@@ -253,11 +259,11 @@ bool HelloWorld::onContactBegin(PhysicsContact& contact)
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
 
-	auto camera = this->getDefaultCamera();
-	Vec3 Poss = sprite1->getPosition3D();
-	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	//camera->setPosition3D(Vec3(0,0,0));
-	camera->setPosition(pos.x+350, pos.y+150);
+	//auto camera = this->getDefaultCamera();
+	//Vec3 Poss = sprite1->getPosition3D();
+	//camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
+	////camera->setPosition3D(Vec3(0,0,0));
+	//camera->setPosition(pos.x+350, pos.y+150);
 
 	if (pos > Point(880, 150)) {
 		auto scene = Scene2::createScene();
