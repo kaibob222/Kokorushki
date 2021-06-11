@@ -6,8 +6,8 @@
 #include "GameOver.h"
 #include "Anime.h"
 #include "Hero.h"
-#include "JsonAdapter.h"
 #include "Enemy.h"
+
 USING_NS_CC;
 
 extern int q;
@@ -41,14 +41,11 @@ bool HelloWorld::init()
 		return false;
 	}
 
-	
-
 	Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
 	Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
 
 	//auto map = TMXTiledMap::create("qwer3.tmx");
 	//auto objectsGroups = map->getObjectGroups("");
@@ -64,18 +61,14 @@ bool HelloWorld::init()
 	auto edgeNode = Node::create();
 	edgeNode->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + 103));
 	edgeNode->setPhysicsBody(edgeBody);
-
 	this->addChild(edgeNode);*/
 	/*auto earth = PhysicsBody::createBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT);
 	auto earthNode = Node::create();
 	earthNode->setPhysicsBody(earth);*/
-	
+
 	///
-
-	
-	//auto layer = map->getLayer("Layer0");
-
-	//auto tile = layer->getTileAt(Vec2(0, 0));
+	auto map = TMXTiledMap::create("map/map.tmx");
+	HelloWorld::loadMap(map);
 
 	auto background = Sprite::create("2.png");
 	if (background == nullptr)
@@ -118,13 +111,12 @@ bool HelloWorld::init()
 	}
 
 	sprite2 = Sprite::create("enemy/Skelet2.png", Rect(20, 0, 170, 251));
-	sprite2->setPosition(Point(700, 150)); //205 defolt
+	sprite2->setPosition(Point(700, 200)); //205 defolt
 
 	// physics
 	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
 	//sprite1->setPhysicsBody(spriteBody);
 	auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
-
 
 	//enemy physicsbody
 	Enemy::enemyPhysics(sprite2);
@@ -133,14 +125,14 @@ bool HelloWorld::init()
 	auto spritePos = sprite1->getPosition();
 	//sprite1->setPosition3D(spritePoss);
 
-	//auto camera = this->getDefaultCamera();
-	//Vec3 Poss = sprite1->getPosition3D();
-	//camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	////camera->setPosition3D(Vec3(0,0,0));
-	//camera->setPosition(spritePos.x-10, spritePos.y-10);
+	/*auto camera = this->getDefaultCamera();
+	Vec3 Poss = sprite1->getPosition3D();
+	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
+	//camera->setPosition3D(Vec3(0,0,0));
+	camera->setPosition(spritePos.x - 10, spritePos.y - 10);*/
 	//this->setCameraMask((unsigned short)CameraFlag::USER2, true);
 
-	sprite1->setPositionZ(5);
+
 	//
 	this->addChild(sprite2);
 	this->addChild(sprite1);
@@ -213,6 +205,7 @@ bool HelloWorld::init()
 
 bool isPaused = false;
 int q111 = 0;
+int enemyXp = 3;
 
 void HelloWorld::Heart(cocos2d::Ref *pSpender)
 {
@@ -256,20 +249,20 @@ bool HelloWorld::onContactBegin(PhysicsContact& contact)
 
 	return true;
 }
+
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
-
-	//auto camera = this->getDefaultCamera();
-	//Vec3 Poss = sprite1->getPosition3D();
-	//camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	////camera->setPosition3D(Vec3(0,0,0));
-	//camera->setPosition(pos.x+350, pos.y+150);
+	
+	/*auto camera = this->getDefaultCamera();
+	Vec3 Poss = sprite1->getPosition3D();
+	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
+	//camera->setPosition3D(Vec3(0,0,0));
+	camera->setPosition(pos.x + 350, pos.y + 150);*/
 
 	if (pos > Point(880, 150)) {
 		auto scene = Scene2::createScene();
 		AudioEngine::stop(musS1);
 		Director::getInstance()->replaceScene(scene);
-		JsonAdapter::JsonInit(2);
 	}
 
 	if (isPaused)
@@ -281,10 +274,10 @@ void HelloWorld::update(float dt) {
 			Director::getInstance()->replaceScene(scene);
 			q111 = 0;
 			isPaused = false;
-			
+
 		}
 	}
-	
+
 }
 
 void HelloWorld::Exit(cocos2d::Ref *pSpender)
@@ -359,13 +352,25 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 		}
 		Hero::heroPunch(sprite1);
 		if (abs(sprite2->getPositionX() - sprite1->getPositionX()) < 120) {
-			sprite2->setRotation(-90);
+			if (enemyXp == 0)
+			{
+				//this->removeChild(sprite2);
+				sprite2->setVisible(false);
+				sprite2->removeComponent(sprite2->getPhysicsBody());
+			}
+			else
+			{
+				enemyXp--;
+				auto tintTo = TintTo::create(11.0f, 156.0f, 49.0f, 0.0f);
+				sprite2->runAction(tintTo);
+			}
+			/*sprite2->setRotation(-90);
 			sprite2->setPositionY(sprite2->getPositionY() - 50);
-			sprite2->removeComponent(sprite2->getPhysicsBody());
+			sprite2->removeComponent(sprite2->getPhysicsBody());*/
 			//sprite2->setPhysicsBody(nullptr);
 		}
 	}
-	
+
 	if ((int)keyCode == 59)//key Space was pressed
 	{
 		int jump;
@@ -396,6 +401,3 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 {
 	Director::getInstance()->end();
 }
-
-
-

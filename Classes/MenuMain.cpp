@@ -2,7 +2,6 @@
 #include "ui/CocosGUI.h"
 #include "HelloWorldScene.h"
 #include "AudioEngine.h"
-#include "JsonAdapter.h"
 #include "ui/CocosGUI.h"
 
 USING_NS_CC;

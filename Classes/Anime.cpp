@@ -101,7 +101,7 @@ cocos2d::Animation* Anim::leftPunchi()
 	 punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(604, 1882, HeroWidth, HeroHeight)));
 	 punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(750, 1882, HeroWidth, HeroHeight)));
 	 punchiLeft.pushBack(SpriteFrame::create("Adv.png", Rect(922, 1882, HeroWidth, HeroHeight)));
-	 Animation* punchiLeftanimation = Animation::createWithSpriteFrames(punchiLeft, 0.15f);
+	 Animation* punchiLeftanimation = Animation::createWithSpriteFrames(punchiLeft, 0.05f);
 	 return punchiLeftanimation;
  }
 
@@ -122,7 +122,7 @@ cocos2d::Animation* Anim::rightPunchi()
 	 punchi.pushBack(SpriteFrame::create("Adv.png", Rect(640, 653, HeroWidth, HeroHeight)));
 	 punchi.pushBack(SpriteFrame::create("Adv.png", Rect(794, 653, HeroWidth, HeroHeight)));
 	 punchi.pushBack(SpriteFrame::create("Adv.png", Rect(934, 653, HeroWidth, HeroHeight)));
-	 Animation* punchianimation = Animation::createWithSpriteFrames(punchi, 0.15f);
+	 Animation* punchianimation = Animation::createWithSpriteFrames(punchi, 0.05f);
 	 return punchianimation;
  }
 
