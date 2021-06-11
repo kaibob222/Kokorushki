@@ -327,9 +327,6 @@ void Scene2::update(float dt) {
 		auto scene = HelloWorld::createScene();
 		AudioEngine::stop(musS2);
 		Director::getInstance()->replaceScene(scene);
-		JsonAdapter::JsonInit(1);
-		//auto scene = HelloWorld::createScene();
-		//Director::getInstance()->replaceScene(scene);
 	}
 	if (isPaused1)
 	{

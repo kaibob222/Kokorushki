@@ -6,7 +6,6 @@
 #include "GameOver.h"
 #include "Anime.h"
 #include "Hero.h"
-#include "JsonAdapter.h"
 
 USING_NS_CC;
 
@@ -40,9 +39,7 @@ bool HelloWorld::init()
 	if (!Scene::init())
 	{
 		return false;
-	}
-
-	
+	}	
 
 	Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
 	Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
@@ -74,7 +71,7 @@ bool HelloWorld::init()
 	///
 	auto map = TMXTiledMap::create("map/map.tmx");
 	HelloWorld::loadMap(map);
-	
+	//map->setScale(2);
 
 	auto background = Sprite::create("2.png");
 	if (background == nullptr)
@@ -116,6 +113,9 @@ bool HelloWorld::init()
 		q = 0;
 	}
 
+	auto followTheSprite = cocos2d::Follow::create(sprite1, Rect(100, 100, 100, 100));
+	this->runAction(followTheSprite);
+
 	// physics
 	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
 	//sprite1->setPhysicsBody(spriteBody);
@@ -123,23 +123,8 @@ bool HelloWorld::init()
 
 	Hero::heroPhysics(sprite1);
 	auto spritePos = sprite1->getPosition();
-	//sprite1->setPosition3D(spritePoss);
 
-	auto camera = this->getDefaultCamera();
-	Vec3 Poss = sprite1->getPosition3D();
-	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	//camera->setPosition3D(Vec3(0,0,0));
-	camera->setPosition(spritePos.x-10, spritePos.y-10);
-	//this->setCameraMask((unsigned short)CameraFlag::USER2, true);
 	this->addChild(sprite1);
-
-	//auto camera = Camera::createPerspective(180, (float)visibleSize.width / visibleSize.height, 1.0, 1000);
-	/*auto camera = this->getDefaultCamera();
-	camera->setCameraFlag(CameraFlag::USER2);
-	the calling order matters, we should first call setPosition3D, then call lookAt.
-	camera->setPosition3D(spritePoss + Vec3(0, 0, 800));
-	camera->lookAt(Vec3(0,0,0), Vec3(0.0, 1.0, 0.0));
-	this->addChild(camera);*/
 
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HelloWorld::keyPressed, this);
@@ -186,7 +171,7 @@ bool HelloWorld::init()
 		this->addChild(menu3);
 		this->addChild(menu4);
 	}
-	//this->setScale(1);
+
 	return true;
 }
 
@@ -201,17 +186,18 @@ void HelloWorld::Heart(cocos2d::Ref *pSpender)
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
 
-	auto camera = this->getDefaultCamera();
-	Vec3 Poss = sprite1->getPosition3D();
-	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	//camera->setPosition3D(Vec3(0,0,0));
-	camera->setPosition(pos.x+350, pos.y+150);
+	/*auto flagg = _defaultCamera->getCameraFlag();
+	auto mainCamera = HelloWorld::getDefaultCamera();
+	mainCamera->setPosition(pos.x + 300, pos.y + 125);
+	mainCamera->setCameraFlag(flagg);
+	mainCamera->lookAt(Vec3(pos.x + 300, pos.y + 125, 0));
+	this->setCameraMask(static_cast<int>(mask));
+	*/
 
 	if (pos > Point(880, 150)) {
 		auto scene = Scene2::createScene();
 		AudioEngine::stop(musS1);
 		Director::getInstance()->replaceScene(scene);
-		JsonAdapter::JsonInit(2);
 	}
 
 	if (isPaused)

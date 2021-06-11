@@ -2,7 +2,6 @@
 #include "ui/CocosGUI.h"
 #include "HelloWorldScene.h"
 #include "AudioEngine.h"
-#include "JsonAdapter.h"
 
 USING_NS_CC;
 
@@ -48,9 +47,6 @@ void MenuMain::Play(cocos2d::Ref *pSpender)
 	auto scene = HelloWorld::createScene();
 	AudioEngine::stop(musMenu);
 	Director::getInstance()->replaceScene(scene);
-	JsonAdapter::JsonInit(1);
-	/*auto scene = JsonAdapter::createScene();
-	Director::getInstance()->replaceScene(scene);*/
 }
 
 void MenuMain::Highscores(cocos2d::Ref *pSpender)
