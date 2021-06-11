@@ -16,7 +16,9 @@ public:
 	static void heroJump(cocos2d::Sprite* heroSprite);
 	static void heroStop(cocos2d::Sprite* heroSprite);
 	static void heroHurt(cocos2d::Sprite* heroSprite);
+	//static void pain(cocos2d::Sprite* heroSprite, cocos2d::Sprite* Enemy,cocos2d::Ref* pSendler);
 	static void heroDeath(cocos2d::Sprite* heroSprite);
 	static void heroPhysics(cocos2d::Sprite* heroSprite);
+	static  cocos2d::PhysicsBody* heroPhysicsbody(cocos2d::Sprite* heroSprite);
 };
 #endif

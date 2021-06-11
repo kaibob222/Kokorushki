@@ -6,11 +6,13 @@
 #include "GameOver.h"
 #include "Anime.h"
 #include "Hero.h"
+#include "Enemy.h"
 
 USING_NS_CC;
 
 extern int q;
 extern int xp;
+int musS1;
 
 //physics look a down 
 Scene* HelloWorld::createScene()
@@ -18,7 +20,7 @@ Scene* HelloWorld::createScene()
 	auto scene1 = HelloWorld::createWithPhysics();
 	scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
-	scene1->getPhysicsWorld()->setGravity(Vec2(0, -2));
+	scene1->getPhysicsWorld()->setGravity(Vec2(0, -10));
 
 	auto layer = HelloWorld::create();
 	layer->SetPhysicsWorld(scene1->getPhysicsWorld());
@@ -31,22 +33,19 @@ static void problemLoading(const char* filename)
 	printf("Error while loading: %s\n", filename);
 	printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
-
-int musS1;
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
 	if (!Scene::init())
 	{
 		return false;
-	}	
+	}
 
 	Director::getInstance()->getOpenGLView()->setFrameSize(900, 600);
 	Director::getInstance()->getOpenGLView()->setDesignResolutionSize(900, 600, ResolutionPolicy::EXACT_FIT);
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
 
 	//auto map = TMXTiledMap::create("qwer3.tmx");
 	//auto objectsGroups = map->getObjectGroups("");
@@ -62,16 +61,14 @@ bool HelloWorld::init()
 	auto edgeNode = Node::create();
 	edgeNode->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + 103));
 	edgeNode->setPhysicsBody(edgeBody);
-
 	this->addChild(edgeNode);*/
 	/*auto earth = PhysicsBody::createBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT);
 	auto earthNode = Node::create();
 	earthNode->setPhysicsBody(earth);*/
-	
+
 	///
 	auto map = TMXTiledMap::create("map/map.tmx");
 	HelloWorld::loadMap(map);
-	//map->setScale(2);
 
 	auto background = Sprite::create("2.png");
 	if (background == nullptr)
@@ -113,18 +110,40 @@ bool HelloWorld::init()
 		q = 0;
 	}
 
-	auto followTheSprite = cocos2d::Follow::create(sprite1, Rect(100, 100, 100, 100));
-	this->runAction(followTheSprite);
+	sprite2 = Sprite::create("enemy/Skelet2.png", Rect(20, 0, 170, 251));
+	sprite2->setPosition(Point(700, 200)); //205 defolt
 
 	// physics
 	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
 	//sprite1->setPhysicsBody(spriteBody);
 	auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
 
+	//enemy physicsbody
+	Enemy::enemyPhysics(sprite2);
+	//hero physocsbody
 	Hero::heroPhysics(sprite1);
 	auto spritePos = sprite1->getPosition();
+	//sprite1->setPosition3D(spritePoss);
 
+	/*auto camera = this->getDefaultCamera();
+	Vec3 Poss = sprite1->getPosition3D();
+	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
+	//camera->setPosition3D(Vec3(0,0,0));
+	camera->setPosition(spritePos.x - 10, spritePos.y - 10);*/
+	//this->setCameraMask((unsigned short)CameraFlag::USER2, true);
+
+
+	//
+	this->addChild(sprite2);
 	this->addChild(sprite1);
+
+	//auto camera = Camera::createPerspective(180, (float)visibleSize.width / visibleSize.height, 1.0, 1000);
+	/*auto camera = this->getDefaultCamera();
+	camera->setCameraFlag(CameraFlag::USER2);
+	the calling order matters, we should first call setPosition3D, then call lookAt.
+	camera->setPosition3D(spritePoss + Vec3(0, 0, 800));
+	camera->lookAt(Vec3(0,0,0), Vec3(0.0, 1.0, 0.0));
+	this->addChild(camera);*/
 
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HelloWorld::keyPressed, this);
@@ -171,28 +190,70 @@ bool HelloWorld::init()
 		this->addChild(menu3);
 		this->addChild(menu4);
 	}
+	//this->setScale(1);
+	//contact
+	auto contactListener = EventListenerPhysicsContact::create();
+	contactListener->onContactBegin = CC_CALLBACK_1(HelloWorld::onContactBegin, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 
 	return true;
 }
 
 bool isPaused = false;
 int q111 = 0;
+int enemyXp = 3;
 
 void HelloWorld::Heart(cocos2d::Ref *pSpender)
 {
 	CCLOG("Image Button");
 }
 
+bool HelloWorld::onContactBegin(PhysicsContact& contact)
+{
+	auto *nodeA = contact.getShapeA()->getBody();
+	auto *nodeB = contact.getShapeB()->getBody();
+
+	if ((1 == nodeA->getCollisionBitmask() && 2 == nodeB->getCollisionBitmask()) || (2 == nodeA->getCollisionBitmask() && 1 == nodeB->getCollisionBitmask()))
+	{
+		CCLOG("COLLISION HAS OCCURED ");
+		xp--;
+		//sprite1->_physicsBody->applyImpulse(Vec2(-100, 0));
+		if (xp == 2) {
+			auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+			auto *menu4 = Menu::create(menu_Item_4, NULL);
+			menu4->setPosition(Point(100, 570));
+			this->addChild(menu4);
+			Hero::heroHurt(sprite1);
+		}
+		if (xp == 1) {
+			auto menu_Item_3 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+			auto *menu3 = Menu::create(menu_Item_3, NULL);
+			menu3->setPosition(Point(60, 570));
+			this->addChild(menu3);
+			Hero::heroHurt(sprite1);
+		}
+		if (xp == 0) {
+			Hero::heroDeath(sprite1);
+			isPaused = true;
+			auto menu_Item_2 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
+			auto *menu2 = Menu::create(menu_Item_2, NULL);
+			menu2->setPosition(Point(20, 570));
+			this->addChild(menu2);
+			xp = 3;
+		}
+	}
+
+	return true;
+}
+
 void HelloWorld::update(float dt) {
 	Point pos = sprite1->getPosition();
-
-	/*auto flagg = _defaultCamera->getCameraFlag();
-	auto mainCamera = HelloWorld::getDefaultCamera();
-	mainCamera->setPosition(pos.x + 300, pos.y + 125);
-	mainCamera->setCameraFlag(flagg);
-	mainCamera->lookAt(Vec3(pos.x + 300, pos.y + 125, 0));
-	this->setCameraMask(static_cast<int>(mask));
-	*/
+	
+	/*auto camera = this->getDefaultCamera();
+	Vec3 Poss = sprite1->getPosition3D();
+	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
+	//camera->setPosition3D(Vec3(0,0,0));
+	camera->setPosition(pos.x + 350, pos.y + 150);*/
 
 	if (pos > Point(880, 150)) {
 		auto scene = Scene2::createScene();
@@ -209,16 +270,17 @@ void HelloWorld::update(float dt) {
 			Director::getInstance()->replaceScene(scene);
 			q111 = 0;
 			isPaused = false;
+
 		}
 	}
-	
+
 }
 
 void HelloWorld::Exit(cocos2d::Ref *pSpender)
 {
 	CCLOG("Exit");
 	auto scene = MenuMain::createScene();
-	AudioEngine::stop(musS1);
+	AudioEngine::pauseAll();
 	Director::getInstance()->replaceScene(scene);
 }
 
@@ -285,8 +347,24 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 			sprite1->stopActionByTag(i);
 		}
 		Hero::heroPunch(sprite1);
+		if (abs(sprite2->getPositionX() - sprite1->getPositionX()) < 120) {
+			if (enemyXp == 0)
+			{
+				this->removeChild(sprite2);
+			}
+			else
+			{
+				enemyXp--;
+				auto tintTo = TintTo::create(11.0f, 156.0f, 49.0f, 0.0f);
+				sprite2->runAction(tintTo);
+			}
+			/*sprite2->setRotation(-90);
+			sprite2->setPositionY(sprite2->getPositionY() - 50);
+			sprite2->removeComponent(sprite2->getPhysicsBody());*/
+			//sprite2->setPhysicsBody(nullptr);
+		}
 	}
-	
+
 	if ((int)keyCode == 59)//key Space was pressed
 	{
 		int jump;

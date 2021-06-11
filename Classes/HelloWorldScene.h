@@ -10,6 +10,9 @@ class HelloWorld : public cocos2d::Scene
 public:
     static cocos2d::Scene* createScene();
 
+	cocos2d::Sprite *sprite1;
+	cocos2d::Sprite *sprite2;
+
     virtual bool init();
     
     // a selector callback
@@ -18,7 +21,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 
-	cocos2d::Sprite *sprite1;
+//	cocos2d::Sprite *sprite1;
 
 	void keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
 	void keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
@@ -29,6 +32,8 @@ public:
 	void Settings(Ref *pSender);
 	void ImageButton(Ref *pSender);
 	void Exit(Ref *pSender);
+
+	bool onContactBegin(cocos2d::PhysicsContact &contact);
 
 	void Heart(Ref *pSender);
 	void Pause(Ref *pSender);
@@ -54,7 +59,7 @@ private:
 
 			auto earthBody = cocos2d::PhysicsBody::createBox(cocos2d::Size(width, height), cocos2d::PhysicsMaterial(0, 0, 0));
 			auto  earthNode = Node::create();
-			earthNode->setPosition(cocos2d::Point(x+450, y + 60));
+			earthNode->setPosition(cocos2d::Point(x+500, y + 60));
 			earthNode->setPhysicsBody(earthBody);
 			earthBody->setDynamic(false);
 			this->addChild(earthNode);
