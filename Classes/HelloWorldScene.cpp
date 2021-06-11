@@ -25,6 +25,7 @@ Scene* HelloWorld::createScene()
 	auto layer = HelloWorld::create();
 	layer->SetPhysicsWorld(scene1->getPhysicsWorld());
 	scene1->addChild(layer);
+	scene1->removeChild(scene1->getDefaultCamera());
 	return scene1;
 }
 
@@ -46,6 +47,8 @@ bool HelloWorld::init()
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	
+	
 
 	//auto map = TMXTiledMap::create("qwer3.tmx");
 	//auto objectsGroups = map->getObjectGroups("");
@@ -67,7 +70,9 @@ bool HelloWorld::init()
 	earthNode->setPhysicsBody(earth);*/
 
 	///
-	auto map = TMXTiledMap::create("map/map.tmx");
+	auto map = TMXTiledMap::create("map/primer.tmx");
+	map->setScale(0.5);
+	map->cleanup();
 	HelloWorld::loadMap(map);
 
 	auto background = Sprite::create("2.png");
@@ -123,6 +128,8 @@ bool HelloWorld::init()
 	//hero physocsbody
 	Hero::heroPhysics(sprite1);
 	auto spritePos = sprite1->getPosition();
+	sprite1->setCameraMask(getCameraMask());
+	
 	//sprite1->setPosition3D(spritePoss);
 
 	/*auto camera = this->getDefaultCamera();
@@ -135,6 +142,8 @@ bool HelloWorld::init()
 
 	//
 	this->addChild(sprite2);
+
+
 	this->addChild(sprite1);
 
 	//auto camera = Camera::createPerspective(180, (float)visibleSize.width / visibleSize.height, 1.0, 1000);
@@ -196,10 +205,6 @@ bool HelloWorld::init()
 	contactListener->onContactBegin = CC_CALLBACK_1(HelloWorld::onContactBegin, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 
-	auto map = TMXTiledMap::create("map/primer.tmx");
-	map->getLayerNum();
-	
-	HelloWorld::loadMap(map);
 	return true;
 }
 
@@ -251,19 +256,23 @@ bool HelloWorld::onContactBegin(PhysicsContact& contact)
 }
 
 void HelloWorld::update(float dt) {
+	
+	auto camera = this->getDefaultCamera();
+	
+
 	Point pos = sprite1->getPosition();
 	
-	/*auto camera = this->getDefaultCamera();
-	Vec3 Poss = sprite1->getPosition3D();
-	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	//camera->setPosition3D(Vec3(0,0,0));
-	camera->setPosition(pos.x + 350, pos.y + 150);*/
+	
+	//Vec3 Poss = sprite1->getPosition3D();
+	//camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
+	////camera->setPosition3D(Vec3(0,0,0));
+	camera->setPosition(pos.x + 350, pos.y + 150);
 
-	if (pos > Point(880, 150)) {
+	/*if (pos > Point(880, 150)) {
 		auto scene = Scene2::createScene();
 		AudioEngine::stop(musS1);
 		Director::getInstance()->replaceScene(scene);
-	}
+	}*/
 
 	if (isPaused)
 	{
