@@ -45,12 +45,14 @@ private:
 		sceneWorld = world;
 	};
 	void loadMap(cocos2d::TMXTiledMap *mp) {
-		/*///
+		
 		auto layer1 = Node::create();
 		layer1 = mp;
-		layer1->setPositionZ(-1);*/
-		this->addChild(mp, -1, 99); // with a tag of '99'
+		
+			
+		this->addChild(layer1, -1, 99); // with a tag of '99'
 		static auto earth = mp->getObjectGroup("earth");
+		
 		auto& obj = earth->getObjects();
 		for (auto & i : obj) {
 			auto dict = i.asValueMap();
@@ -58,16 +60,17 @@ private:
 			auto y = dict["y"].asFloat();
 			auto width = dict["width"].asFloat();
 			auto height = dict["height"].asFloat();
-
+			
 
 			auto earthBody = cocos2d::PhysicsBody::createBox(cocos2d::Size(width, height), cocos2d::PhysicsMaterial(0, 0, 0));
 			auto  earthNode = Node::create();
-			earthNode->setPosition(cocos2d::Point(x+500, y + 60));
+			earthNode->setPosition(cocos2d::Point(x+width/2, y+height/2));
 			earthNode->setPhysicsBody(earthBody);
 			earthBody->setDynamic(false);
 			this->addChild(earthNode);
 			//earthNode->addComponent(earthBody);
 		}
+	
 	}
 };
 

@@ -71,8 +71,7 @@ bool HelloWorld::init()
 
 	///
 	auto map = TMXTiledMap::create("map/primer.tmx");
-	map->setScale(0.5);
-	map->cleanup();
+	
 	HelloWorld::loadMap(map);
 
 	auto background = Sprite::create("2.png");
@@ -130,29 +129,13 @@ bool HelloWorld::init()
 	auto spritePos = sprite1->getPosition();
 	sprite1->setCameraMask(getCameraMask());
 	
-	//sprite1->setPosition3D(spritePoss);
 
-	/*auto camera = this->getDefaultCamera();
-	Vec3 Poss = sprite1->getPosition3D();
-	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	//camera->setPosition3D(Vec3(0,0,0));
-	camera->setPosition(spritePos.x - 10, spritePos.y - 10);*/
-	//this->setCameraMask((unsigned short)CameraFlag::USER2, true);
-
-
-	//
 	this->addChild(sprite2);
 
 
 	this->addChild(sprite1);
 
-	//auto camera = Camera::createPerspective(180, (float)visibleSize.width / visibleSize.height, 1.0, 1000);
-	/*auto camera = this->getDefaultCamera();
-	camera->setCameraFlag(CameraFlag::USER2);
-	the calling order matters, we should first call setPosition3D, then call lookAt.
-	camera->setPosition3D(spritePoss + Vec3(0, 0, 800));
-	camera->lookAt(Vec3(0,0,0), Vec3(0.0, 1.0, 0.0));
-	this->addChild(camera);*/
+
 
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HelloWorld::keyPressed, this);
@@ -176,6 +159,7 @@ bool HelloWorld::init()
 	menu2->setPosition(Point(20, 570));
 	menu3->setPosition(Point(60, 570));
 	menu4->setPosition(Point(100, 570));
+	menu->getCameraMask();
 	this->addChild(menu);
 	//this->addChild(menu0);
 	this->addChild(menu2);
