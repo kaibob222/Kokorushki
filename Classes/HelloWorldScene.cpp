@@ -350,7 +350,9 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 		if (abs(sprite2->getPositionX() - sprite1->getPositionX()) < 120) {
 			if (enemyXp == 0)
 			{
-				this->removeChild(sprite2);
+				//this->removeChild(sprite2);
+				sprite2->setVisible(false);
+				sprite2->removeComponent(sprite2->getPhysicsBody());
 			}
 			else
 			{

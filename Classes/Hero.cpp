@@ -73,7 +73,7 @@ void Hero::heroPunch(cocos2d::Sprite* heroSprite)
 {
 	if (!isWalking)
 	{
-		if (!isPunching)
+		/*if (!isPunching)
 		{
 			if (isRight)
 			{
@@ -90,20 +90,22 @@ void Hero::heroPunch(cocos2d::Sprite* heroSprite)
 			}
 		}
 		else
-		{
+		{*/
 			if (isRight)
 			{
 				Animate* punchianimate = Animate::create(Anim::rightPunchi());
 				punchianimate->setTag(7);
+				heroSprite->stopAllActions();
 				heroSprite->runAction(punchianimate);
 			}
 			else
 			{
 				Animate* punchiLeftanimate = Animate::create(Anim::leftPunchi());
 				punchiLeftanimate->setTag(8);
+				heroSprite->stopAllActions();
 				heroSprite->runAction(punchiLeftanimate);
 			}
-		}
+		//}
 	}
 }
 
@@ -153,7 +155,7 @@ void Hero::heroJump(cocos2d::Sprite* heroSprite)
 	}
 	isJumping = false;
 	auto spriteBody = PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
-	spriteBody->applyImpulse(Vec2(500, 500));
+	//spriteBody->applyImpulse(Vec2(500, 500));
 }
 
 void Hero::heroStop(cocos2d::Sprite* heroSprite)
@@ -177,13 +179,13 @@ void Hero::heroHurt(cocos2d::Sprite* heroSprite)
 	{
 		Animate* rightHurtanimate = Animate::create(Anim::rightHurt());
 		heroSprite->runAction(rightHurtanimate);
-		spriteBody->applyImpulse(Vec2(-1000, 0));
+		//spriteBody->applyImpulse(Vec2(-1000, 0));
 	}
 	else
 	{
 		Animate* leftHurtanimate = Animate::create(Anim::leftHurt());
 		heroSprite->runAction(leftHurtanimate);
-		spriteBody->applyImpulse(Vec2(1000, 0));
+		//spriteBody->applyImpulse(Vec2(1000, 0));
 
 	}
 }
@@ -210,7 +212,7 @@ void Hero::heroPhysics(cocos2d::Sprite* heroSprite) {
 	auto spriteBody = Hero::heroPhysicsbody(heroSprite);
 	
 	//spriteBody->addMass(3.);
-	spriteBody->applyImpulse(Vec2(100, 0));
+	//spriteBody->applyImpulse(Vec2(100, 0));
 	spriteBody->setRotationEnable(false);
 //	spriteBody->setDynamic(false);
 	spriteBody->setCollisionBitmask(1);
