@@ -7,6 +7,7 @@
 #include "Anime.h"
 #include "Hero.h"
 #include "Enemy.h"
+#include "Win.h"
 
 USING_NS_CC;
 
@@ -267,7 +268,11 @@ void HelloWorld::update(float dt) {
 		AudioEngine::stop(musS1);
 		Director::getInstance()->replaceScene(scene);
 	}*/
+	if (sprite1->getPositionX() >500 && sprite1->getPositionY()>100) {
+		auto scene = Win::createScene();
+		Director::getInstance()->replaceScene(scene);
 
+	}
 	if (isPaused)
 	{
 		q111++;
