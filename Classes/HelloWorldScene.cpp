@@ -268,7 +268,7 @@ void HelloWorld::update(float dt) {
 		AudioEngine::stop(musS1);
 		Director::getInstance()->replaceScene(scene);
 	}*/
-	if (sprite1->getPositionX() >500 && sprite1->getPositionY()>100) {
+	if (sprite1->getPositionX() <200 && sprite1->getPositionY()>500) {
 		auto scene = Win::createScene();
 		Director::getInstance()->replaceScene(scene);
 
