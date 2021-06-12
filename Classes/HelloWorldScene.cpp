@@ -18,13 +18,14 @@ int musS1;
 Scene* HelloWorld::createScene()
 {
 	auto scene1 = HelloWorld::createWithPhysics();
-	scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	//scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
-	scene1->getPhysicsWorld()->setGravity(Vec2(0, -10));
+	scene1->getPhysicsWorld()->setGravity(Vec2(0, -500));
 
 	auto layer = HelloWorld::create();
 	layer->SetPhysicsWorld(scene1->getPhysicsWorld());
 	scene1->addChild(layer);
+	scene1->removeChild(scene1->getDefaultCamera());
 	return scene1;
 }
 
@@ -46,6 +47,8 @@ bool HelloWorld::init()
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	
+	
 
 	//auto map = TMXTiledMap::create("qwer3.tmx");
 	//auto objectsGroups = map->getObjectGroups("");
@@ -101,7 +104,7 @@ bool HelloWorld::init()
 
 	if (q == 0) {
 		sprite1 = Sprite::create("Adv.png", Rect(1, 33, 137, 131));
-		sprite1->setPosition(Point(50, 150));
+		sprite1->setPosition(Point(50, 170));
 		q = 0;
 	}
 	if (q == 1) {
@@ -116,58 +119,49 @@ bool HelloWorld::init()
 	// physics
 	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
 	//sprite1->setPhysicsBody(spriteBody);
-	auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
+	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
 
 	//enemy physicsbody
 	Enemy::enemyPhysics(sprite2);
 	//hero physocsbody
 	Hero::heroPhysics(sprite1);
 	auto spritePos = sprite1->getPosition();
-	//sprite1->setPosition3D(spritePoss);
+	sprite1->setCameraMask(getCameraMask());
+	
 
-	/*auto camera = this->getDefaultCamera();
-	Vec3 Poss = sprite1->getPosition3D();
-	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	//camera->setPosition3D(Vec3(0,0,0));
-	camera->setPosition(spritePos.x - 10, spritePos.y - 10);*/
-	//this->setCameraMask((unsigned short)CameraFlag::USER2, true);
-
-
-	//
 	this->addChild(sprite2);
+
+
 	this->addChild(sprite1);
 
-	//auto camera = Camera::createPerspective(180, (float)visibleSize.width / visibleSize.height, 1.0, 1000);
-	/*auto camera = this->getDefaultCamera();
-	camera->setCameraFlag(CameraFlag::USER2);
-	the calling order matters, we should first call setPosition3D, then call lookAt.
-	camera->setPosition3D(spritePoss + Vec3(0, 0, 800));
-	camera->lookAt(Vec3(0,0,0), Vec3(0.0, 1.0, 0.0));
-	this->addChild(camera);*/
+
 
 	auto keyboardListener = EventListenerKeyboard::create();
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HelloWorld::keyPressed, this);
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(HelloWorld::keyReleased, this);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);// if you are using cocos2d-x 3.0alpha.1 and later!// if you are using cocos2d-x 3.0alpha.1 and later!
 
-	auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(HelloWorld::Exit, this));
+	//auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(HelloWorld::Exit, this));
 	//auto menu_Item_0 = MenuItemFont::create("Pause", CC_CALLBACK_1(HelloWorld::Pause, this));
 	auto menu_Item_2 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 	auto menu_Item_3 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 	auto menu_Item_4 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 
-	auto *menu = Menu::create(menu_Item_1, NULL);
+	//auto *menu = Menu::create(menu_Item_1, NULL);
 	//auto *menu0 = Menu::create(menu_Item_0, NULL);
 	auto *menu2 = Menu::create(menu_Item_2, NULL);
 	auto *menu3 = Menu::create(menu_Item_3, NULL);
 	auto *menu4 = Menu::create(menu_Item_4, NULL);
 	//menu->alignItemsVertically();
-	menu->setPosition(Point(850, 570));
+	//menu->setPosition(Point(visibleSize.width - 20, visibleSize.height - 20));
+	//menu->setPosition(Point(850, 570));
+	//menu->setAnchorPoint(Vec2(1, 1));
 	//menu0->setPosition(Point(750, 570));
 	menu2->setPosition(Point(20, 570));
 	menu3->setPosition(Point(60, 570));
 	menu4->setPosition(Point(100, 570));
-	this->addChild(menu);
+	//menu->getCameraMask();
+	//this->addChild(menu);
 	//this->addChild(menu0);
 	this->addChild(menu2);
 	this->addChild(menu3);
@@ -228,6 +222,7 @@ bool HelloWorld::onContactBegin(PhysicsContact& contact)
 			auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 			auto *menu4 = Menu::create(menu_Item_4, NULL);
 			menu4->setPosition(Point(100, 570));
+			//menu4->setAnchorPoint(Vec2(0, 1));
 			this->addChild(menu4);
 			Hero::heroHurt(sprite1);
 		}
@@ -248,18 +243,27 @@ bool HelloWorld::onContactBegin(PhysicsContact& contact)
 			xp = 3;
 		}
 	}
+	if ((1 == nodeA->getCollisionBitmask() && 3 == nodeB->getCollisionBitmask()) || (3 == nodeA->getCollisionBitmask() && 1 == nodeB->getCollisionBitmask()))
+	{
+		HelloWorld::t = true;
 
+	}
 	return true;
 }
 
 void HelloWorld::update(float dt) {
-	Point pos = sprite1->getPosition();
-	
-	/*auto camera = this->getDefaultCamera();
-	Vec3 Poss = sprite1->getPosition3D();
-	camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	//camera->setPosition3D(Vec3(0,0,0));
-	camera->setPosition(pos.x + 350, pos.y + 150);*/
+
+	if (sprite1->getPositionY() < 0)
+		isPaused = true;
+	auto camera = this->getDefaultCamera();
+
+	//auto visible1 = Director::getInstance()->getWinSize();
+	auto visible1 = camera->getContentSize();
+
+	auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(HelloWorld::Exit, this));
+	auto *menu = Menu::create(menu_Item_1, NULL);
+	menu->setPosition(Point(visible1.width - 20, visible1.height - 20));
+	this->addChild(menu);
 
 	if (isSkeletonHurted)
 	{
@@ -274,11 +278,31 @@ void HelloWorld::update(float dt) {
 		}
 	}
 
-	if (pos > Point(880, 150)) {
+	Point pos = sprite1->getPosition();
+	if (sprite1->getPositionX() < 450) {
+		camera->setPosition(450, 328);
+		menu->setPosition(Point(850, 570));
+	}
+	
+	
+	if (sprite1->getPositionX() >= 450) {
+		if (sprite1->getPositionX() < 2755)
+		{
+			camera->setPosition(pos.x, pos.y + 160);
+			/*menu->setVisible(false);
+			menu->setPosition(Point(pos.x+400, pos.y+400));*/
+		}
+		else
+		{
+			camera->setPositionY(pos.y + 160);
+		}
+		
+	}
+	/*if (pos > Point(880, 150)) {
 		auto scene = Scene2::createScene();
 		AudioEngine::stop(musS1);
 		Director::getInstance()->replaceScene(scene);
-	}
+	}*/
 
 	if (isPaused)
 	{
@@ -309,6 +333,8 @@ void HelloWorld::Exit(cocos2d::Ref *pSpender)
 	Director::getInstance()->pause();
 }*/
 
+
+bool death = true;
 void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	CCLOG("Key with keycode %d pressed", keyCode);
@@ -360,32 +386,49 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	}
 	if ((int)keyCode == 133)//key J pressed
 	{
-		for (int i = 1; i <= 8; i++)
-		{
-			sprite1->stopActionByTag(i);
-		}
+		if (a) {
+			a = false;
+			for (int i = 1; i <= 8; i++)
+			{
+				sprite1->stopActionByTag(i);
+			}
+		
 		Hero::heroPunch(sprite1);
-		if (abs(sprite2->getPositionX() - sprite1->getPositionX()) < 120) {
+
+		Hero b;
+		
+		
+		if (abs(sprite2->getPositionX() - sprite1->getPositionX()) < 120 && death) {
 			if (enemyXp == 0)
 			{
-				this->removeChild(sprite2);
-				/*sprite2->setVisible(false);
-				sprite2->removeComponent(sprite2->getPhysicsBody());*/
+				//this->removeChild(sprite2);
+				sprite2->setVisible(false);
+				sprite2->removeComponent(sprite2->getPhysicsBody());
+				death = false;
 			}
 			else
 			{
 				enemyXp--;
 				sprite2->setColor(cocos2d::Color3B(255, 0, 0));
 				isSkeletonHurted = true;
+				/*if (enemyXp> 0) {
+					auto tintTo = TintTo::create(11.0f, 156.0f, 49.0f, 0.0f);
+					sprite2->runAction(tintTo);
+				}*/
 			}
 		}
+		a = true;
 	}
+}
 
 	if ((int)keyCode == 59)//key Space was pressed
 	{
-		int jump;
-		jump = AudioEngine::play2d("jump1.mp3", false);
-		Hero::heroJump(sprite1);
+		if (t) {
+			int jump;
+			jump = AudioEngine::play2d("jump1.mp3", false);
+			Hero::heroJump(sprite1);
+			t = false;
+		}
 	}
 	if ((int)keyCode == 164)//key Enter was pressed
 	{

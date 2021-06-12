@@ -96,7 +96,8 @@ void Hero::heroPunch(cocos2d::Sprite* heroSprite)
 				Animate* punchianimate = Animate::create(Anim::rightPunchi());
 				punchianimate->setTag(7);
 				heroSprite->stopAllActions();
-				heroSprite->runAction(punchianimate);
+				heroSprite->runAction(punchianimate);				
+				
 			}
 			else
 			{
@@ -104,6 +105,7 @@ void Hero::heroPunch(cocos2d::Sprite* heroSprite)
 				punchiLeftanimate->setTag(8);
 				heroSprite->stopAllActions();
 				heroSprite->runAction(punchiLeftanimate);
+				
 			}
 		//}
 	}
@@ -154,6 +156,8 @@ void Hero::heroJump(cocos2d::Sprite* heroSprite)
 		}
 	}
 	isJumping = false;
+	
+	
 	auto spriteBody = PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
 	//spriteBody->applyImpulse(Vec2(500, 500));
 }
@@ -205,17 +209,17 @@ void Hero::heroDeath(cocos2d::Sprite* heroSprite)
 }
 cocos2d::PhysicsBody* Hero::heroPhysicsbody(cocos2d::Sprite* heroSprite) {
 	
-	return  PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(1, 1, 1));
+	return  PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(0, 0, 0));
 }
 void Hero::heroPhysics(cocos2d::Sprite* heroSprite) {
 	//auto spriteBody = PhysicsBody::createBox(heroSprite->getContentSize() / 1.5, PhysicsMaterial(1, 1, 1));
 	auto spriteBody = Hero::heroPhysicsbody(heroSprite);
-	
 	//spriteBody->addMass(3.);
 	//spriteBody->applyImpulse(Vec2(100, 0));
 	spriteBody->setRotationEnable(false);
-//	spriteBody->setDynamic(false);
+	spriteBody->setDynamic(true);
 	spriteBody->setCollisionBitmask(1);
 	spriteBody->setContactTestBitmask(true);
+	
 	heroSprite->setPhysicsBody(spriteBody);
 }
