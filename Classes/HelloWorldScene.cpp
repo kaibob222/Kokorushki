@@ -19,7 +19,7 @@ int musS1;
 Scene* HelloWorld::createScene()
 {
 	auto scene1 = HelloWorld::createWithPhysics();
-	scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	//scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
 	scene1->getPhysicsWorld()->setGravity(Vec2(0, -500));
 
@@ -72,7 +72,6 @@ bool HelloWorld::init()
 
 	///
 	auto map = TMXTiledMap::create("map/primer.tmx");
-	
 	HelloWorld::loadMap(map);
 
 	auto background = Sprite::create("2.png");
@@ -116,7 +115,7 @@ bool HelloWorld::init()
 	}
 
 	sprite2 = Sprite::create("enemy/Skelet2.png", Rect(20, 0, 170, 251));
-	sprite2->setPosition(Point(700, 200)); //205 defolt
+	sprite2->setPosition(Point(700, 170)); //205 defolt
 
 	// physics
 	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
@@ -143,25 +142,27 @@ bool HelloWorld::init()
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(HelloWorld::keyReleased, this);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);// if you are using cocos2d-x 3.0alpha.1 and later!// if you are using cocos2d-x 3.0alpha.1 and later!
 
-	auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(HelloWorld::Exit, this));
+	//auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(HelloWorld::Exit, this));
 	//auto menu_Item_0 = MenuItemFont::create("Pause", CC_CALLBACK_1(HelloWorld::Pause, this));
 	auto menu_Item_2 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 	auto menu_Item_3 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 	auto menu_Item_4 = MenuItemImage::create("redheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 
-	auto *menu = Menu::create(menu_Item_1, NULL);
+	//auto *menu = Menu::create(menu_Item_1, NULL);
 	//auto *menu0 = Menu::create(menu_Item_0, NULL);
 	auto *menu2 = Menu::create(menu_Item_2, NULL);
 	auto *menu3 = Menu::create(menu_Item_3, NULL);
 	auto *menu4 = Menu::create(menu_Item_4, NULL);
 	//menu->alignItemsVertically();
-	menu->setPosition(Point(850, 570));
+	//menu->setPosition(Point(visibleSize.width - 20, visibleSize.height - 20));
+	//menu->setPosition(Point(850, 570));
+	//menu->setAnchorPoint(Vec2(1, 1));
 	//menu0->setPosition(Point(750, 570));
 	menu2->setPosition(Point(20, 570));
 	menu3->setPosition(Point(60, 570));
 	menu4->setPosition(Point(100, 570));
-	menu->getCameraMask();
-	this->addChild(menu);
+	//menu->getCameraMask();
+	//this->addChild(menu);
 	//this->addChild(menu0);
 	this->addChild(menu2);
 	this->addChild(menu3);
@@ -190,12 +191,18 @@ bool HelloWorld::init()
 	contactListener->onContactBegin = CC_CALLBACK_1(HelloWorld::onContactBegin, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 
+	/*cocos2d::TMXTiledMap *map = TMXTiledMap::create("map/primer.tmx");
+	map->getLayerNum();
+	
+	HelloWorld::loadMap(map);*/
 	return true;
 }
 
 bool isPaused = false;
 int q111 = 0;
 int enemyXp = 3;
+int rrr = 1;
+bool isSkeletonHurted = false;
 
 void HelloWorld::Heart(cocos2d::Ref *pSpender)
 {
@@ -216,6 +223,7 @@ bool HelloWorld::onContactBegin(PhysicsContact& contact)
 			auto menu_Item_4 = MenuItemImage::create("blackheart.png", "", CC_CALLBACK_1(HelloWorld::Heart, this));
 			auto *menu4 = Menu::create(menu_Item_4, NULL);
 			menu4->setPosition(Point(100, 570));
+			//menu4->setAnchorPoint(Vec2(0, 1));
 			this->addChild(menu4);
 			Hero::heroHurt(sprite1);
 		}
@@ -239,28 +247,56 @@ bool HelloWorld::onContactBegin(PhysicsContact& contact)
 	if ((1 == nodeA->getCollisionBitmask() && 3 == nodeB->getCollisionBitmask()) || (3 == nodeA->getCollisionBitmask() && 1 == nodeB->getCollisionBitmask()))
 	{
 		HelloWorld::t = true;
-		
+
 	}
 	return true;
 }
 
 void HelloWorld::update(float dt) {
+
 	if (sprite1->getPositionY() < 0)
 		isPaused = true;
 	auto camera = this->getDefaultCamera();
-	
+
+	//auto visible1 = Director::getInstance()->getWinSize();
+	auto visible1 = camera->getContentSize();
+
+	auto menu_Item_1 = MenuItemFont::create("Exit", CC_CALLBACK_1(HelloWorld::Exit, this));
+	auto *menu = Menu::create(menu_Item_1, NULL);
+	menu->setPosition(Point(visible1.width - 20, visible1.height - 20));
+	this->addChild(menu);
+
+	if (isSkeletonHurted)
+	{
+		rrr++;
+		if (rrr == 10)
+		{
+			/*auto tintFrom = TintBy::create(255.0f, 255.0f, 255.0f, 0.9f);//white
+			sprite2->runAction(tintFrom);*/
+			sprite2->setColor(cocos2d::Color3B(255, 255, 255));
+			rrr = 0;
+			isSkeletonHurted = false;
+		}
+	}
 
 	Point pos = sprite1->getPosition();
 	if (sprite1->getPositionX() < 450) {
 		camera->setPosition(450, 328);
+		menu->setPosition(Point(850, 570));
 	}
 	
 	
 	if (sprite1->getPositionX() >= 450) {
 		if (sprite1->getPositionX() < 2755)
+		{
 			camera->setPosition(pos.x, pos.y + 160);
+			/*menu->setVisible(false);
+			menu->setPosition(Point(pos.x+400, pos.y+400));*/
+		}
 		else
-			camera->setPositionY(pos.y+160);
+		{
+			camera->setPositionY(pos.y + 160);
+		}
 		
 	}
 	/*if (pos > Point(880, 150)) {
@@ -282,7 +318,6 @@ void HelloWorld::update(float dt) {
 			Director::getInstance()->replaceScene(scene);
 			q111 = 0;
 			isPaused = false;
-
 		}
 	}
 
@@ -379,15 +414,13 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 			else
 			{
 				enemyXp--;
-				if (enemyXp> 0) {
+				sprite2->setColor(cocos2d::Color3B(255, 0, 0));
+				isSkeletonHurted = true;
+				/*if (enemyXp> 0) {
 					auto tintTo = TintTo::create(11.0f, 156.0f, 49.0f, 0.0f);
 					sprite2->runAction(tintTo);
-				}
+				}*/
 			}
-			/*sprite2->setRotation(-90);
-			sprite2->setPositionY(sprite2->getPositionY() - 50);
-			sprite2->removeComponent(sprite2->getPhysicsBody());*/
-			//sprite2->setPhysicsBody(nullptr);
 		}
 		a = true;
 	}
