@@ -62,7 +62,7 @@ private:
 
 			auto earthBody = cocos2d::PhysicsBody::createBox(cocos2d::Size(width, height), cocos2d::PhysicsMaterial(0, 0, 0));
 			auto  earthNode = Node::create();
-			earthNode->setPosition(cocos2d::Point(x+500, y + 60));
+			earthNode->setPosition(cocos2d::Point(x+700, y+5));
 			earthNode->setPhysicsBody(earthBody);
 			earthBody->setDynamic(false);
 			this->addChild(earthNode);
