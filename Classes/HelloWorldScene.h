@@ -37,7 +37,8 @@ public:
 
 	void Heart(Ref *pSender);
 	void Pause(Ref *pSender);
-	
+	bool t = true;
+    bool a = true;
 private:
 	cocos2d::PhysicsWorld *sceneWorld;
 
@@ -67,6 +68,10 @@ private:
 			earthNode->setPosition(cocos2d::Point(x+width/2, y+height/2));
 			earthNode->setPhysicsBody(earthBody);
 			earthBody->setDynamic(false);
+			
+			earthBody->setCollisionBitmask(3);
+			earthBody->setContactTestBitmask(true);
+			
 			this->addChild(earthNode);
 			//earthNode->addComponent(earthBody);
 		}

@@ -20,7 +20,7 @@ Scene* HelloWorld::createScene()
 	auto scene1 = HelloWorld::createWithPhysics();
 	scene1->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
-	scene1->getPhysicsWorld()->setGravity(Vec2(0, -10));
+	scene1->getPhysicsWorld()->setGravity(Vec2(0, -500));
 
 	auto layer = HelloWorld::create();
 	layer->SetPhysicsWorld(scene1->getPhysicsWorld());
@@ -105,7 +105,7 @@ bool HelloWorld::init()
 
 	if (q == 0) {
 		sprite1 = Sprite::create("Adv.png", Rect(1, 33, 137, 131));
-		sprite1->setPosition(Point(50, 150));
+		sprite1->setPosition(Point(50, 170));
 		q = 0;
 	}
 	if (q == 1) {
@@ -120,7 +120,7 @@ bool HelloWorld::init()
 	// physics
 	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(0, 1, 0));
 	//sprite1->setPhysicsBody(spriteBody);
-	auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
+	//auto spriteBody = PhysicsBody::createBox(sprite1->getContentSize() / 1.5, PhysicsMaterial(1, 1, 0));
 
 	//enemy physicsbody
 	Enemy::enemyPhysics(sprite2);
@@ -235,23 +235,33 @@ bool HelloWorld::onContactBegin(PhysicsContact& contact)
 			xp = 3;
 		}
 	}
-
+	if ((1 == nodeA->getCollisionBitmask() && 3 == nodeB->getCollisionBitmask()) || (3 == nodeA->getCollisionBitmask() && 1 == nodeB->getCollisionBitmask()))
+	{
+		HelloWorld::t = true;
+		
+	}
 	return true;
 }
 
 void HelloWorld::update(float dt) {
-	
+	if (sprite1->getPositionY() < 0)
+		isPaused = true;
 	auto camera = this->getDefaultCamera();
 	
 
 	Point pos = sprite1->getPosition();
+	if (sprite1->getPositionX() < 450) {
+		camera->setPosition(450, 328);
+	}
 	
 	
-	//Vec3 Poss = sprite1->getPosition3D();
-	//camera->lookAt(Poss, Vec3(0.0, 0.0, 0.0));
-	////camera->setPosition3D(Vec3(0,0,0));
-	camera->setPosition(pos.x + 350, pos.y + 150);
-
+	if (sprite1->getPositionX() >= 450) {
+		if (sprite1->getPositionX() < 2755)
+			camera->setPosition(pos.x, pos.y + 160);
+		else
+			camera->setPositionY(pos.y+160);
+		
+	}
 	/*if (pos > Point(880, 150)) {
 		auto scene = Scene2::createScene();
 		AudioEngine::stop(musS1);
@@ -288,6 +298,8 @@ void HelloWorld::Exit(cocos2d::Ref *pSpender)
 	Director::getInstance()->pause();
 }*/
 
+
+bool death = true;
 void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
 {
 	CCLOG("Key with keycode %d pressed", keyCode);
@@ -339,36 +351,51 @@ void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Ev
 	}
 	if ((int)keyCode == 133)//key J pressed
 	{
-		for (int i = 1; i <= 8; i++)
-		{
-			sprite1->stopActionByTag(i);
-		}
+		if (a) {
+			a = false;
+			for (int i = 1; i <= 8; i++)
+			{
+				sprite1->stopActionByTag(i);
+			}
+		
 		Hero::heroPunch(sprite1);
-		if (abs(sprite2->getPositionX() - sprite1->getPositionX()) < 120) {
+
+		Hero b;
+		
+		
+		if (abs(sprite2->getPositionX() - sprite1->getPositionX()) < 120 && death) {
 			if (enemyXp == 0)
 			{
 				//this->removeChild(sprite2);
 				sprite2->setVisible(false);
 				sprite2->removeComponent(sprite2->getPhysicsBody());
+				death = false;
 			}
 			else
 			{
 				enemyXp--;
-				auto tintTo = TintTo::create(11.0f, 156.0f, 49.0f, 0.0f);
-				sprite2->runAction(tintTo);
+				if (enemyXp> 0) {
+					auto tintTo = TintTo::create(11.0f, 156.0f, 49.0f, 0.0f);
+					sprite2->runAction(tintTo);
+				}
 			}
 			/*sprite2->setRotation(-90);
 			sprite2->setPositionY(sprite2->getPositionY() - 50);
 			sprite2->removeComponent(sprite2->getPhysicsBody());*/
 			//sprite2->setPhysicsBody(nullptr);
 		}
+		a = true;
 	}
+}
 
 	if ((int)keyCode == 59)//key Space was pressed
 	{
-		int jump;
-		jump = AudioEngine::play2d("jump1.mp3", false);
-		Hero::heroJump(sprite1);
+		if (t) {
+			int jump;
+			jump = AudioEngine::play2d("jump1.mp3", false);
+			Hero::heroJump(sprite1);
+			t = false;
+		}
 	}
 	if ((int)keyCode == 164)//key Enter was pressed
 	{
